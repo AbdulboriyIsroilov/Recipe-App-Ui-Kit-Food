@@ -5,6 +5,8 @@ import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_view_mode
 
 import 'bottom_item.dart';
 
+final controller = ScrollController();
+
 class RecipeListAppBarBottom extends StatelessWidget
     implements PreferredSizeWidget {
   const RecipeListAppBarBottom({
@@ -25,6 +27,7 @@ class RecipeListAppBarBottom extends StatelessWidget
         return Consumer<RecipeViewModel>(
           builder: (context, vm, child) {
             return SingleChildScrollView(
+              controller: controller,
               scrollDirection: Axis.horizontal,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 39.w, vertical: 7.h),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_view_model.dart';
@@ -42,13 +44,12 @@ class RecipePage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => RecipeListPage(
-                              appBarTitle: vm.recipe[index].title,
-                              categoryId: vm.recipe[index].id,
-                            ),
-                          ),
+                        context.push(
+                          RouterNames.recipeListPage,
+                          extra: {
+                            "appBarTitle": vm.recipe[index].title,
+                            "categoryId": vm.recipe[index].id,
+                          },
                         );
                       },
                       child: Column(

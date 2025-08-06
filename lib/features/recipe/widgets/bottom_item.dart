@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_list_page.dart';
 
+import '../../../core/router/router_names.dart';
 import '../../../core/utils/app_colors.dart';
 
 class BottomItem extends StatelessWidget {
@@ -20,11 +22,14 @@ class BottomItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => RecipeListPage(categoryId: id, appBarTitle: title),
-          ),
+        context.push(
+          RouterNames.recipeListPage,
+          extra: {
+            "appBarTitle": title,
+            "categoryId": id,
+          },
         );
+
       },
       child: Container(
         height: 25.h,
