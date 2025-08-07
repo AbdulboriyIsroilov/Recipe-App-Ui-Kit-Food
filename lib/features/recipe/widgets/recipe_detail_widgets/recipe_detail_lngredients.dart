@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
+import 'package:recipe_app_ui_kit_food/data/recipe_model/detail_model.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_detail_view_model.dart';
 
@@ -15,7 +16,7 @@ class RecipeDetailLngredients extends StatelessWidget {
   const RecipeDetailLngredients({
     super.key, required this.vm,
   });
-  final Map vm;
+  final DetailModel vm;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,13 +36,13 @@ class RecipeDetailLngredients extends StatelessWidget {
                 SizedBox(),
                 SvgPicture.asset(AppSvg.clock),
                 Text(
-                  "${vm["timeRequired"]}min",
+                  "${vm.timeRequired}min",
                   style: AppStyle.w400s12w,
                 ),
               ],
             ),
             Text(
-              vm["description"],
+              vm.description,
               style: AppStyle.w400s12w,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
@@ -64,7 +65,7 @@ class RecipeDetailLngredients extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ...List.generate(
-                        vm["ingredients"].length,
+                        vm.ingredients.length,
                         (index) {
                           return Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,14 +74,14 @@ class RecipeDetailLngredients extends StatelessWidget {
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  "•  ${vm["ingredients"][index]["order"]}",
+                                  "•  ${vm.ingredients[index].order}",
                                   style: AppStyle.w400s12wr,
                                 ),
                               ),
                               SizedBox(
                                 width: 335.w,
                                 child: Text(
-                                  "${vm["ingredients"][index]["amount"]} ${vm["ingredients"][index]["name"]}",
+                                  "${vm.ingredients[index].amount} ${vm.ingredients[index].name}",
                                   style: AppStyle.w400s12w,
                                 ),
                               ),
@@ -104,7 +105,7 @@ class RecipeDetailLngredients extends StatelessWidget {
               style: AppStyle.w600s20wr,
             ),
             ...List.generate(
-              vm["instructions"].length,
+              vm.instructions.length,
               (index) {
                 return Container(
                   width: 356.w,
@@ -129,13 +130,13 @@ class RecipeDetailLngredients extends StatelessWidget {
                       spacing: 3,
                       children: [
                         Text(
-                          "${vm["instructions"][index]["order"]}.",
+                          "${vm.instructions[index].order}.",
                           style: AppStyle.w400s12b,
                         ),
                         SizedBox(
                           width: 330.w,
                           child: Text(
-                            "${vm["instructions"][index]["text"]}",
+                            "${vm.instructions[index].text}",
                             style: AppStyle.w400s12b,
                             maxLines: 3,
                             overflow: TextOverflow.ellipsis,

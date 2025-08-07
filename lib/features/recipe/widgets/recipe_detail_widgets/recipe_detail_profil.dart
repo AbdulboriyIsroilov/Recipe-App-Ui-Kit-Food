@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
+import 'package:recipe_app_ui_kit_food/data/recipe_model/detail_model.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_detail_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/widgets/recipe_detail_widgets/recipe_detail_lngredients.dart';
@@ -13,13 +14,20 @@ import 'package:recipe_app_ui_kit_food/features/recipe/widgets/recipe_detail_wid
 import '../../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../../common/widgets/bottom_navigation_bar_main.dart';
 
-
-class RecipeDetailProfil extends StatelessWidget {
+class RecipeDetailProfil extends StatefulWidget {
   const RecipeDetailProfil({
-    super.key, required this.vm,
+    super.key,
+    required this.vm,
   });
 
-  final Map vm;
+  final DetailModel vm;
+
+  @override
+  State<RecipeDetailProfil> createState() => _RecipeDetailProfilState();
+}
+
+class _RecipeDetailProfilState extends State<RecipeDetailProfil> {
+  bool tap = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,7 @@ class RecipeDetailProfil extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(31.5),
           child: Image.network(
-            vm["user"]["profilePhoto"],
+            widget.vm.user.profilePhoto,
             width: 61.w,
             height: 63.h,
             fit: BoxFit.cover,
@@ -42,11 +50,11 @@ class RecipeDetailProfil extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "@${vm["user"]["username"]}",
+                "@${widget.vm.user.username}",
                 style: AppStyle.w400s12wr,
               ),
               Text(
-                "${vm["user"]["firstName"]} ${vm["user"]["lastName"]}-chef",
+                "${widget.vm.user.firstName} ${widget.vm.user.lastName}-chef",
                 style: AppStyle.w300s14w,
               ),
             ],
@@ -62,9 +70,12 @@ class RecipeDetailProfil extends StatelessWidget {
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 padding: EdgeInsets.zero,
               ),
-              onPressed: () {},
+              onPressed: () {
+                tap = !tap;
+                setState(() {});
+              },
               child: Text(
-                "Following",
+                tap ? "Following" : "Follow",
                 style: AppStyle.w500s15w.copyWith(
                   color: AppColors.rosePink,
                 ),

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
+import 'package:recipe_app_ui_kit_food/data/recipe_model/detail_model.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_detail_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/widgets/recipe_detail_widgets/recipe_detail_lngredients.dart';
@@ -16,7 +17,7 @@ class RecipeDetailVideoName extends StatelessWidget {
   const RecipeDetailVideoName({
     super.key, required this.vm,
   });
-  final Map vm;
+  final DetailModel vm;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -42,7 +43,7 @@ class RecipeDetailVideoName extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    vm["title"],
+                    vm.title,
                     style: AppStyle.w500s20w,
                   ),
                   Row(
@@ -50,7 +51,7 @@ class RecipeDetailVideoName extends StatelessWidget {
                     children: [
                       SvgPicture.asset(AppSvg.starFilled),
                       Text(
-                        "${vm["rating"]}",
+                        "${vm.rating}",
                         style: AppStyle.w400s12w,
                       ),
                       SizedBox(),
@@ -70,7 +71,7 @@ class RecipeDetailVideoName extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
-                vm["videoRecipe"],
+                vm.videoRecipe,
                 width: 357.w,
                 height: 281.h,
                 fit: BoxFit.cover,
