@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/dio_core.dart';
-import '../../../data/on_boarding_model/allergic_model.dart';
+import '../../../data/models/on_boarding_model/allergic_model.dart';
+import '../../../data/repositores/on_boarding_repositores/allergic_repository.dart';
 
 
 class AllergicViewModel extends ChangeNotifier {
-  AllergicViewModel() {
-    fetchAllergic();
-  }
+  AllergicViewModel({required AllergicRepository allergicRepo})
+    : _allergicRepo = allergicRepo;
 
+  String? error;
+  final AllergicRepository _allergicRepo;
   List<AllergicModel> allergic = [];
   bool loading = true;
 
   Future<void> fetchAllergic() async {
     loading = true;
     notifyListeners();
-    var reseponse = await dio.get("/allergic/list");
-    if (reseponse.statusCode != 200) {
-      throw Exception(reseponse.data);
+
+    try {
+      allergic = await _allergicRepo.getAll();
+    } catch (exception) {
+      error = exception.toString();
     }
-    allergic = (reseponse.data as List)
-        .map((item) => AllergicModel.fromJson(item))
-        .toList();
 
     loading = false;
     notifyListeners();

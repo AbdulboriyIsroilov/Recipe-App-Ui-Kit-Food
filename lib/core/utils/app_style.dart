@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 class AppStyle {
+  static const TextStyle w600s25w = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+
   static const TextStyle w600s20wr = TextStyle(
       fontSize: 20,
       fontWeight: FontWeight.w600,

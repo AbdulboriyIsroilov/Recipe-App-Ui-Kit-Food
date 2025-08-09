@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
-import 'package:recipe_app_ui_kit_food/features/on_boarding/manegers/cuisines_view_model.dart';
 
-import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
-import '../../../core/utils/app_svg.dart';
-import '../../common/widgets/text_buttom_popular.dart';
-import 'scroll_conteyner.dart';
+
 
 class GridViewImage extends StatefulWidget {
   const GridViewImage({

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/dio_core.dart';
-import '../../../data/recipe_model/categories_model.dart';
+import '../../../data/models/recipe_model/categories_model.dart';
 
 class CategoriesViewModel extends ChangeNotifier {
   CategoriesViewModel({required int categoryId}) {

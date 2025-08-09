@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/data/recipe_model/detail_model.dart';
 
 import '../../../core/dio_core.dart';
+import '../../../data/models/recipe_model/detail_model.dart';
 
 class RecipeDetailViewModel extends ChangeNotifier{
   RecipeDetailViewModel({required int categoryId}){

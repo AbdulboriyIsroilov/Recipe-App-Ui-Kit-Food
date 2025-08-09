@@ -20,7 +20,7 @@ class CuisinesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CuisinesViewModel(),
+      create: (context) => CuisinesViewModel(cuisineRepo: context.read())..fetchAllergic(),
       builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
@@ -118,6 +118,5 @@ class CuisinesPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

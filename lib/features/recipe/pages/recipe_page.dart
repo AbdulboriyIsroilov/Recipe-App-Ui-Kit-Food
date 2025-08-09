@@ -7,7 +7,6 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_list_page.dart';
 
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';

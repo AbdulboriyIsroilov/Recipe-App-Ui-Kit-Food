@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/dio_core.dart';
-import '../../../data/on_boarding_model/cuisine_model.dart';
-
+import '../../../data/models/on_boarding_model/cuisine_model.dart';
+import '../../../data/repositores/on_boarding_repositores/cuisines_repository.dart';
 
 class CuisinesViewModel extends ChangeNotifier {
-  CuisinesViewModel() {
-    fetchCuisine();
-  }
+  CuisinesViewModel({required CuisinesRepository cuisineRepo})
+    : _cuisineRepo = cuisineRepo;
 
+  String? error;
+  final CuisinesRepository _cuisineRepo;
   List<CuisineModel> cuisine = [];
   bool loading = true;
 
-  Future<void> fetchCuisine() async {
+  Future<void> fetchAllergic() async {
     loading = true;
     notifyListeners();
-    var reseponse = await dio.get("/cuisines/list");
-    if (reseponse.statusCode != 200) {
-      throw Exception(reseponse.data);
+
+    try {
+      cuisine = await _cuisineRepo.getAll();
+    } catch (exception) {
+      error = exception.toString();
     }
-    cuisine = (reseponse.data as List)
-        .map((item) => CuisineModel.fromJson(item))
-        .toList();
 
     loading = false;
     notifyListeners();

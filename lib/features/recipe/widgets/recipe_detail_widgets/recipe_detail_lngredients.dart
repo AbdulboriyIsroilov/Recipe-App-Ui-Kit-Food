@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-import 'package:recipe_app_ui_kit_food/data/recipe_model/detail_model.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_detail_view_model.dart';
 
-import '../../../common/widgets/bottom_navigation_bar_gradient.dart';
-import '../../../common/widgets/bottom_navigation_bar_main.dart';
+import '../../../../data/models/recipe_model/detail_model.dart';
+
 
 class RecipeDetailLngredients extends StatelessWidget {
   const RecipeDetailLngredients({

@@ -10,7 +10,6 @@ import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_svg.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
-import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../../common/widgets/text_buttom_popular.dart';
 import '../manegers/allergic_view_model.dart';
 import '../widgets/scroll_conteyner.dart';
@@ -21,7 +20,7 @@ class AllergicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => AllergicViewModel(),
+      create: (context) => AllergicViewModel(allergicRepo: context.read())..fetchAllergic(),
       builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
@@ -101,6 +100,5 @@ class AllergicPage extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

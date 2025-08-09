@@ -8,7 +8,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
 
-import '../../../data/recipe_model/categories_model.dart';
+import '../../../data/models/recipe_model/categories_model.dart';
 
 class RecipeListFoot extends StatelessWidget {
   const RecipeListFoot({
