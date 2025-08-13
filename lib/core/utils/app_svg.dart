@@ -23,6 +23,9 @@ class AppSvg {
   static const String starEmpty = "assets/Icons/star-empty.svg";
   static const String starFilled = "assets/Icons/star-filled.svg";
   static const String threeDots = "assets/Icons/three_dots.svg";
-
+  static const String facebook = "assets/Icons/facebook.svg";
+  static const String google = "assets/Icons/google.svg";
+  static const String instagram = "assets/Icons/instagram.svg";
+  static const String vatsub = "assets/Icons/Vatsub.svg";
 
 }

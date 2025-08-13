@@ -1,8 +1,14 @@
 
 class RouterNames {
+  static String forgotPassword = "/forgotPassword";
+  static String enterOTP = "/EnterOTP";
+
+  static String login = "/Login";
+  static String signUp = "/signUp";
+
+
   static String onBoarding = "/onBoarding";
   static String welcome = "/welcome";
-
 
   static String onBoardingCookingLevelPage = "/onBoardingCookingLevel";
   static String onBoardingPreferencesPage = "/onBoardingPreferences";

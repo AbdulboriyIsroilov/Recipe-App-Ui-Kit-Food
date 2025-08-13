@@ -1,0 +1,199 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/text_buttom_popular.dart';
+import 'package:recipe_app_ui_kit_food/features/logi_sign_up/manegers/sign_up_view_model.dart';
+
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_svg.dart';
+import '../../common/widgets/model.dart';
+import '../widgets/text_field_not_pasword.dart';
+import '../widgets/text_field_pasword.dart';
+
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final formKey = GlobalKey<FormState>();
+
+  final fullNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final firstNameController = TextEditingController();
+  final emailCantroller = TextEditingController();
+  final mobileNumberCantroller = TextEditingController();
+  final dateOfBirthCantroller = TextEditingController();
+  final passwordCantroller = TextEditingController();
+  final confirmPasswordCantroller = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    fullNameController.dispose();
+    lastNameController.dispose();
+    firstNameController.dispose();
+    emailCantroller.dispose();
+    mobileNumberCantroller.dispose();
+    dateOfBirthCantroller.dispose();
+    passwordCantroller.dispose();
+    confirmPasswordCantroller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => SignUpViewModel(),
+      builder: (context, child) => Scaffold(
+        backgroundColor: AppColors.backgroundColor,
+        appBar: AppBar(
+          backgroundColor: AppColors.backgroundColor,
+          centerTitle: true,
+          title: Text(
+            "Sign Up",
+            style: AppStyle.w600s20wr,
+          ),
+          leading: IconButton(
+            onPressed: () {
+              context.go(RouterNames.login);
+            },
+            icon: SvgPicture.asset(AppSvg.backArrow),
+          ),
+        ),
+        body: Align(
+          alignment: Alignment.topCenter,
+          child: Form(
+            key: formKey,
+            child: Column(
+              spacing: 9,
+              children: [
+                SizedBox(height: 90),
+                TextFieldNotPasword(
+                  controller: fullNameController,
+                  text: 'Full name',
+                  hint: 'Ism Familiya',
+                ),
+                TextFieldNotPasword(
+                  controller: emailCantroller,
+                  text: 'Email',
+                  hint: 'example@example.com',
+                ),
+                TextFieldNotPasword(
+                  controller: mobileNumberCantroller,
+                  text: 'Mobile Number',
+                  hint: '90 000 00 00',
+                ),
+                TextFieldNotPasword(
+                  controller: dateOfBirthCantroller,
+                  text: 'Date of birth',
+                  hint: 'YYY-MM-DD',
+                ),
+                TextFieldPasword(
+                  controller: passwordCantroller,
+                  text: "password",
+                  hint: "password",
+                ),
+                TextFieldPasword(
+                  controller: confirmPasswordCantroller,
+                  text: "Confirm Password",
+                  hint: "Confirm Password",
+                ),
+                SizedBox(height: 22),
+                SizedBox(
+                  width: 194.w,
+                  height: 35.h,
+                  child: Text(
+                    "By continuing, you agree to Terms of Use and Privacy Policy.",
+                    style: AppStyle.w400s14w,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                  ),
+                ),
+                Consumer<SignUpViewModel>(
+                  builder: (context, vm, child) => TextButtomPopular(
+                    title: "Sign In",
+                    onPressed: () async {
+                      if (passwordCantroller.text ==
+                          confirmPasswordCantroller.text) {
+                        try {
+                          String fullName = fullNameController.text.trim();
+
+                          List<String> parts = fullName.split(" ");
+
+                          String firstName = parts.isNotEmpty ? parts[0] : '';
+                          String lastName = parts.length > 1
+                              ? parts.sublist(1).join(" ")
+                              : '';
+
+                          var token = await vm.signUp(
+                            username: fullNameController.text,
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: emailCantroller.text,
+                            phoneNumber: mobileNumberCantroller.text,
+                            birthDate: dateOfBirthCantroller.text,
+                            password: passwordCantroller.text,
+                          );
+                          showDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            builder: (context) {
+                              return Modul(
+                                title1: 'Sign up succesful!',
+                                title2:
+                                    "You have successfully created an account. ✔",
+                              );
+                            },
+                          );
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Error: $e"),
+                            ),
+                          );
+                          throw Exception("Error: $e");
+                        }
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Password tasdiqlanmadi"),
+                          ),
+                        );
+                      }
+                    },
+                    backgroundColor: AppColors.watermelonRed,
+                    foregroundColor: AppColors.white,
+                  ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Already have an account?",
+                      style: AppStyle.w300s13b.copyWith(color: AppColors.white),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppColors.watermelonRed,
+                      ),
+                      onPressed: () {
+                        context.go(RouterNames.login);
+                      },
+                      child: Text("Log In"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
