@@ -11,15 +11,20 @@ import 'package:recipe_app_ui_kit_food/features/on_boarding/pages/welcome_page.d
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_detail_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_list_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_page.dart';
+import 'package:recipe_app_ui_kit_food/features/trending_recipes/pages/trending_recipes_page.dart';
 
 import '../../features/on_boarding/pages/allergic_page.dart';
 
 class Routers {
   GoRouter router = GoRouter(
     redirect: (context, state) {},
-    initialLocation: RouterNames.login,
+    initialLocation: RouterNames.trendingRecipes,
 
     routes: <RouteBase>[
+      GoRoute(
+        path: RouterNames.trendingRecipes,
+        builder: (context, state) => TrendingRecipesPage(),
+      ),
       GoRoute(
         path: RouterNames.forgotPassword,
         builder: (context, state) => ForgotEmail(),

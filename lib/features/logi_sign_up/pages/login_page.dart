@@ -81,19 +81,26 @@ class _LoginPageState extends State<LoginPage> {
                         foregroundColor: AppColors.white,
                         onPressed: () async {
                           try {
-                            var token = await vm.fetchLogin(
-                              authData: LoginModel(
+                            vm.fetchLogin(
+                              authModel: LoginModel(
                                 login: emailController.text,
                                 password: passwordCantroller.text,
                               ),
-                            );
-                            showDialog(
-                              context: context,
-                              barrierDismissible: true,
-                              builder: (context) {
-                                return Modul(
-                                  title1: "Login In Successful!",
-                                  title2: "Successfully logged in. ✔",
+                              onError: () {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text("Error")),
+                                );
+                              },
+                              onSuccess: () {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: true,
+                                  builder: (context) {
+                                    return Modul(
+                                      title1: "Login In Successful!",
+                                      title2: "Successfully logged in. ✔",
+                                    );
+                                  },
                                 );
                               },
                             );

@@ -1,0 +1,113 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
+
+import '../manegers/trending_recipes_view_model.dart';
+
+class TrendingRecipesViewed extends StatelessWidget {
+  const TrendingRecipesViewed({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<TrendingRecipesViewModel>(
+      builder: (context, vm, child) => SizedBox(
+        width: 358.w,
+        height: 182.h,
+        child: vm.loading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: 348.w,
+                      height: 49.h,
+                      decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(14.r),
+                        ),
+                      ),
+                      alignment: Alignment.bottomCenter,
+                      padding: EdgeInsets.only(
+                        bottom: 2,
+                        left: 15.w,
+                        right: 15.w,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 264.31.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  vm.details.title,
+                                  style: AppStyle.w400s13,
+                                ),
+                                Text(
+                                  vm.details.description,
+                                  style: AppStyle.w300s13b,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Row(
+                                spacing: 6,
+                                children: [
+                                  SvgPicture.asset(AppSvg.clock),
+                                  Text(
+                                    "${vm.details.timeRequired}min",
+                                    style: AppStyle.w400s12wr,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                spacing: 6,
+                                children: [
+                                  Text(
+                                    "${vm.details.rating}",
+                                    style: AppStyle.w400s12wr,
+                                  ),
+                                  SvgPicture.asset(AppSvg.star),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(14.r),
+                      child: Image.network(
+                        vm.details.photo,
+                        width: 358.w,
+                        height: 143.h,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+      ),
+    );
+  }
+}

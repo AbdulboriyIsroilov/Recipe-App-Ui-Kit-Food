@@ -1,5 +1,8 @@
 
 class RouterNames {
+  static String trendingRecipes = "/trendingRecipes";
+
+
   static String forgotPassword = "/forgotPassword";
   static String enterOTP = "/EnterOTP";
 

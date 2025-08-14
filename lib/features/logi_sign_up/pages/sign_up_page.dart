@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
+import 'package:recipe_app_ui_kit_food/data/models/Login_model/sign_up_model.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_buttom_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/logi_sign_up/manegers/sign_up_view_model.dart';
 
@@ -131,23 +132,32 @@ class _SignUpPageState extends State<SignUpPage> {
                               ? parts.sublist(1).join(" ")
                               : '';
 
-                          var token = await vm.signUp(
-                            username: fullNameController.text,
-                            firstName: firstName,
-                            lastName: lastName,
-                            email: emailCantroller.text,
-                            phoneNumber: mobileNumberCantroller.text,
-                            birthDate: dateOfBirthCantroller.text,
-                            password: passwordCantroller.text,
-                          );
-                          showDialog(
-                            context: context,
-                            barrierDismissible: true,
-                            builder: (context) {
-                              return Modul(
-                                title1: 'Sign up succesful!',
-                                title2:
-                                    "You have successfully created an account. ✔",
+                          vm.fetchSignUp(
+                            authModel: SignUpModel(
+                              username: fullNameController.text,
+                              firstName: firstName,
+                              lastName: lastName,
+                              email: emailCantroller.text,
+                              phoneNumber: mobileNumberCantroller.text,
+                              birthDate: dateOfBirthCantroller.text,
+                              password: passwordCantroller.text,
+                            ),
+                            onError: () {
+                              ScaffoldMessenger.of(
+                                context,
+                              ).showSnackBar(SnackBar(content: Text("Error")));
+                            },
+                            onSuccess: () {
+                              showDialog(
+                                context: context,
+                                barrierDismissible: true,
+                                builder: (context) {
+                                  return Modul(
+                                    title1: 'Sign up succesful!',
+                                    title2:
+                                        "You have successfully created an account. ✔",
+                                  );
+                                },
                               );
                             },
                           );

@@ -1,19 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/result.dart';
+import 'package:recipe_app_ui_kit_food/data/models/Login_model/login_model.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/login_repostoriy.dart';
 
 import '../../../core/dio_core.dart';
-import '../../../data/models/Login_model/login_model.dart';
 
+class LoginViewModel extends ChangeNotifier{
+  bool isLoading = true;
+  String token = "";
 
-class LoginViewModel extends ChangeNotifier {
+  void fetchLogin({
+    required LoginModel authModel,
+    required VoidCallback onError,
+    required VoidCallback onSuccess,
+  }) async {
+    isLoading = true;
+    notifyListeners();
 
+    try {
+      final data = await LoginRepostoriy(
+        client: ApiClint(),
+      ).login(maps: authModel);
 
-  Future<Result<String>> fetchLogin({required LoginModel authData}) async {
-    var response = await dio.post(
-        "/auth/login", data: authData);
-    if (response.statusCode != 200) {
-      throw Exception(response.data);
+      data.fold(
+            (e) {
+          onError();
+        },
+            (success) {
+          token = success;
+          onSuccess();
+        },
+      );
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
-    return response.data["accessToken"];
   }
 }
