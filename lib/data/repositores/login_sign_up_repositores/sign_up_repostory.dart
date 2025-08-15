@@ -4,25 +4,16 @@ import 'package:recipe_app_ui_kit_food/core/utils/result.dart';
 import '../../models/Login_model/sign_up_model.dart';
 
 class SignUpRepostory {
-  final ApiClint client;
+  final ApiClint _client;
 
-  SignUpRepostory({required this.client});
+  SignUpRepostory({required ApiClint client}) : _client = client ;
 
   Future<Result<String>> signUp({
-    required SignUpModel maps,
+    required SignUpModel data,
   }) async {
-    var reseponse = await client.post(
+    var reseponse = await _client.post(
       "/auth/register",
-      data: {
-        "username": maps.username,
-        "firstName": maps.firstName,
-        "lastName": maps.lastName,
-        "email": maps.email,
-        "phoneNumber": maps.phoneNumber,
-        "birthDate": maps.birthDate,
-        "password": maps.password,
-        "cookingLevelId": null,
-      },
+      data: data.toJson()
     );
     return reseponse.fold(
       (error) {

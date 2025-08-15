@@ -92,7 +92,7 @@ class AllergicPage extends StatelessWidget {
                 backgroundColor: AppColors.watermelonRed,
                 foregroundColor: AppColors.white,
                 onPressed: () {
-                  context.go(RouterNames.recipePage,extra: {});
+                  context.go(RouterNames.login);
                 },
               ),
             ),

@@ -3,22 +3,19 @@ import 'package:recipe_app_ui_kit_food/data/models/Login_model/login_model.dart'
 import '../../../core/dio_core.dart';
 import '../../../core/utils/result.dart';
 
-class LoginRepostoriy {
-  final ApiClint client;
+class LoginRepository {
+  final ApiClint _client;
 
-  LoginRepostoriy({required this.client});
+  LoginRepository({required ApiClint client}) : _client = client;
 
   Future<Result<String>> login({
-    required LoginModel maps,
+    required LoginModel data,
   }) async {
-    var reseponse = await client.post(
+    var response = await _client.post(
       "/auth/login",
-      data: {
-        "login": maps.login,
-        "password": maps.password,
-      },
+      data: data.toJson()
     );
-    return reseponse.fold(
+    return response.fold(
       (error) {
         print("Repostory Error $error");
         return Result.error(error);

@@ -94,7 +94,7 @@ class CuisinesPage extends StatelessWidget {
                     width: 162,
                     onPressed: () {
                       context.go(
-                        RouterNames.recipePage,
+                        RouterNames.login,
                         extra: {},
                       );
                     },

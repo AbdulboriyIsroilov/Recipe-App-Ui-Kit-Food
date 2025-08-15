@@ -1,5 +1,6 @@
 class DetailModel {
-  final int id,categoryId,timeRequired,rating,reviewsCount;
+  final int id,categoryId,timeRequired,reviewsCount;
+  final num rating;
   final String title,description,photo,videoRecipe,difficulty;
   final UserModel user;
   final List<InstructionModel> instructions;

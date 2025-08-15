@@ -5,6 +5,11 @@ import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositore
 import '../../../core/dio_core.dart';
 
 class SignUpViewModel extends ChangeNotifier {
+  SignUpViewModel({
+    required SignUpRepostory signRepo,
+  }) : _signRepo = signRepo;
+
+  final SignUpRepostory _signRepo;
   bool isLoading = true;
   String token = "";
 
@@ -17,9 +22,7 @@ class SignUpViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final data = await SignUpRepostory(
-        client: ApiClint(),
-      ).signUp(maps: authModel);
+      final data = await _signRepo.signUp(data: authModel);
       data.fold(
         (e) {
           onError();

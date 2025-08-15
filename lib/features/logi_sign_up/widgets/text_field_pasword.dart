@@ -38,6 +38,7 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
         TextField(
           obscureText: passw,
           controller: widget.controller,
+          keyboardType: TextInputType.phone,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 36.w),
             constraints: BoxConstraints(

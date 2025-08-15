@@ -30,7 +30,7 @@ class RecipeListFoot extends StatelessWidget {
         context.push(
           RouterNames.recipeDetailPage,
           extra: {
-            "title": title,
+            "title": vm[index].title,
             "categoryId": categoryId,
           },
         );

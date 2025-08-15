@@ -65,8 +65,8 @@ class WelcomePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                TextButtomPopular(title: "I’m New",onPressed: (){context.go(RouterNames.onBoardingCookingLevelPage, extra: {});},),
-                TextButtomPopular(title: "I’ve been here",onPressed: (){context.go(RouterNames.recipePage, extra: {});}, )
+                TextButtomPopular(title: "I’m New",onPressed: (){context.go(RouterNames.onBoardingCookingLevelPage);},),
+                TextButtomPopular(title: "I’ve been here",onPressed: (){context.go(RouterNames.login);}, )
               ],
             ),
           ),

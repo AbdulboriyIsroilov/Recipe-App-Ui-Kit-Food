@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/models/Login_model/login_model.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/login_repostoriy.dart';
 
-import '../../../core/dio_core.dart';
+class LoginViewModel extends ChangeNotifier {
+  LoginViewModel({
+    required LoginRepository loginRepo,
+  }) : _loginRepo = loginRepo;
 
-class LoginViewModel extends ChangeNotifier{
+  final LoginRepository _loginRepo;
   bool isLoading = true;
   String token = "";
 
@@ -17,15 +20,13 @@ class LoginViewModel extends ChangeNotifier{
     notifyListeners();
 
     try {
-      final data = await LoginRepostoriy(
-        client: ApiClint(),
-      ).login(maps: authModel);
+      final data = await _loginRepo.login(data: authModel);
 
       data.fold(
-            (e) {
+        (e) {
           onError();
         },
-            (success) {
+        (success) {
           token = success;
           onSuccess();
         },

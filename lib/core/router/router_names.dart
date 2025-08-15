@@ -1,7 +1,11 @@
 
 class RouterNames {
-  static String trendingRecipes = "/trendingRecipes";
+  static String splash = "/splash";
+  static String home = "/home";
 
+  static String topChefs = "/topChefs";
+
+  static String trendingRecipes = "/trendingRecipes";
 
   static String forgotPassword = "/forgotPassword";
   static String enterOTP = "/EnterOTP";

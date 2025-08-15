@@ -140,6 +140,7 @@ class TrendingRecipesPage extends StatelessWidget {
                                                           ),
                                                           Text(
                                                             "${vm.categories[index].timeRequired}min",
+                                                            style: AppStyle.w400s12wr,
                                                           ),
                                                         ],
                                                       ),

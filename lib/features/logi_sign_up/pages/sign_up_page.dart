@@ -50,7 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => SignUpViewModel(),
+      create: (context) => SignUpViewModel(signRepo: context.read()),
       builder: (context, child) => Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(

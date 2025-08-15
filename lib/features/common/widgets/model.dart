@@ -66,7 +66,7 @@ class Modul extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                context.go(RouterNames.recipePage);
+                context.go(RouterNames.home);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.watermelonRed,

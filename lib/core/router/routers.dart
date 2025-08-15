@@ -11,16 +11,31 @@ import 'package:recipe_app_ui_kit_food/features/on_boarding/pages/welcome_page.d
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_detail_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_list_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_page.dart';
+import 'package:recipe_app_ui_kit_food/features/top_chef/pages/top_chef_page.dart';
 import 'package:recipe_app_ui_kit_food/features/trending_recipes/pages/trending_recipes_page.dart';
 
+import '../../features/home/pages/home_page.dart';
+import '../../features/home/pages/splash_page.dart';
 import '../../features/on_boarding/pages/allergic_page.dart';
 
 class Routers {
   GoRouter router = GoRouter(
     redirect: (context, state) {},
-    initialLocation: RouterNames.trendingRecipes,
+    initialLocation: RouterNames.home,
 
     routes: <RouteBase>[
+      GoRoute(
+        path: RouterNames.splash,
+        builder: (context, state) => SplashPage(),
+      ),
+      GoRoute(
+        path: RouterNames.home,
+        builder: (context, state) => HomePage(),
+      ),
+      GoRoute(
+        path: RouterNames.topChefs,
+        builder: (context, state) => TopChefPage(),
+      ),
       GoRoute(
         path: RouterNames.trendingRecipes,
         builder: (context, state) => TrendingRecipesPage(),

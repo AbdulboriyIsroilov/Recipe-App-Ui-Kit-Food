@@ -19,15 +19,15 @@ class SignUpModel {
     required this.password,
   });
 
-  factory SignUpModel.fromJson(Map<String, dynamic> json) {
-    return SignUpModel(
-      username: json["username"],
-      firstName: json["firstName"],
-      lastName: json["lastName"],
-      email: json["email"],
-      phoneNumber: json["phoneNumber"],
-      birthDate: json["birthDate"],
-      password: json["password"],
-    );
+  Map<String,dynamic> toJson(){
+    return {
+      "username":username,
+      "firstName":firstName,
+      "lastName":lastName,
+      'email':email,
+      "phoneNumber":phoneNumber,
+      "birthDate":birthDate,
+      "password":password
+    };
   }
 }

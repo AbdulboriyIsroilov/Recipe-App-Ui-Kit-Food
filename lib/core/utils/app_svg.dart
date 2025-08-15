@@ -28,6 +28,7 @@ class AppSvg {
   static const String instagram = "assets/Icons/instagram.svg";
   static const String vatsub = "assets/Icons/Vatsub.svg";
   static const String reyting = "assets/Icons/reyting.svg";
-
+  static const String pichoq = "assets/Icons/pichoq.svg";
+  static const String vilka = "assets/Icons/vilka.svg";
 
 }

@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => LoginViewModel(),
+      create: (context) => LoginViewModel(loginRepo: context.read()),
       builder: (context, child) => Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
