@@ -55,7 +55,6 @@ class RecipeListPage extends StatelessWidget {
                       vm: vm.categories,
                       index: index,
                       categoryId: vm.categories[index].id,
-                      title: appBarTitle,
                     );
                   },
                 ),

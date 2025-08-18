@@ -29,7 +29,12 @@ class TopChefPage extends StatelessWidget {
       builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
-        appBar: AppBarCommon(title: "Top Chef",onPressed: (){Navigator.of(context).pop();},),
+        appBar: AppBarCommon(
+          title: "Top Chef",
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(bottom: 126.h),
@@ -54,13 +59,9 @@ class TopChefPage extends StatelessWidget {
                             Row(
                               children: [
                                 ...List.generate(vm.topChefTwo.length, (index) {
-                                  return SizedBox(
-                                    width: 170.w,
-                                    height: 217.h,
-                                    child: TopChefViewedChef(
-                                      vm: vm.topChefTwo,
-                                      index: index,
-                                    ),
+                                  return TopChefViewedChef(
+                                    vm: vm.topChefTwo,
+                                    index: index,
                                   );
                                 }),
                               ],
@@ -81,13 +82,9 @@ class TopChefPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ...List.generate(vm.topChefTwo.length, (index) {
-                                  return SizedBox(
-                                    width: 170.w,
-                                    height: 217.h,
-                                    child: TopChefViewedChef(
-                                      vm: vm.topChefThree,
-                                      index: index,
-                                    ),
+                                  return TopChefViewedChef(
+                                    vm: vm.topChefThree,
+                                    index: index,
                                   );
                                 }),
                               ],

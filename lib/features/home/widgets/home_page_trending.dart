@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
 
 import '../../../core/utils/app_colors.dart';
@@ -27,109 +29,114 @@ class HomePageTrending extends StatelessWidget {
               "Trending Recipe",
               style: AppStyle.w500s15wr,
             ),
-            SizedBox(
-              width: 358.w,
-              height: 182.h,
-              child: vm.trendingRecipeLoading
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            width: 348.w,
-                            height: 49.h,
-                            decoration: BoxDecoration(
-                              border: BoxBorder.all(
-                                color: AppColors.rosePink,
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.vertical(
-                                bottom: Radius.circular(14.r),
-                              ),
-                            ),
+            GestureDetector(
+              onTap: (){
+                context.push(RouterNames.trendingRecipes);
+              },
+              child: SizedBox(
+                width: 358.w,
+                height: 182.h,
+                child: vm.trendingRecipeLoading
+                    ? Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : Stack(
+                        children: [
+                          Align(
                             alignment: Alignment.bottomCenter,
-                            padding: EdgeInsets.fromLTRB(
-                              11.w,
-                              11,
-                              11.w,
-                              1,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: 264.31.h,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                            child: Container(
+                              width: 348.w,
+                              height: 49.h,
+                              decoration: BoxDecoration(
+                                border: BoxBorder.all(
+                                  color: AppColors.rosePink,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.vertical(
+                                  bottom: Radius.circular(14.r),
+                                ),
+                              ),
+                              alignment: Alignment.bottomCenter,
+                              padding: EdgeInsets.fromLTRB(
+                                11.w,
+                                11,
+                                11.w,
+                                1,
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: 264.31.h,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          vm.trendingRecipe.title,
+                                          style: AppStyle.w400s13w,
+                                        ),
+                                        Text(
+                                          vm.trendingRecipe.description,
+                                          style: AppStyle.w300s13w,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      Text(
-                                        vm.trendingRecipe.title,
-                                        style: AppStyle.w400s13w,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        spacing: 6,
+                                        children: [
+                                          SvgPicture.asset(AppSvg.clock),
+                                          Text(
+                                            "${vm.trendingRecipe.timeRequired}min",
+                                            style: AppStyle.w400s12rp,
+                                          ),
+                                        ],
                                       ),
-                                      Text(
-                                        vm.trendingRecipe.description,
-                                        style: AppStyle.w300s13w,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        spacing: 6,
+                                        children: [
+                                          Text(
+                                            "${vm.trendingRecipe.rating}",
+                                            style: AppStyle.w400s12rp,
+                                          ),
+                                          SvgPicture.asset(AppSvg.star),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      spacing: 6,
-                                      children: [
-                                        SvgPicture.asset(AppSvg.clock),
-                                        Text(
-                                          "${vm.trendingRecipe.timeRequired}min",
-                                          style: AppStyle.w400s12rp,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      spacing: 6,
-                                      children: [
-                                        Text(
-                                          "${vm.trendingRecipe.rating}",
-                                          style: AppStyle.w400s12rp,
-                                        ),
-                                        SvgPicture.asset(AppSvg.star),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Align(
-                          alignment: Alignment.topCenter,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(14.r),
-                            child: Image.network(
-                              vm.trendingRecipe.photo,
-                              width: 358.w,
-                              height: 143.h,
-                              fit: BoxFit.cover,
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(14.r),
+                              child: Image.network(
+                                vm.trendingRecipe.photo,
+                                width: 358.w,
+                                height: 143.h,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          top: 7.h,
-                          left: 322.w,
-                          child: Like(icon: AppSvg.heart),
-                        ),
-                      ],
-                    ),
+                          Positioned(
+                            top: 7.h,
+                            left: 322.w,
+                            child: Like(icon: AppSvg.heart),
+                          ),
+                        ],
+                      ),
+              ),
             ),
           ],
         ),

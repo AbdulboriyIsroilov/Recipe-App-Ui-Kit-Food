@@ -16,12 +16,11 @@ class RecipeListFoot extends StatelessWidget {
     required this.vm,
     required this.index,
     required this.categoryId,
-    required this.title,
   });
 
   final List<CategoriesModel> vm;
   final int index, categoryId;
-  final String title;
+
 
   @override
   Widget build(BuildContext context) {

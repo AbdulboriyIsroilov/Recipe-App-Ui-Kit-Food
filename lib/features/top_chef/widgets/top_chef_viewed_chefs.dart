@@ -34,13 +34,9 @@ class TopChefViewedChefs extends StatelessWidget {
               spacing: 18.w,
               children: [
                 ...List.generate(vm.topChefOne.length, (index) {
-                  return SizedBox(
-                    width: 170.w,
-                    height: 217.h,
-                    child: TopChefViewedChef(
-                      vm: vm.topChefOne,
-                      index: index,
-                    ),
+                  return TopChefViewedChef(
+                    vm: vm.topChefOne,
+                    index: index,
                   );
                 }),
               ],

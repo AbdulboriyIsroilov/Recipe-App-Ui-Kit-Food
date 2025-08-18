@@ -25,7 +25,7 @@ class TrendingRecipesPage extends StatelessWidget {
       builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
-        appBar: AppBarCommon(title: "Trending Recipes"),
+        appBar: AppBarCommon(title: "Trending Recipes",onPressed: (){Navigator.of(context).pop();},),
         body: ChangeNotifierProvider(
           create: (context) => TrendingRecipesViewModel(),
           builder: (context, child) => SingleChildScrollView(

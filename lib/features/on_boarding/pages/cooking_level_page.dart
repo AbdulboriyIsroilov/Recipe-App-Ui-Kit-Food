@@ -24,7 +24,7 @@ class CookingLevelPage extends StatelessWidget {
         backgroundColor: AppColors.backgroundColor,
         leading: IconButton(
           onPressed: () {
-            // Navigator.of(context).pop();
+            Navigator.of(context).pop();
           },
           icon: SvgPicture.asset(AppSvg.backArrow),
         ),

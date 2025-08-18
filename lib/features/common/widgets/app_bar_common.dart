@@ -13,13 +13,15 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     this.onPressed = _defaultPressed,
     this.oneButtom = AppSvg.notification,
     this.twoButtom = AppSvg.search,
+    this.oneOnPressed = _defaultPressed,
+    this.twoOnPressed = _defaultPressed,
   });
 
   static void _defaultPressed() {}
 
   final String title;
   final PreferredSizeWidget? bottom;
-  final VoidCallback onPressed;
+  final VoidCallback onPressed, oneOnPressed, twoOnPressed;
   final String oneButtom, twoButtom;
 
   @override
@@ -47,7 +49,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
             style: IconButton.styleFrom(
               backgroundColor: AppColors.pastelPink,
             ),
-            onPressed: () {},
+            onPressed: oneOnPressed,
             icon: SvgPicture.asset(oneButtom),
           ),
         ),
@@ -60,7 +62,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
             style: IconButton.styleFrom(
               backgroundColor: AppColors.pastelPink,
             ),
-            onPressed: () {},
+            onPressed: twoOnPressed,
             icon: SvgPicture.asset(twoButtom),
           ),
         ),

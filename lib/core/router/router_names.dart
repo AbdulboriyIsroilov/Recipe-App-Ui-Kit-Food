@@ -4,6 +4,8 @@ class RouterNames {
   static String home = "/home";
 
   static String topChefs = "/topChefs";
+  static String topChefDetail = "/topChefDetail";
+
 
   static String trendingRecipes = "/trendingRecipes";
 
