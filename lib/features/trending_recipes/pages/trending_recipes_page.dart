@@ -62,7 +62,7 @@ class TrendingRecipesPage extends StatelessWidget {
                         children: [
                           Text(
                             "See All",
-                            style: AppStyle.w500s12wr,
+                            style: AppStyle.w500s12wr.copyWith(decoration: TextDecoration.underline,decorationColor: AppColors.watermelonRed),
                           ),
                           ...List.generate(vm.categories.length, (index) {
                             return GestureDetector(

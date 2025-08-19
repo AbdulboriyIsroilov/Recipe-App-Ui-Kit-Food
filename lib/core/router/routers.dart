@@ -11,6 +11,7 @@ import 'package:recipe_app_ui_kit_food/features/on_boarding/pages/welcome_page.d
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_detail_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_list_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_page.dart';
+import 'package:recipe_app_ui_kit_food/features/reviews/pages/reviews_page.dart';
 import 'package:recipe_app_ui_kit_food/features/top_chef/pages/top_chef_detail_page.dart';
 import 'package:recipe_app_ui_kit_food/features/top_chef/pages/top_chef_page.dart';
 import 'package:recipe_app_ui_kit_food/features/trending_recipes/pages/trending_recipes_page.dart';
@@ -22,7 +23,7 @@ import '../../features/on_boarding/pages/allergic_page.dart';
 class Routers {
   GoRouter router = GoRouter(
     redirect: (context, state) {},
-    initialLocation: RouterNames.splash,
+    initialLocation: RouterNames.recipePage,
 
     routes: <RouteBase>[
       GoRoute(
@@ -39,7 +40,8 @@ class Routers {
       ),
       GoRoute(
         path: RouterNames.topChefDetail,
-        builder: (context, state) => TopChefDetailPage(id: (state.extra as Map)["id"]),
+        builder: (context, state) =>
+            TopChefDetailPage(id: (state.extra as Map)["id"]),
       ),
       GoRoute(
         path: RouterNames.trendingRecipes,
@@ -97,6 +99,12 @@ class Routers {
         builder: (context, state) => RecipeDetailPage(
           title: (state.extra as Map)["title"],
           categoryId: (state.extra as Map)["categoryId"],
+        ),
+      ),
+      GoRoute(
+        path: RouterNames.reviewsPage,
+        builder: (context, state) => ReviewsPage(
+          categoriyId: (state.extra as Map)["categoriyId"],
         ),
       ),
     ],

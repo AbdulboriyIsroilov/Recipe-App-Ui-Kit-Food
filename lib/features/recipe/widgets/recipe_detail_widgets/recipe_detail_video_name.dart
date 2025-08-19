@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
@@ -10,9 +12,10 @@ import '../../../../data/models/recipe_model/detail_model.dart';
 
 class RecipeDetailVideoName extends StatelessWidget {
   const RecipeDetailVideoName({
-    super.key, required this.vm,
+    super.key, required this.vm, required this.categoriyId,
   });
   final DetailModel vm;
+  final int categoriyId;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -41,21 +44,31 @@ class RecipeDetailVideoName extends StatelessWidget {
                     vm.title,
                     style: AppStyle.w500s20w,
                   ),
-                  Row(
-                    spacing: 4,
-                    children: [
-                      SvgPicture.asset(AppSvg.starFilled),
-                      Text(
-                        "${vm.rating}",
-                        style: AppStyle.w400s12w,
-                      ),
-                      SizedBox(),
-                      SvgPicture.asset(AppSvg.reviews),
-                      Text(
-                        "2.273",
-                        style: AppStyle.w400s12w,
-                      ),
-                    ],
+                  GestureDetector(
+                    onTap: (){
+                      context.push(
+                        RouterNames.reviewsPage,
+                        extra: {
+                          "categoriyId": categoriyId,
+                        },
+                      );
+                    },
+                    child: Row(
+                      spacing: 4,
+                      children: [
+                        SvgPicture.asset(AppSvg.starFilled),
+                        Text(
+                          "${vm.rating}",
+                          style: AppStyle.w400s12w,
+                        ),
+                        SizedBox(),
+                        SvgPicture.asset(AppSvg.reviews),
+                        Text(
+                          "2.273",
+                          style: AppStyle.w400s12w,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

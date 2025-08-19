@@ -6,7 +6,6 @@ class RouterNames {
   static String topChefs = "/topChefs";
   static String topChefDetail = "/topChefDetail";
 
-
   static String trendingRecipes = "/trendingRecipes";
 
   static String forgotPassword = "/forgotPassword";
@@ -26,4 +25,6 @@ class RouterNames {
   static String recipePage = "/resipe";
   static String recipeListPage = "/resipeList";
   static String recipeDetailPage = "/resipeDetail";
+
+  static String reviewsPage = "/reviewsPage";
 }

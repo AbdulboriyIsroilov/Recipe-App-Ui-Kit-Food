@@ -43,25 +43,20 @@ class RecipeDetailPage extends StatelessWidget {
               ? Center(
                   child: CircularProgressIndicator(),
                 )
-              : Padding(
-                  padding: EdgeInsets.fromLTRB(36.w, 26.h, 37.w, 0),
-                  child: Column(
-                    spacing: 22.h,
-                    children: [
-                      RecipeDetailVideoName(vm: vm.details),
-                      RecipeDetailProfil(vm: vm.details),
-                      Divider(color: AppColors.watermelonRed),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding: EdgeInsets.only(bottom: 126.h),
-                            child: RecipeDetailLngredients(vm: vm.details),
-                          ),
-                        ),
-                      ),
-                    ],
+              : SingleChildScrollView(
+                child: Padding(
+                    padding: EdgeInsets.fromLTRB(36.w, 26.h, 37.w, 126.h),
+                    child: Column(
+                      spacing: 22.h,
+                      children: [
+                        RecipeDetailVideoName(vm: vm.details, categoriyId: vm.details.id,),
+                        RecipeDetailProfil(vm: vm.details),
+                        Divider(color: AppColors.watermelonRed),
+                        RecipeDetailLngredients(vm: vm.details),
+                      ],
+                    ),
                   ),
-                ),
+              ),
         ),
         bottomNavigationBar: Stack(
           alignment: Alignment.bottomCenter,

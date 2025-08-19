@@ -55,38 +55,36 @@ class RecipeDetailLngredients extends StatelessWidget {
             ),
             SizedBox(
               width: 358.w,
-              child: Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ...List.generate(
-                        vm.ingredients.length,
-                        (index) {
-                          return Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            spacing: 3,
-                            children: [
-                              Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  "•  ${vm.ingredients[index].order}",
-                                  style: AppStyle.w400s12wr,
-                                ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ...List.generate(
+                      vm.ingredients.length,
+                      (index) {
+                        return Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: 3,
+                          children: [
+                            Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                "•  ${vm.ingredients[index].order}",
+                                style: AppStyle.w400s12wr,
                               ),
-                              SizedBox(
-                                width: 335.w,
-                                child: Text(
-                                  "${vm.ingredients[index].amount} ${vm.ingredients[index].name}",
-                                  style: AppStyle.w400s12w,
-                                ),
+                            ),
+                            SizedBox(
+                              width: 335.w,
+                              child: Text(
+                                "${vm.ingredients[index].amount} ${vm.ingredients[index].name}",
+                                style: AppStyle.w400s12w,
                               ),
-                            ],
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -119,27 +117,25 @@ class RecipeDetailLngredients extends StatelessWidget {
                     vertical: 14.h,
                   ),
                   alignment: Alignment.center,
-                  child: Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      spacing: 3,
-                      children: [
-                        Text(
-                          "${vm.instructions[index].order}.",
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 3,
+                    children: [
+                      Text(
+                        "${vm.instructions[index].order}.",
+                        style: AppStyle.w400s12b,
+                      ),
+                      SizedBox(
+                        width: 330.w,
+                        child: Text(
+                          "${vm.instructions[index].text}",
                           style: AppStyle.w400s12b,
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(
-                          width: 330.w,
-                          child: Text(
-                            "${vm.instructions[index].text}",
-                            style: AppStyle.w400s12b,
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 );
               },
