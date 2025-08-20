@@ -12,6 +12,7 @@ class TextButtomPopular extends StatelessWidget {
     this.foregroundColor = AppColors.rosePink,
     this.width = 207,
     this.height = 45,
+    this.style = AppStyle.w600s20,
   });
 
   static void _defaultOnPressed() {}
@@ -19,6 +20,7 @@ class TextButtomPopular extends StatelessWidget {
   final VoidCallback onPressed;
   final Color backgroundColor, foregroundColor;
   final double width, height;
+  final TextStyle style;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class TextButtomPopular extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         title,
-        style: AppStyle.w600s20,
+        style: style,
       ),
     );
   }

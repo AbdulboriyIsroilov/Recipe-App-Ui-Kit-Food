@@ -19,6 +19,7 @@ import 'package:recipe_app_ui_kit_food/features/trending_recipes/pages/trending_
 import '../../features/home/pages/home_page.dart';
 import '../../features/home/pages/splash_page.dart';
 import '../../features/on_boarding/pages/allergic_page.dart';
+import '../../features/reviews/pages/reviews_add_page.dart';
 
 class Routers {
   GoRouter router = GoRouter(
@@ -104,6 +105,12 @@ class Routers {
       GoRoute(
         path: RouterNames.reviewsPage,
         builder: (context, state) => ReviewsPage(
+          categoriyId: (state.extra as Map)["categoriyId"],
+        ),
+      ),
+      GoRoute(
+        path: RouterNames.reviewsAddPage,
+        builder: (context, state) => ReviewsAddPage(
           categoriyId: (state.extra as Map)["categoriyId"],
         ),
       ),

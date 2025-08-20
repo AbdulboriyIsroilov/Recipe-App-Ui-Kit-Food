@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/models/Login_model/sign_up_model.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/sign_up_repostory.dart';
 
-import '../../../core/dio_core.dart';
-
 class SignUpViewModel extends ChangeNotifier {
   SignUpViewModel({
     required SignUpRepostory signRepo,

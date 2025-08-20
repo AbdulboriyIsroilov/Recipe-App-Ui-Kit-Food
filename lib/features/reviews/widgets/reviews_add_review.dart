@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
@@ -111,7 +113,11 @@ class ReviewsAddReview extends StatelessWidget {
                           backgroundColor: AppColors.white,
                           fixedSize: Size(126.w, 24.h),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          context.push(RouterNames.reviewsAddPage,extra: {
+                            "categoriyId": vm.review.id,
+                          },);
+                        },
                         child: Text(
                           "Add Review",
                           style: AppStyle.w500s15wr,

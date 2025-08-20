@@ -27,4 +27,6 @@ class RouterNames {
   static String recipeDetailPage = "/resipeDetail";
 
   static String reviewsPage = "/reviewsPage";
+  static String reviewsAddPage = "/reviewsAddPage";
+
 }

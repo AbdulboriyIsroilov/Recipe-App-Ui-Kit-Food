@@ -1,0 +1,97 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/features/reviews/widgets/add_reviews.dart';
+
+import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/app_style.dart';
+import '../../../core/utils/app_svg.dart';
+import '../../common/widgets/bottom_navigation_bar_gradient.dart';
+import '../../common/widgets/bottom_navigation_bar_main.dart';
+import '../manegers/reviews_add_view_model.dart';
+
+class ReviewsAddPage extends StatelessWidget {
+  const ReviewsAddPage({super.key, required this.categoriyId});
+
+  final int categoriyId;
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => ReviewsAddViewModel(categoryId: categoriyId),
+      builder: (context, child) => Scaffold(
+        backgroundColor: AppColors.backgroundColor,
+        appBar: AppBar(
+          backgroundColor: AppColors.backgroundColor,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset(AppSvg.backArrow),
+          ),
+          title: Text(
+            "Leave a Review",
+            style: AppStyle.w600s20wr,
+          ),
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(37.w, 17.h, 37.w, 0),
+          child: Column(
+            spacing: 25.h,
+            children: [
+              Consumer<ReviewsAddViewModel>(
+                builder: (context, vm, child) => SizedBox(
+                  width: 356.w,
+                  height: 262.h,
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 356.w,
+                        height: 262.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.r),
+                          color: AppColors.watermelonRed,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10.w,
+                          vertical: 16.h,
+                        ),
+                        alignment: Alignment.bottomCenter,
+                        child: Text(
+                          vm.commentsAdd.title,
+                          style: AppStyle.w500s20w,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.r),
+                          child: Image.network(
+                            vm.commentsAdd.photo,
+                            width: 356.w,
+                            height: 206.h,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              AddReviews(),
+            ],
+          ),
+        ),
+        bottomNavigationBar: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            BottomNavigationBarGradient(),
+            BottomNavigationBarMain(),
+          ],
+        ),
+      ),
+    );
+  }
+}
