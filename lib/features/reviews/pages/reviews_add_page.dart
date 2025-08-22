@@ -28,11 +28,11 @@ class ReviewsAddPage extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: SvgPicture.asset(AppSvg.backArrow),
+            icon: SvgPicture.asset(AppSvgies.backArrow),
           ),
           title: Text(
             "Leave a Review",
-            style: AppStyle.w600s20wr,
+            style: AppStyles.w600s20wr,
           ),
           centerTitle: true,
         ),
@@ -45,7 +45,7 @@ class ReviewsAddPage extends StatelessWidget {
                 builder: (context, vm, child) => SizedBox(
                   width: 356.w,
                   height: 262.h,
-                  child: Stack(
+                  child: vm.loading ? Center(child: CircularProgressIndicator(),) : Stack(
                     children: [
                       Container(
                         width: 356.w,
@@ -61,7 +61,7 @@ class ReviewsAddPage extends StatelessWidget {
                         alignment: Alignment.bottomCenter,
                         child: Text(
                           vm.commentsAdd.title,
-                          style: AppStyle.w500s20w,
+                          style: AppStyles.w500s20w,
                         ),
                       ),
                       Align(

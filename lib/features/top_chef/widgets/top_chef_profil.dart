@@ -31,11 +31,11 @@ class TopChefProfil extends StatelessWidget {
             children: [
               Text(
                 "${vm.firstName} ${vm.lastName}-chef",
-                style: AppStyle.w500s15wr,
+                style: AppStyles.w500s15wr,
               ),
               Text(
                 vm.presentation,
-                style: AppStyle.w300s11rp.copyWith(
+                style: AppStyles.w300s11rp.copyWith(
                   color: Colors.white,
                 ),
                 maxLines: 2,
@@ -54,7 +54,7 @@ class TopChefProfil extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   "Following",
-                  style: AppStyle.w500s8,
+                  style: AppStyles.w500s8,
                 ),
               ),
             ],

@@ -19,7 +19,7 @@ class ScroolConteyner extends StatelessWidget {
         width: 230.w,
         height: 12,
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(100),
         ),
         alignment: vm == 0

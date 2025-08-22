@@ -8,8 +8,8 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_svg.dart';
 
-class Modul extends StatelessWidget {
-  const Modul({
+class Model extends StatelessWidget {
+  const Model({
     super.key,
     required this.title1,
     required this.title2,
@@ -25,7 +25,7 @@ class Modul extends StatelessWidget {
         height: 265.2.h,
         padding: EdgeInsets.fromLTRB(36, 23, 36, 15),
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Colors.white,
           borderRadius: BorderRadius.circular(40.r),
         ),
         child: Column(
@@ -36,7 +36,7 @@ class Modul extends StatelessWidget {
               height: 52.h,
               child: Text(
                 title1,
-                style: AppStyle.w600s20,
+                style: AppStyles.w600s20,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -52,7 +52,7 @@ class Modul extends StatelessWidget {
                 color: AppColors.pastelPink,
               ),
               child: SvgPicture.asset(
-                AppSvg.profile,
+                AppSvgies.profile,
                 colorFilter: ColorFilter.mode(
                   AppColors.watermelonRed,
                   BlendMode.modulate,
@@ -61,19 +61,19 @@ class Modul extends StatelessWidget {
             ),
             Text(
               title2,
-              style: AppStyle.w400s13,
+              style: AppStyles.w400s13,
               textAlign: TextAlign.center,
             ),
             ElevatedButton(
               onPressed: () {
-                context.go(RouterNames.home);
+                context.go(Routers.home);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.watermelonRed,
               ),
               child: Text(
                 "OK",
-                style: TextStyle(color: AppColors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ],

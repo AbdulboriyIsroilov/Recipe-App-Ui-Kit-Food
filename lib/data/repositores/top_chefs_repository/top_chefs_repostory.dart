@@ -1,4 +1,4 @@
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 import '../../models/home_model/top_chef_model.dart';
 
 class TopChefsRepostory {
@@ -8,13 +8,12 @@ class TopChefsRepostory {
     required int limit,
     required int page,
   }) async {
-    if (topChef.isNotEmpty) return topChef;
 
-    var reseponse = await dio.get("/top-chefs/list?Page=$page&Limit=$limit");
-    if (reseponse.statusCode != 200) {
-      throw Exception(reseponse.data);
+    var response = await dio.get("/top-chefs/list?Page=$page&Limit=$limit");
+    if (response.statusCode != 200) {
+      throw Exception(response.data);
     }
-    topChef = (reseponse.data as List)
+    topChef = (response.data as List)
         .map((item) => TopChefModel.fromJson(item))
         .toList();
     return topChef;

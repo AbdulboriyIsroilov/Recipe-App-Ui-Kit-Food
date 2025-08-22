@@ -1,32 +1,35 @@
 
-class RouterNames {
-  static String splash = "/splash";
-  static String home = "/home";
+class Routers {
+  static const splash = "/splash";
+  static const home = "/home";
 
-  static String topChefs = "/topChefs";
-  static String topChefDetail = "/topChefDetail";
-
-  static String trendingRecipes = "/trendingRecipes";
-
-  static String forgotPassword = "/forgotPassword";
-  static String enterOTP = "/EnterOTP";
-
-  static String login = "/Login";
-  static String signUp = "/signUp";
+  static const myRecipe = "/my-recipe";
 
 
-  static String onBoarding = "/onBoarding";
-  static String welcome = "/welcome";
+  static const topChefs = "/topChefs";
+  static const topChefDetail = "/topChefDetail";
 
-  static String onBoardingCookingLevelPage = "/onBoardingCookingLevel";
-  static String onBoardingPreferencesPage = "/onBoardingPreferences";
-  static String onBoardingAllergicPage = "/onBoardingAllergicPage";
+  static const trendingRecipes = "/trendingRecipes";
 
-  static String recipePage = "/resipe";
-  static String recipeListPage = "/resipeList";
-  static String recipeDetailPage = "/resipeDetail";
+  static const forgotPassword = "/forgotPassword";
+  static const enterOTP = "/EnterOTP";
 
-  static String reviewsPage = "/reviewsPage";
-  static String reviewsAddPage = "/reviewsAddPage";
+  static const login = "/Login";
+  static const signUp = "/signUp";
+
+
+  static const onBoarding = "/onBoarding";
+  static const welcome = "/welcome";
+
+  static const onBoardingCookingLevelPage = "/onBoardingCookingLevel";
+  static const onBoardingPreferencesPage = "/onBoardingPreferences";
+  static const onBoardingAllergicPage = "/onBoardingAllergicPage";
+
+  static const recipePage = "/resipe";
+  static const recipeListPage = "/resipeList";
+  static const recipeDetailPage = "/resipeDetail";
+
+  static const reviewsPage = "/reviewsPage";
+  static const reviewsAddPage = "/reviewsAddPage";
 
 }

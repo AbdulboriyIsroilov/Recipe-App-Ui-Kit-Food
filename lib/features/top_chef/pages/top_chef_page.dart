@@ -54,7 +54,7 @@ class TopChefPage extends StatelessWidget {
                           children: [
                             Text(
                               "Most Liked chefs",
-                              style: AppStyle.w500s15wr,
+                              style: AppStyles.w500s15wr,
                             ),
                             Row(
                               children: [
@@ -76,7 +76,7 @@ class TopChefPage extends StatelessWidget {
                           children: [
                             Text(
                               "Most Liked chefs",
-                              style: AppStyle.w500s15wr,
+                              style: AppStyles.w500s15wr,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

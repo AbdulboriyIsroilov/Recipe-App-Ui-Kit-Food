@@ -22,7 +22,7 @@ class HomePageRecently extends StatelessWidget {
       children: [
         Text(
           "Recently Added",
-          style: AppStyle.w500s15wr,
+          style: AppStyles.w500s15wr,
         ),
         Consumer<HomeViewModel>(
           builder: (context, vm, child) => vm.recentlyLoading
@@ -55,7 +55,7 @@ class HomePageRecently extends StatelessWidget {
                                   borderRadius: BorderRadius.vertical(
                                     bottom: Radius.circular(14.r),
                                   ),
-                                  color: AppColors.white,
+                                  color: Colors.white,
                                   border: BoxBorder.all(
                                     color: AppColors.rosePink,
                                     width: 1.5,
@@ -73,14 +73,14 @@ class HomePageRecently extends StatelessWidget {
                                       children: [
                                         Text(
                                           vm.recently[index].title,
-                                          style: AppStyle.w400s12rp.copyWith(
-                                            color: AppColors.black,
+                                          style: AppStyles.w400s12rp.copyWith(
+                                            color: Colors.black,
                                           ),
                                         ),
                                         Text(
                                           vm.recently[index].description,
-                                          style: AppStyle.w300s13w.copyWith(
-                                            color: AppColors.black,
+                                          style: AppStyles.w300s13w.copyWith(
+                                            color: Colors.black,
                                           ),
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
@@ -96,18 +96,18 @@ class HomePageRecently extends StatelessWidget {
                                           children: [
                                             Text(
                                               "${vm.recently[index].rating}",
-                                              style: AppStyle.w400s12rp,
+                                              style: AppStyles.w400s12rp,
                                             ),
-                                            SvgPicture.asset(AppSvg.star),
+                                            SvgPicture.asset(AppSvgies.star),
                                           ],
                                         ),
                                         Row(
                                           spacing: 6.w,
                                           children: [
-                                            SvgPicture.asset(AppSvg.clock),
+                                            SvgPicture.asset(AppSvgies.clock),
                                             Text(
                                               "${vm.recently[index].timeRequired}min",
-                                              style: AppStyle.w400s12rp,
+                                              style: AppStyles.w400s12rp,
                                             ),
                                           ],
                                         ),
@@ -132,7 +132,7 @@ class HomePageRecently extends StatelessWidget {
                             Positioned(
                               top: 7.h,
                               left: 133.w,
-                              child: Like(icon: AppSvg.heart),
+                              child: Like(icon: AppSvgies.heart),
                             ),
                           ],
                         ),

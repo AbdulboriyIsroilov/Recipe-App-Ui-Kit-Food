@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/data/models/Login_model/sign_up_model.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/text_buttom_popular.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/logi_sign_up/manegers/sign_up_view_model.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -58,13 +58,13 @@ class _SignUpPageState extends State<SignUpPage> {
           centerTitle: true,
           title: Text(
             "Sign Up",
-            style: AppStyle.w600s20wr,
+            style: AppStyles.w600s20wr,
           ),
           leading: IconButton(
             onPressed: () {
-              context.go(RouterNames.login);
+              context.go(Routers.login);
             },
-            icon: SvgPicture.asset(AppSvg.backArrow),
+            icon: SvgPicture.asset(AppSvgies.backArrow),
           ),
         ),
         body: Align(
@@ -111,7 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 35.h,
                   child: Text(
                     "By continuing, you agree to Terms of Use and Privacy Policy.",
-                    style: AppStyle.w400s14w,
+                    style: AppStyles.w400s14w,
                     textAlign: TextAlign.center,
                     maxLines: 2,
                   ),
@@ -152,7 +152,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 context: context,
                                 barrierDismissible: true,
                                 builder: (context) {
-                                  return Modul(
+                                  return Model(
                                     title1: 'Sign up succesful!',
                                     title2:
                                         "You have successfully created an account. ✔",
@@ -178,7 +178,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       }
                     },
                     backgroundColor: AppColors.watermelonRed,
-                    foregroundColor: AppColors.white,
+                    foregroundColor: Colors.white,
                   ),
                 ),
                 Row(
@@ -186,14 +186,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   children: [
                     Text(
                       "Already have an account?",
-                      style: AppStyle.w300s13b.copyWith(color: AppColors.white),
+                      style: AppStyles.w300s13b.copyWith(color: Colors.white),
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
                         foregroundColor: AppColors.watermelonRed,
                       ),
                       onPressed: () {
-                        context.go(RouterNames.login);
+                        context.go(Routers.login);
                       },
                       child: Text("Log In"),
                     ),

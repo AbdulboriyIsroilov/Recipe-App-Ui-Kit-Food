@@ -31,11 +31,11 @@ class ReviewsPage extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: SvgPicture.asset(AppSvg.backArrow),
+            icon: SvgPicture.asset(AppSvgies.backArrow),
           ),
           title: Text(
             "Reviews",
-            style: AppStyle.w600s20wr,
+            style: AppStyles.w600s20wr,
           ),
           centerTitle: true,
         ),

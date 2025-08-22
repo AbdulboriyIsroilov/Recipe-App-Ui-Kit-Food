@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/text_buttom_popular.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/forgot_your_password/widgets/forgot_your_password_texts.dart';
 import 'package:recipe_app_ui_kit_food/features/logi_sign_up/widgets/text_field_not_pasword.dart';
 
@@ -33,7 +33,7 @@ class _ForgotEmailState extends State<ForgotEmail> {
         centerTitle: true,
         title: Text(
           "Forgot your password",
-          style: AppStyle.w600s20wr,
+          style: AppStyles.w600s20wr,
         ),
       ),
       body: Padding(
@@ -54,7 +54,7 @@ class _ForgotEmailState extends State<ForgotEmail> {
             TextButtomPopular(
               title: "continue",
               onPressed: () {
-                context.go(RouterNames.enterOTP);
+                context.go(Routers.enterOTP);
               },
             ),
           ],

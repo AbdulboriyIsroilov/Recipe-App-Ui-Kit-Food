@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/recipe_image_over.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_list_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/widgets/recipe_list_app_bar_bottom.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/widgets/recipe_list_foot.dart';
 
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
@@ -51,10 +51,9 @@ class RecipeListPage extends StatelessWidget {
                   ),
                   itemCount: vm.categories.length,
                   itemBuilder: (context, index) {
-                    return RecipeListFoot(
+                    return RecipeImageOver(
                       vm: vm.categories,
                       index: index,
-                      categoryId: vm.categories[index].id,
                     );
                   },
                 ),

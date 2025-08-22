@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
+
+import '../../../core/utils/app_colors.dart';
 
 class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
   const AppBarCommon({
@@ -11,8 +12,8 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.bottom,
     this.onPressed = _defaultPressed,
-    this.oneButtom = AppSvg.notification,
-    this.twoButtom = AppSvg.search,
+    this.oneButtom = AppSvgies.notification,
+    this.twoButtom = AppSvgies.search,
     this.oneOnPressed = _defaultPressed,
     this.twoOnPressed = _defaultPressed,
   });
@@ -32,13 +33,13 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
       leading: Center(
         child: IconButton(
           onPressed: onPressed,
-          icon: SvgPicture.asset(AppSvg.backArrow),
+          icon: SvgPicture.asset(AppSvgies.backArrow),
         ),
       ),
       centerTitle: true,
       title: Text(
         title,
-        style: AppStyle.w600s20wr,
+        style: AppStyles.w600s20wr,
       ),
       actions: [
         SizedBox(

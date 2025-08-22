@@ -14,9 +14,9 @@ class OnboardingModel {
     print("Data: $json");
     return OnboardingModel(
       id: json["id"],
-      title: json["title"] ?? "",
-      subtitle: json["subtitle"] ?? "",
-      image: json["image"] ?? "",
+      title: json["title"],
+      subtitle: json["subtitle"],
+      image: json["image"],
     );
   }
 }

@@ -6,7 +6,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 
 class Like extends StatefulWidget {
   const Like({
-    super.key, this.icon = AppSvg.like,
+    super.key, this.icon = AppSvgies.like,
   });
 
   final String icon;
@@ -34,7 +34,7 @@ class _LikeState extends State<Like> {
         icon: SvgPicture.asset(
           widget.icon,
           colorFilter: ColorFilter.mode(
-            like ? AppColors.white : AppColors.rosePink,
+            like ? Colors.white : AppColors.rosePink,
             BlendMode.modulate,
           ),
         ),

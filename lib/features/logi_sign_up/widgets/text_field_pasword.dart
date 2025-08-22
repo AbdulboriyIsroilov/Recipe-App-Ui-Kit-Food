@@ -33,7 +33,7 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
       children: [
         Text(
           widget.text,
-          style: AppStyle.w500s15w,
+          style: AppStyles.w500s15w,
         ),
         TextField(
           obscureText: passw,
@@ -52,7 +52,7 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
               borderSide: BorderSide.none,
             ),
             hintText: widget.hint,
-            hintStyle: AppStyle.w500s16,
+            hintStyle: AppStyles.w500s16,
             suffixIcon: IconButton(
               onPressed: () {
                 passw = !passw;
@@ -60,14 +60,11 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
               },
               icon: passw
                   ? Icon(Icons.remove_red_eye_outlined)
-                  : SvgPicture.asset(AppSvg.password),
+                  : SvgPicture.asset(AppSvgies.password),
             ),
           ),
         ),
       ],
     );
   }
-}
-
-class AppStyles {
 }

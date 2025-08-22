@@ -25,7 +25,12 @@ class TrendingRecipesPage extends StatelessWidget {
       builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
-        appBar: AppBarCommon(title: "Trending Recipes",onPressed: (){Navigator.of(context).pop();},),
+        appBar: AppBarCommon(
+          title: "Trending Recipes",
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         body: ChangeNotifierProvider(
           create: (context) => TrendingRecipesViewModel(),
           builder: (context, child) => SingleChildScrollView(
@@ -47,7 +52,7 @@ class TrendingRecipesPage extends StatelessWidget {
                       children: [
                         Text(
                           "most viewed today",
-                          style: AppStyle.w500s15w,
+                          style: AppStyles.w500s15w,
                         ),
                         TrendingRecipesViewed(),
                       ],
@@ -62,13 +67,16 @@ class TrendingRecipesPage extends StatelessWidget {
                         children: [
                           Text(
                             "See All",
-                            style: AppStyle.w500s12wr.copyWith(decoration: TextDecoration.underline,decorationColor: AppColors.watermelonRed),
+                            style: AppStyles.w500s12wr.copyWith(
+                              decoration: TextDecoration.underline,
+                              decorationColor: AppColors.watermelonRed,
+                            ),
                           ),
                           ...List.generate(vm.categories.length, (index) {
                             return GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 context.push(
-                                  RouterNames.recipeDetailPage,
+                                  Routers.recipeDetailPage,
                                   extra: {
                                     "title": vm.categories[index].title,
                                     "categoryId": vm.categories[index].id,
@@ -90,85 +98,71 @@ class TrendingRecipesPage extends StatelessWidget {
                                               width: 207.w,
                                               height: 122.h,
                                               decoration: BoxDecoration(
-                                                color: AppColors.white,
-                                                borderRadius:
-                                                    BorderRadius.horizontal(
-                                                      right: Radius.circular(
-                                                        14.r,
-                                                      ),
-                                                    ),
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.horizontal(
+                                                  right: Radius.circular(
+                                                    14.r,
+                                                  ),
+                                                ),
                                               ),
                                               padding: EdgeInsets.all(10.w),
                                               child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
                                                 spacing: 6.h,
                                                 children: [
                                                   Text(
                                                     vm.categories[index].title,
-                                                    style: AppStyle.w400s12b,
+                                                    style: AppStyles.w400s12b,
                                                   ),
                                                   Text(
-                                                    vm
-                                                        .categories[index]
-                                                        .description,
-                                                    style: AppStyle.w300s13b,
+                                                    vm.categories[index].description,
+                                                    style: AppStyles.w300s13b,
                                                     maxLines: 2,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
+                                                    overflow: TextOverflow.ellipsis,
                                                   ),
                                                   Text(
                                                     "By Chef Josh Ryan",
-                                                    style: AppStyle.w300s13b
-                                                        .copyWith(
-                                                          color: AppColors
-                                                              .watermelonRed,
-                                                        ),
+                                                    style: AppStyles.w300s13b.copyWith(
+                                                      color: AppColors.watermelonRed,
+                                                    ),
                                                   ),
                                                   Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                     children: [
                                                       Row(
                                                         spacing: 5,
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
+                                                        mainAxisSize: MainAxisSize.min,
                                                         children: [
                                                           SvgPicture.asset(
-                                                            AppSvg.clock,
+                                                            AppSvgies.clock,
                                                           ),
                                                           Text(
                                                             "${vm.categories[index].timeRequired}min",
-                                                            style: AppStyle.w400s12wr,
+                                                            style: AppStyles.w400s12wr,
                                                           ),
                                                         ],
                                                       ),
                                                       Row(
                                                         spacing: 5,
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
+                                                        mainAxisSize: MainAxisSize.min,
                                                         children: [
                                                           Text(
-                                                            vm
-                                                                .categories[index]
-                                                                .difficulty,
+                                                            vm.categories[index].difficulty,
                                                           ),
                                                           SvgPicture.asset(
-                                                            AppSvg.reyting,
+                                                            AppSvgies.reyting,
                                                           ),
                                                         ],
                                                       ),
                                                       Row(
                                                         spacing: 5,
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
+                                                        mainAxisSize: MainAxisSize.min,
                                                         children: [
                                                           Text(
                                                             "${vm.categories[index].rating}",
                                                           ),
                                                           SvgPicture.asset(
-                                                            AppSvg.star,
+                                                            AppSvgies.star,
                                                           ),
                                                         ],
                                                       ),

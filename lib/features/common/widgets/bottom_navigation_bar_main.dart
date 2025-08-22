@@ -24,10 +24,22 @@ class BottomNavigationBarMain extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconButton(onPressed:(){context.go(RouterNames.home);},icon: SvgPicture.asset(AppSvg.home)),
-            IconButton(onPressed:(){},icon: SvgPicture.asset(AppSvg.community)),
-            IconButton(onPressed:(){context.go(RouterNames.recipePage);},icon: SvgPicture.asset(AppSvg.categories)),
-            IconButton(onPressed:(){},icon: SvgPicture.asset(AppSvg.profile)),
+            IconButton(
+              onPressed: () => context.go(Routers.home),
+              icon: SvgPicture.asset(AppSvgies.home),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(AppSvgies.community),
+            ),
+            IconButton(
+              onPressed: () => context.go(Routers.recipePage),
+              icon: SvgPicture.asset(AppSvgies.categories),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(AppSvgies.profile),
+            ),
           ],
         ),
       ),

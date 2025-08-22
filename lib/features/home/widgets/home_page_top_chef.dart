@@ -21,7 +21,7 @@ class HomePageTopChef extends StatelessWidget {
       children: [
         Text(
           "Top Chef",
-          style: AppStyle.w500s15wr,
+          style: AppStyles.w500s15wr,
         ),
         Consumer<HomeViewModel>(
           builder: (context, vm, child) => vm.topChefLoading
@@ -36,7 +36,7 @@ class HomePageTopChef extends StatelessWidget {
                     ...List.generate(vm.topChef.length, (index) {
                       return GestureDetector(
                         onTap: (){
-                          context.push(RouterNames.topChefs);
+                          context.push(Routers.topChefs);
                         },
                         child: Column(
                           spacing: 2,
@@ -52,8 +52,8 @@ class HomePageTopChef extends StatelessWidget {
                             ),
                             Text(
                               vm.topChef[index].firstName,
-                              style: AppStyle.w400s12rp.copyWith(
-                                color: AppColors.white,
+                              style: AppStyles.w400s12rp.copyWith(
+                                color: Colors.white,
                               ),
                             ),
                           ],

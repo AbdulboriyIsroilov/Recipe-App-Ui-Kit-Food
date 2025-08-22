@@ -23,7 +23,7 @@ class BottomItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.push(
-          RouterNames.recipeListPage,
+          Routers.recipeListPage,
           extra: {
             "appBarTitle": title,
             "categoryId": id,

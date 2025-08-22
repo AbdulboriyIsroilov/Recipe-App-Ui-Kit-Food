@@ -1,12 +1,12 @@
-import 'package:recipe_app_ui_kit_food/core/dio_core.dart';
+import 'package:recipe_app_ui_kit_food/core/client.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/result.dart';
 
 import '../../models/Login_model/sign_up_model.dart';
 
 class SignUpRepostory {
-  final ApiClint _client;
+  final ApiClient _client;
 
-  SignUpRepostory({required ApiClint client}) : _client = client ;
+  SignUpRepostory({required ApiClient client}) : _client = client ;
 
   Future<Result<String>> signUp({
     required SignUpModel data,

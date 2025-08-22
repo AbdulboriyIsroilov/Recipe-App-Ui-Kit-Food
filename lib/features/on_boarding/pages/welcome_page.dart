@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/text_buttom_popular.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_view_model.dart';
 
 import '../../../core/router/router_names.dart';
@@ -15,7 +15,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => RecipeViewModel(),
+      create: (context) => RecipeViewModel(recipeRepo: context.read()),
       builder: (context, child) => Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
@@ -54,19 +54,19 @@ class WelcomePage extends StatelessWidget {
                 ),
                 Text(
                   "Welcome",
-                  style: AppStyle.w600s25w,
+                  style: AppStyles.w600s25w,
                 ),
                 SizedBox(
                   width: 336.w,
                   child: Text(
                     "Find the best recipes that the world can provide you also with every step that you can learn to increase your cooking skills.",
-                    style: AppStyle.w400s13.copyWith(color: AppColors.white),
+                    style: AppStyles.w400s13.copyWith(color: Colors.white),
                     maxLines: 3,
                     textAlign: TextAlign.center,
                   ),
                 ),
-                TextButtomPopular(title: "I’m New",onPressed: (){context.push(RouterNames.onBoardingCookingLevelPage);},),
-                TextButtomPopular(title: "I’ve been here",onPressed: (){context.go(RouterNames.login);}, )
+                TextButtomPopular(title: "I’m New",onPressed: (){context.push(Routers.onBoardingCookingLevelPage);},),
+                TextButtomPopular(title: "I’ve been here",onPressed: (){context.go(Routers.login);}, )
               ],
             ),
           ),

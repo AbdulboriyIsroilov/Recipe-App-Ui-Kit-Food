@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 
 import '../../../../../core/utils/app_colors.dart';
-import '../../../core/utils/app_l_ist.dart';
+import '../../../core/utils/app_list.dart';
 
 
 class CookingLevelText extends StatefulWidget {
@@ -48,11 +48,11 @@ class _CookingLevelTextState extends State<CookingLevelText> {
             children: [
               Text(
                 AppList.cookingLevel[widget.index]["level"],
-                style: AppStyle.w500s16.copyWith(color: AppColors.white),
+                style: AppStyles.w500s16.copyWith(color: Colors.white),
               ),
               Text(
                 AppList.cookingLevel[widget.index]["title"],
-                style: AppStyle.w400s13.copyWith(color: AppColors.white),
+                style: AppStyles.w400s13.copyWith(color: Colors.white),
                 maxLines: 3,
               ),
             ],

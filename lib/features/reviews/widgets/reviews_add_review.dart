@@ -47,7 +47,7 @@ class ReviewsAddReview extends StatelessWidget {
                     children: [
                       Text(
                         vm.review.title,
-                        style: AppStyle.w500s20w,
+                        style: AppStyles.w500s20w,
                       ),
                       Row(
                         spacing: 4.68.w,
@@ -58,7 +58,7 @@ class ReviewsAddReview extends StatelessWidget {
                               index,
                             ) {
                               return SvgPicture.asset(
-                                AppSvg.starFilled,
+                                AppSvgies.starFilled,
                               );
                             },
                           ),
@@ -68,13 +68,13 @@ class ReviewsAddReview extends StatelessWidget {
                               index,
                             ) {
                               return SvgPicture.asset(
-                                AppSvg.starEmpty,
+                                AppSvgies.starEmpty,
                               );
                             },
                           ),
                           Text(
                             "(${vm.review.reviewsCount} reviews)",
-                            style: AppStyle.w400s12w,
+                            style: AppStyles.w400s12w,
                           ),
                         ],
                       ),
@@ -96,11 +96,11 @@ class ReviewsAddReview extends StatelessWidget {
                               children: [
                                 Text(
                                   "@${vm.review.user.username}",
-                                  style: AppStyle.w400s13w,
+                                  style: AppStyles.w400s13w,
                                 ),
                                 Text(
                                   "${vm.review.user.firstName} ${vm.review.user.lastName}-chef",
-                                  style: AppStyle.w300s13w,
+                                  style: AppStyles.w300s13w,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],
@@ -110,17 +110,17 @@ class ReviewsAddReview extends StatelessWidget {
                       ),
                       TextButton(
                         style: TextButton.styleFrom(
-                          backgroundColor: AppColors.white,
+                          backgroundColor: Colors.white,
                           fixedSize: Size(126.w, 24.h),
                         ),
                         onPressed: () {
-                          context.push(RouterNames.reviewsAddPage,extra: {
+                          context.push(Routers.reviewsAddPage,extra: {
                             "categoriyId": vm.review.id,
                           },);
                         },
                         child: Text(
                           "Add Review",
-                          style: AppStyle.w500s15wr,
+                          style: AppStyles.w500s15wr,
                         ),
                       ),
                     ],

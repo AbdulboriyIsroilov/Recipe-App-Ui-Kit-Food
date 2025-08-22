@@ -23,7 +23,7 @@ class TextFieldNotPasword extends StatelessWidget {
       children: [
         Text(
           text,
-          style: AppStyle.w500s15w,
+          style: AppStyles.w500s15w,
         ),
         TextField(
           controller: controller,
@@ -40,7 +40,7 @@ class TextFieldNotPasword extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
             hintText: hint,
-            hintStyle: AppStyle.w500s16,
+            hintStyle: AppStyles.w500s16,
           ),
         ),
       ],

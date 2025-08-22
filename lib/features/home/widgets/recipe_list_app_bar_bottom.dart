@@ -70,7 +70,7 @@ class _RecipeListAppBarBottomState extends State<RecipeListAppBarBottom> {
                               vm.categoriy[index].title,
                               style: TextStyle(
                                 color: activIndex == index
-                                    ? Colors.white
+                                    ? AppColors.white
                                     : AppColors.watermelonRed,
                               ),
                             ),

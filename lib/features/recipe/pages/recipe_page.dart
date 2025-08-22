@@ -19,7 +19,7 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => RecipeViewModel(),
+      create: (context) => RecipeViewModel(recipeRepo: context.read()),
       builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
@@ -27,11 +27,7 @@ class RecipePage extends StatelessWidget {
           title: "Categories",
         ),
         body: Consumer<RecipeViewModel>(
-          builder: (context, vm, child) => vm.loading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : GridView.builder(
+          builder: (context, vm, child) =>  GridView.builder(
                   padding: EdgeInsets.fromLTRB(37.w, 14.h, 37.w, 126.h),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -44,7 +40,7 @@ class RecipePage extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         context.push(
-                          RouterNames.recipeListPage,
+                          Routers.recipeListPage,
                           extra: {
                             "appBarTitle": vm.recipe[index].title,
                             "categoryId": vm.recipe[index].id,
@@ -65,7 +61,7 @@ class RecipePage extends StatelessWidget {
                           ),
                           Text(
                             vm.recipe[index].title,
-                            style: AppStyle.w500s15w,
+                            style: AppStyles.w500s15w,
                           ),
                         ],
                       ),

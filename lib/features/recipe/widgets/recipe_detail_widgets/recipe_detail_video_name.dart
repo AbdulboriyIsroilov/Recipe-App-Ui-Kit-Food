@@ -42,12 +42,12 @@ class RecipeDetailVideoName extends StatelessWidget {
                 children: [
                   Text(
                     vm.title,
-                    style: AppStyle.w500s20w,
+                    style: AppStyles.w500s20w,
                   ),
                   GestureDetector(
                     onTap: (){
                       context.push(
-                        RouterNames.reviewsPage,
+                        Routers.reviewsPage,
                         extra: {
                           "categoriyId": categoriyId,
                         },
@@ -56,16 +56,16 @@ class RecipeDetailVideoName extends StatelessWidget {
                     child: Row(
                       spacing: 4,
                       children: [
-                        SvgPicture.asset(AppSvg.starFilled),
+                        SvgPicture.asset(AppSvgies.starFilled),
                         Text(
                           "${vm.rating}",
-                          style: AppStyle.w400s12w,
+                          style: AppStyles.w400s12w,
                         ),
                         SizedBox(),
-                        SvgPicture.asset(AppSvg.reviews),
+                        SvgPicture.asset(AppSvgies.reviews),
                         Text(
                           "2.273",
-                          style: AppStyle.w400s12w,
+                          style: AppStyles.w400s12w,
                         ),
                       ],
                     ),
@@ -102,7 +102,7 @@ class RecipeDetailVideoName extends StatelessWidget {
                 color: AppColors.watermelonRed,
                 shape: BoxShape.circle,
               ),
-              child: SvgPicture.asset(AppSvg.play),
+              child: SvgPicture.asset(AppSvgies.play),
             ),
           ),
         ],

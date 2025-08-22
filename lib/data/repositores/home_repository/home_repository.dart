@@ -1,6 +1,6 @@
 
 
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 import '../../models/home_model/categories_model.dart';
 import '../../models/home_model/recently_model.dart';
 import '../../models/home_model/recipes_model.dart';

@@ -8,7 +8,7 @@ import 'package:recipe_app_ui_kit_food/features/on_boarding/manegers/on_boarding
 
 import '../../../core/router/router_names.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
-import '../../common/widgets/text_buttom_popular.dart';
+import '../../common/widgets/text_button_popular.dart';
 
 class OnBoarding extends StatelessWidget {
   const OnBoarding({super.key});
@@ -44,13 +44,13 @@ class OnBoarding extends StatelessWidget {
                               children: [
                                 Text(
                                   vm.onBoarding[index].title,
-                                  style: AppStyle.w600s20w,
+                                  style: AppStyles.w600s20w,
                                   maxLines: 1,
                                 ),
                                 Text(
                                   vm.onBoarding[index].subtitle,
-                                  style: AppStyle.w400s13.copyWith(
-                                    color: AppColors.white,
+                                  style: AppStyles.w400s13.copyWith(
+                                    color: Colors.white,
                                   ),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -105,9 +105,9 @@ class OnBoarding extends StatelessWidget {
               child: TextButtomPopular(
                 title: "Continue",
                 backgroundColor: AppColors.watermelonRed,
-                foregroundColor: AppColors.white,
+                foregroundColor: Colors.white,
                 onPressed: () {
-                  context.go(RouterNames.welcome, extra: {});
+                  context.go(Routers.welcome, extra: {});
                 },
               ),
             ),

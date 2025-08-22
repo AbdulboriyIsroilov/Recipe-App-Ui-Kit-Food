@@ -28,7 +28,7 @@ class TopChefViewedChefs extends StatelessWidget {
           children: [
             Text(
               "Most viewed chefs",
-              style: AppStyle.w500s15w,
+              style: AppStyles.w500s15w,
             ),
             Row(
               spacing: 18.w,

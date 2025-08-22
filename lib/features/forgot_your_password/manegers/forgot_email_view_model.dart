@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 
 class ForgotEmailViewModel extends ChangeNotifier{
 

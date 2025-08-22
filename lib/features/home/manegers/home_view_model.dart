@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 
 import '../../../data/models/home_model/categories_model.dart';
 import '../../../data/models/home_model/recently_model.dart';

@@ -20,7 +20,10 @@ class LoginViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final data = await _loginRepo.login(data: authModel);
+      final data = await _loginRepo.login({
+        "login": authModel.login,
+        "password": authModel.password,
+      });
 
       data.fold(
         (e) {

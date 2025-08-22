@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
-class AppStyle {
+
+class AppStyles {
   static const TextStyle w600s64w = TextStyle(
     fontSize: 64,
     fontWeight: FontWeight.w600,

@@ -1,5 +1,5 @@
 
-class AppSvg {
+class AppSvgies {
   static const String backArrow = "assets/Icons/back-arrow.svg";
   static const String biigTick = "assets/Icons/big-tick.svg";
   static const String big = "assets/Icons/bin.svg";
@@ -30,5 +30,6 @@ class AppSvg {
   static const String reyting = "assets/Icons/reyting.svg";
   static const String pichoq = "assets/Icons/pichoq.svg";
   static const String vilka = "assets/Icons/vilka.svg";
+  static const String ptichkeKub = "assets/Icons/ptichkeKub.svg";
 
 }

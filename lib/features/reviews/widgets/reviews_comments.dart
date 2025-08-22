@@ -22,7 +22,7 @@ class ReviewsComments extends StatelessWidget {
           children: [
             Text(
               "Comments",
-              style: AppStyle.w500s15wr,
+              style: AppStyles.w500s15wr,
             ),
             ...List.generate(vm.comments.length, (index) {
               return Column(
@@ -45,7 +45,7 @@ class ReviewsComments extends StatelessWidget {
                           ),
                           Text(
                             "@ ${vm.comments[index].user}",
-                            style: AppStyle.w400s12wr.copyWith(
+                            style: AppStyles.w400s12wr.copyWith(
                               fontSize: 15,
                             ),
                           ),
@@ -56,7 +56,7 @@ class ReviewsComments extends StatelessWidget {
                   ),
                   Text(
                     vm.comments[index].comment,
-                    style: AppStyle.w300s13w,
+                    style: AppStyles.w300s13w,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -69,7 +69,7 @@ class ReviewsComments extends StatelessWidget {
                           index,
                         ) {
                           return SvgPicture.asset(
-                            AppSvg.starFilled,
+                            AppSvgies.starFilled,
                           );
                         },
                       ),
@@ -79,7 +79,7 @@ class ReviewsComments extends StatelessWidget {
                           index,
                         ) {
                           return SvgPicture.asset(
-                            AppSvg.starEmpty,
+                            AppSvgies.starEmpty,
                           );
                         },
                       ),

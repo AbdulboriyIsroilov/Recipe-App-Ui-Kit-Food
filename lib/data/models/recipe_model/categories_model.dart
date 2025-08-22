@@ -1,6 +1,6 @@
 class CategoriesModel {
   final String title, description, difficulty, photo;
-  final int id, categoryId, timeRequired;
+  final int id, categoryId,timeRequired;
   final num rating;
 
   CategoriesModel({

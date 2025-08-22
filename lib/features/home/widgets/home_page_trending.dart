@@ -27,11 +27,11 @@ class HomePageTrending extends StatelessWidget {
           children: [
             Text(
               "Trending Recipe",
-              style: AppStyle.w500s15wr,
+              style: AppStyles.w500s15wr,
             ),
             GestureDetector(
               onTap: (){
-                context.push(RouterNames.trendingRecipes);
+                context.push(Routers.trendingRecipes);
               },
               child: SizedBox(
                 width: 358.w,
@@ -75,11 +75,11 @@ class HomePageTrending extends StatelessWidget {
                                       children: [
                                         Text(
                                           vm.trendingRecipe.title,
-                                          style: AppStyle.w400s13w,
+                                          style: AppStyles.w400s13w,
                                         ),
                                         Text(
                                           vm.trendingRecipe.description,
-                                          style: AppStyle.w300s13w,
+                                          style: AppStyles.w300s13w,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),
@@ -93,10 +93,10 @@ class HomePageTrending extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         spacing: 6,
                                         children: [
-                                          SvgPicture.asset(AppSvg.clock),
+                                          SvgPicture.asset(AppSvgies.clock),
                                           Text(
                                             "${vm.trendingRecipe.timeRequired}min",
-                                            style: AppStyle.w400s12rp,
+                                            style: AppStyles.w400s12rp,
                                           ),
                                         ],
                                       ),
@@ -106,9 +106,9 @@ class HomePageTrending extends StatelessWidget {
                                         children: [
                                           Text(
                                             "${vm.trendingRecipe.rating}",
-                                            style: AppStyle.w400s12rp,
+                                            style: AppStyles.w400s12rp,
                                           ),
-                                          SvgPicture.asset(AppSvg.star),
+                                          SvgPicture.asset(AppSvgies.star),
                                         ],
                                       ),
                                     ],
@@ -132,7 +132,7 @@ class HomePageTrending extends StatelessWidget {
                           Positioned(
                             top: 7.h,
                             left: 322.w,
-                            child: Like(icon: AppSvg.heart),
+                            child: Like(icon: AppSvgies.heart),
                           ),
                         ],
                       ),

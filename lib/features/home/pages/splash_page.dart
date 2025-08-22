@@ -21,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      context.go(RouterNames.onBoarding);
+      context.go(Routers.onBoarding);
     });
   }
 
@@ -37,19 +37,19 @@ class _SplashPageState extends State<SplashPage> {
               width: 152.67.w,
               height: 152.67.h,
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: Colors.white,
                 shape: BoxShape.circle,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 12.78,
                 children: [
-                  SvgPicture.asset(AppSvg.pichoq),
-                  SvgPicture.asset(AppSvg.vilka),
+                  SvgPicture.asset(AppSvgies.pichoq),
+                  SvgPicture.asset(AppSvgies.vilka),
                 ],
               ),
             ),
-            Text("DishDash", style: AppStyle.w600s64w),
+            Text("DishDash", style: AppStyles.w600s64w),
           ],
         ),
       ),

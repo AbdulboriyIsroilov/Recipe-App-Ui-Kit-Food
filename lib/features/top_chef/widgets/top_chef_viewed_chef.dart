@@ -35,7 +35,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
     return GestureDetector(
       onTap: () {
         context.push(
-          RouterNames.topChefDetail,
+          Routers.topChefDetail,
           extra: {"id": widget.vm[widget.index].id},
         );
       },
@@ -50,7 +50,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                 width: 160.w,
                 height: 76.h,
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Colors.white,
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(14.r),
                   ),
@@ -63,12 +63,12 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                   children: [
                     Text(
                       "${widget.vm[widget.index].firstName} ${widget.vm[widget.index].lastName}",
-                      style: AppStyle.w400s12b,
+                      style: AppStyles.w400s12b,
                       maxLines: 1,
                     ),
                     Text(
                       "@${widget.vm[widget.index].username}",
-                      style: AppStyle.w300s11rp.copyWith(
+                      style: AppStyles.w300s11rp.copyWith(
                         color: AppColors.watermelonRed,
                       ),
                     ),
@@ -80,9 +80,9 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                           children: [
                             Text(
                               "${widget.star}",
-                              style: AppStyle.w400s12wr,
+                              style: AppStyles.w400s12wr,
                             ),
-                            SvgPicture.asset(AppSvg.star),
+                            SvgPicture.asset(AppSvgies.star),
                           ],
                         ),
                         Row(
@@ -95,7 +95,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                                     : AppColors.watermelonRed,
                                 foregroundColor: follow
                                     ? AppColors.rosePink
-                                    : AppColors.white,
+                                    : Colors.white,
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 2,
                                   vertical: 2,
@@ -109,7 +109,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                               },
                               child: Text(
                                 follow ? "Follow" : "Following",
-                                style: AppStyle.w500s8,
+                                style: AppStyles.w500s8,
                               ),
                             ),
                             Container(
@@ -120,7 +120,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                                 borderRadius: BorderRadius.circular(5.64.r),
                               ),
                               padding: EdgeInsets.all(1),
-                              child: SvgPicture.asset(AppSvg.share),
+                              child: SvgPicture.asset(AppSvgies.share),
                             ),
                           ],
                         ),

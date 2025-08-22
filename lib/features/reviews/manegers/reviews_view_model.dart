@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 import '../../../data/models/reviews_model/reviews_model.dart';
 
 class ReviewsViewModel extends ChangeNotifier{

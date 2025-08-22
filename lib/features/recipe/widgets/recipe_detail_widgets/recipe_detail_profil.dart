@@ -46,11 +46,11 @@ class _RecipeDetailProfilState extends State<RecipeDetailProfil> {
             children: [
               Text(
                 "@${widget.vm.user.username}",
-                style: AppStyle.w400s12wr,
+                style: AppStyles.w400s12wr,
               ),
               Text(
                 "${widget.vm.user.firstName} ${widget.vm.user.lastName}-chef",
-                style: AppStyle.w300s14w,
+                style: AppStyles.w300s14w,
               ),
             ],
           ),
@@ -71,12 +71,12 @@ class _RecipeDetailProfilState extends State<RecipeDetailProfil> {
               },
               child: Text(
                 tap ? "Following" : "Follow",
-                style: AppStyle.w500s15w.copyWith(
+                style: AppStyles.w500s15w.copyWith(
                   color: AppColors.rosePink,
                 ),
               ),
             ),
-            SvgPicture.asset(AppSvg.threeDots),
+            SvgPicture.asset(AppSvgies.threeDots),
           ],
         ),
       ],

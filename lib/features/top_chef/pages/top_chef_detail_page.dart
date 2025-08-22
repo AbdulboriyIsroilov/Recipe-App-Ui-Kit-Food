@@ -12,7 +12,7 @@ import 'package:recipe_app_ui_kit_food/features/top_chef/widgets/top_chef_profil
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../../recipe/manegers/recipe_list_view_model.dart';
-import '../../recipe/widgets/recipe_list_foot.dart';
+import '../../common/widgets/recipe_image_over.dart';
 
 class TopChefDetailPage extends StatelessWidget {
   const TopChefDetailPage({
@@ -39,8 +39,8 @@ class TopChefDetailPage extends StatelessWidget {
                 backgroundColor: AppColors.backgroundColor,
                 appBar: AppBarCommon(
                   title: "@${vm.chefDetail.username}",
-                  oneButtom: AppSvg.share,
-                  twoButtom: AppSvg.threeDots,
+                  oneButtom: AppSvgies.share,
+                  twoButtom: AppSvgies.threeDots,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -50,7 +50,7 @@ class TopChefDetailPage extends StatelessWidget {
                       builder: (context) => Container(
                         height: 373.h,
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: Colors.white,
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(50.r),
                           ),
@@ -73,7 +73,7 @@ class TopChefDetailPage extends StatelessWidget {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                Text("@ ${vm.chefDetail.username}",style: AppStyle.w500s15wr,),
+                                Text("@ ${vm.chefDetail.username}",style: AppStyles.w500s15wr,),
                               ],
                             ),
                             Column(
@@ -82,13 +82,13 @@ class TopChefDetailPage extends StatelessWidget {
                               children: [
                                 Text(
                                   "Manage notifications",
-                                  style: AppStyle.w500s15w.copyWith(
+                                  style: AppStyles.w500s15w.copyWith(
                                     color: Colors.black,
                                   ),
                                 ),
                                 Text(
                                   "Report",
-                                  style: AppStyle.w400s13.copyWith(
+                                  style: AppStyles.w400s13.copyWith(
                                     fontSize: 15,
                                   ),
                                 ),
@@ -105,7 +105,7 @@ class TopChefDetailPage extends StatelessWidget {
                       builder: (context) => Container(
                         height: 253.h,
                         decoration: BoxDecoration(
-                          color: AppColors.white,
+                          color: Colors.white,
                           borderRadius: BorderRadius.vertical(
                             top: Radius.circular(50.r),
                           ),
@@ -128,7 +128,7 @@ class TopChefDetailPage extends StatelessWidget {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                Text("@ ${vm.chefDetail.username}",style: AppStyle.w500s15wr,),
+                                Text("@ ${vm.chefDetail.username}",style: AppStyles.w500s15wr,),
                               ],
                             ),
                             Column(
@@ -137,13 +137,13 @@ class TopChefDetailPage extends StatelessWidget {
                               children: [
                                 Text(
                                   "Copy Profile URL",
-                                  style: AppStyle.w400s13.copyWith(
+                                  style: AppStyles.w400s13.copyWith(
                                     fontSize: 15,
                                   ),
                                 ),
                                 Text(
                                   "ReportShare this Profile",
-                                  style: AppStyle.w400s13.copyWith(
+                                  style: AppStyles.w400s13.copyWith(
                                     fontSize: 15,
                                   ),
                                 ),
@@ -173,7 +173,7 @@ class TopChefDetailPage extends StatelessWidget {
                             ),
                             Text(
                               "Recipes",
-                              style: AppStyle.w400s12w,
+                              style: AppStyles.w400s12w,
                             ),
                             Divider(
                               color: AppColors.watermelonRed,
@@ -194,10 +194,9 @@ class TopChefDetailPage extends StatelessWidget {
                                 ),
                             itemCount: vmd.categories.length,
                             itemBuilder: (context, index) {
-                              return RecipeListFoot(
+                              return RecipeImageOver(
                                 vm: vmd.categories,
                                 index: index,
-                                categoryId: vmd.categories[index].id,
                               );
                             },
                           ),

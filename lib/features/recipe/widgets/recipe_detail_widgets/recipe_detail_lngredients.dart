@@ -27,19 +27,19 @@ class RecipeDetailLngredients extends StatelessWidget {
               children: [
                 Text(
                   "Details",
-                  style: AppStyle.w600s20wr,
+                  style: AppStyles.w600s20wr,
                 ),
                 SizedBox(),
-                SvgPicture.asset(AppSvg.clock),
+                SvgPicture.asset(AppSvgies.clock),
                 Text(
                   "${vm.timeRequired}min",
-                  style: AppStyle.w400s12w,
+                  style: AppStyles.w400s12w,
                 ),
               ],
             ),
             Text(
               vm.description,
-              style: AppStyle.w400s12w,
+              style: AppStyles.w400s12w,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
@@ -51,7 +51,7 @@ class RecipeDetailLngredients extends StatelessWidget {
           children: [
             Text(
               "Ingredients",
-              style: AppStyle.w600s20wr,
+              style: AppStyles.w600s20wr,
             ),
             SizedBox(
               width: 358.w,
@@ -70,14 +70,14 @@ class RecipeDetailLngredients extends StatelessWidget {
                               alignment: Alignment.topLeft,
                               child: Text(
                                 "•  ${vm.ingredients[index].order}",
-                                style: AppStyle.w400s12wr,
+                                style: AppStyles.w400s12wr,
                               ),
                             ),
                             SizedBox(
                               width: 335.w,
                               child: Text(
                                 "${vm.ingredients[index].amount} ${vm.ingredients[index].name}",
-                                style: AppStyle.w400s12w,
+                                style: AppStyles.w400s12w,
                               ),
                             ),
                           ],
@@ -96,7 +96,7 @@ class RecipeDetailLngredients extends StatelessWidget {
           children: [
             Text(
               "6 easy Steps",
-              style: AppStyle.w600s20wr,
+              style: AppStyles.w600s20wr,
             ),
             ...List.generate(
               vm.instructions.length,
@@ -124,13 +124,13 @@ class RecipeDetailLngredients extends StatelessWidget {
                     children: [
                       Text(
                         "${vm.instructions[index].order}.",
-                        style: AppStyle.w400s12b,
+                        style: AppStyles.w400s12b,
                       ),
                       SizedBox(
                         width: 330.w,
                         child: Text(
                           "${vm.instructions[index].text}",
-                          style: AppStyle.w400s12b,
+                          style: AppStyles.w400s12b,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),

@@ -12,7 +12,7 @@ class TextButtomPopular extends StatelessWidget {
     this.foregroundColor = AppColors.rosePink,
     this.width = 207,
     this.height = 45,
-    this.style = AppStyle.w600s20,
+    this.style = AppStyles.w600s20,
   });
 
   static void _defaultOnPressed() {}

@@ -7,7 +7,7 @@ import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/data/models/Login_model/login_model.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/text_buttom_popular.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/logi_sign_up/manegers/login_view_model.dart';
 
 import '../../../core/utils/app_colors.dart';
@@ -45,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
           centerTitle: true,
           title: Text(
             "Login",
-            style: AppStyle.w600s20wr,
+            style: AppStyles.w600s20wr,
           ),
         ),
         body: Form(
@@ -78,46 +78,37 @@ class _LoginPageState extends State<LoginPage> {
                       TextButtomPopular(
                         title: "Log In",
                         backgroundColor: AppColors.watermelonRed,
-                        foregroundColor: AppColors.white,
+                        foregroundColor: Colors.white,
                         onPressed: () async {
-                          try {
-                            vm.fetchLogin(
-                              authModel: LoginModel(
-                                login: emailController.text,
-                                password: passwordCantroller.text,
-                              ),
-                              onError: () {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("Error")),
-                                );
-                              },
-                              onSuccess: () {
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: true,
-                                  builder: (context) {
-                                    return Modul(
-                                      title1: "Login In Successful!",
-                                      title2: "Successfully logged in. ✔",
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          } catch (e) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text("Email or Password Error"),
-                              ),
-                            );
-                            throw Exception("Error: $e");
-                          }
+                          vm.fetchLogin(
+                            authModel: LoginModel(
+                              login: emailController.text,
+                              password: passwordCantroller.text,
+                            ),
+                            onError: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text("Error")),
+                              );
+                            },
+                            onSuccess: () {
+                              showDialog(
+                                context: context,
+                                barrierDismissible: true,
+                                builder: (context) {
+                                  return Model(
+                                    title1: "Login In Successful!",
+                                    title2: "Successfully logged in. ✔",
+                                  );
+                                },
+                              );
+                            },
+                          );
                         },
                       ),
                       TextButtomPopular(
                         title: 'Sign up',
                         onPressed: () {
-                          context.go(RouterNames.signUp);
+                          context.go(Routers.signUp);
                         },
                       ),
                     ],
@@ -127,11 +118,11 @@ class _LoginPageState extends State<LoginPage> {
                 TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: () {
-                    context.go(RouterNames.forgotPassword);
+                    context.go(Routers.forgotPassword);
                   },
                   child: Text(
                     "Forgot Password?",
-                    style: AppStyle.w600s14w,
+                    style: AppStyles.w600s14w,
                   ),
                 ),
                 SizedBox(height: 36.h),
@@ -140,21 +131,21 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Text(
                       "or sign up with",
-                      style: AppStyle.w300s14w,
+                      style: AppStyles.w300s14w,
                     ),
                     Row(
                       spacing: 14.w,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(AppSvg.instagram),
-                        SvgPicture.asset(AppSvg.google),
-                        SvgPicture.asset(AppSvg.facebook),
-                        SvgPicture.asset(AppSvg.vatsub),
+                        SvgPicture.asset(AppSvgies.instagram),
+                        SvgPicture.asset(AppSvgies.google),
+                        SvgPicture.asset(AppSvgies.facebook),
+                        SvgPicture.asset(AppSvgies.vatsub),
                       ],
                     ),
                     Text(
                       "Don’t have an account? Sign Up",
-                      style: AppStyle.w300s14w,
+                      style: AppStyles.w300s14w,
                     ),
                   ],
                 ),

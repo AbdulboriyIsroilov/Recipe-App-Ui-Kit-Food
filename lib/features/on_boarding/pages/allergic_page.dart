@@ -10,7 +10,7 @@ import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_svg.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
-import '../../common/widgets/text_buttom_popular.dart';
+import '../../common/widgets/text_button_popular.dart';
 import '../manegers/allergic_view_model.dart';
 import '../widgets/scroll_conteyner.dart';
 
@@ -30,7 +30,7 @@ class AllergicPage extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            icon: SvgPicture.asset(AppSvg.backArrow),
+            icon: SvgPicture.asset(AppSvgies.backArrow),
           ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(15),
@@ -52,11 +52,11 @@ class AllergicPage extends StatelessWidget {
                     children: [
                       Text(
                         "Select your cuisines preferences",
-                        style: AppStyle.w600s20w,
+                        style: AppStyles.w600s20w,
                       ),
                       Text(
                         "Please select your cuisines preferences for a better recommendations or you can skip it.",
-                        style: AppStyle.w400s12w.copyWith(fontSize: 13),
+                        style: AppStyles.w400s12w.copyWith(fontSize: 13),
                         maxLines: 2,
                       ),
                       Expanded(
@@ -90,9 +90,9 @@ class AllergicPage extends StatelessWidget {
               child: TextButtomPopular(
                 title: "Continue",
                 backgroundColor: AppColors.watermelonRed,
-                foregroundColor: AppColors.white,
+                foregroundColor: Colors.white,
                 onPressed: () {
-                  context.go(RouterNames.login);
+                  context.go(Routers.login);
                 },
               ),
             ),

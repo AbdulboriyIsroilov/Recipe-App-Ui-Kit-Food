@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/models/trending_recipes_model/trending_recipes_model.dart';
 
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 
 class TrendingRecipesViewModel extends ChangeNotifier{
   TrendingRecipesViewModel(){

@@ -6,20 +6,18 @@ import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
+import 'package:recipe_app_ui_kit_food/data/models/home_model/recipes_model.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
 
-import '../../../data/models/recipe_model/categories_model.dart';
-
-class RecipeListFoot extends StatelessWidget {
-  const RecipeListFoot({
+class RecipeImageOver extends StatelessWidget {
+  const RecipeImageOver({
     super.key,
     required this.vm,
     required this.index,
-    required this.categoryId,
   });
 
-  final List<CategoriesModel> vm;
-  final int index, categoryId;
+  final List<RecipesModel> vm;
+  final int index;
 
 
   @override
@@ -27,10 +25,10 @@ class RecipeListFoot extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         context.push(
-          RouterNames.recipeDetailPage,
+          Routers.recipeDetailPage,
           extra: {
             "title": vm[index].title,
-            "categoryId": categoryId,
+            "categoryId":vm[index].id,
           },
         );
       },
@@ -49,7 +47,7 @@ class RecipeListFoot extends StatelessWidget {
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(14.r),
                   ),
-                  color: AppColors.white,
+                  color: Colors.white,
                   border: BoxBorder.all(
                     color: AppColors.rosePink,
                     width: 1.5,
@@ -62,11 +60,11 @@ class RecipeListFoot extends StatelessWidget {
                   children: [
                     Text(
                       vm[index].title,
-                      style: AppStyle.w400s12b,
+                      style: AppStyles.w400s12b,
                     ),
                     Text(
                       vm[index].description,
-                      style: AppStyle.w300s13b,
+                      style: AppStyles.w300s13b,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -78,18 +76,18 @@ class RecipeListFoot extends StatelessWidget {
                           children: [
                             Text(
                               "${vm[index].rating}",
-                              style: AppStyle.w300s11rp,
+                              style: AppStyles.w300s11rp,
                             ),
-                            SvgPicture.asset(AppSvg.star),
+                            SvgPicture.asset(AppSvgies.star),
                           ],
                         ),
                         Row(
                           spacing: 6.w,
                           children: [
-                            SvgPicture.asset(AppSvg.clock),
+                            SvgPicture.asset(AppSvgies.clock),
                             Text(
                               "${vm[index].timeRequired}min",
-                              style: AppStyle.w300s11rp,
+                              style: AppStyles.w300s11rp,
                             ),
                           ],
                         ),

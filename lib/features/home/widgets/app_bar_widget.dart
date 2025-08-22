@@ -23,19 +23,19 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Text(
             "Hi! Dianne",
-            style: AppStyle.w400s25wr,
+            style: AppStyles.w400s25wr,
           ),
           Text(
             "What are you cooking today",
-            style: AppStyle.w400s13w,
+            style: AppStyles.w400s13w,
           ),
         ],
       ),
       actionsPadding: EdgeInsetsGeometry.only(bottom: 27.h, right: 38.w),
       actions: [
-        Like(icon: AppSvg.notification),
+        Like(icon: AppSvgies.notification),
         SizedBox(width: 5.w),
-        Like(icon: AppSvg.search),
+        Like(icon: AppSvgies.search),
       ],
       bottom: bottom,
     );

@@ -1,6 +1,6 @@
 import 'package:recipe_app_ui_kit_food/data/models/top_chef_detail_model/top_chef_detail_model.dart';
 
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 
 class TopChefDetailRepostory {
   TopChefDetailModel? topChefDetail;

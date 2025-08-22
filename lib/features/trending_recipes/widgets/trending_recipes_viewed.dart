@@ -31,7 +31,7 @@ class TrendingRecipesViewed extends StatelessWidget {
                       width: 348.w,
                       height: 49.h,
                       decoration: BoxDecoration(
-                        color: AppColors.white,
+                        color: Colors.white,
                         borderRadius: BorderRadius.vertical(
                           bottom: Radius.circular(14.r),
                         ),
@@ -53,11 +53,11 @@ class TrendingRecipesViewed extends StatelessWidget {
                               children: [
                                 Text(
                                   vm.details.title,
-                                  style: AppStyle.w400s13,
+                                  style: AppStyles.w400s13,
                                 ),
                                 Text(
                                   vm.details.description,
-                                  style: AppStyle.w300s13b,
+                                  style: AppStyles.w300s13b,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
                                 ),
@@ -70,10 +70,10 @@ class TrendingRecipesViewed extends StatelessWidget {
                               Row(
                                 spacing: 6,
                                 children: [
-                                  SvgPicture.asset(AppSvg.clock),
+                                  SvgPicture.asset(AppSvgies.clock),
                                   Text(
                                     "${vm.details.timeRequired}min",
-                                    style: AppStyle.w400s12wr,
+                                    style: AppStyles.w400s12wr,
                                   ),
                                 ],
                               ),
@@ -82,9 +82,9 @@ class TrendingRecipesViewed extends StatelessWidget {
                                 children: [
                                   Text(
                                     "${vm.details.rating}",
-                                    style: AppStyle.w400s12wr,
+                                    style: AppStyles.w400s12wr,
                                   ),
-                                  SvgPicture.asset(AppSvg.star),
+                                  SvgPicture.asset(AppSvgies.star),
                                 ],
                               ),
                             ],

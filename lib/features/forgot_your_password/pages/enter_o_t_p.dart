@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/text_buttom_popular.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/forgot_your_password/widgets/forgot_your_password_texts.dart';
 
 class EnterOTP extends StatefulWidget {
@@ -21,7 +21,7 @@ class _EnterOTPState extends State<EnterOTP> {
         backgroundColor: AppColors.backgroundColor,
         title: Text(
           "Forgot your password",
-          style: AppStyle.w600s20wr,
+          style: AppStyles.w600s20wr,
         ),
         centerTitle: true,
       ),
@@ -72,7 +72,7 @@ class _EnterOTPState extends State<EnterOTP> {
                         ),
                         maxLength: 1,
                         textAlign: TextAlign.center,
-                        style: AppStyle.w600s20w,
+                        style: AppStyles.w600s20w,
                       );
                     }),
                   ],
@@ -82,7 +82,7 @@ class _EnterOTPState extends State<EnterOTP> {
                   height: 63.h,
                   child: Text(
                     "Didn’t receive the mail? You can resend it in 49 sec",
-                    style: AppStyle.w400s13.copyWith(color: AppColors.white),
+                    style: AppStyles.w400s13.copyWith(color: Colors.white),
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,

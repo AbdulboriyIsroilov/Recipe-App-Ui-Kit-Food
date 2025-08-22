@@ -16,11 +16,11 @@ class ForgotYourPasswordTexts extends StatelessWidget {
       children: [
         Text(
           title1,
-          style: AppStyle.w600s20w,
+          style: AppStyles.w600s20w,
         ),
         Text(
           title2,
-          style: AppStyle.w400s13.copyWith(color: AppColors.white),
+          style: AppStyles.w400s13.copyWith(color: Colors.white),
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),

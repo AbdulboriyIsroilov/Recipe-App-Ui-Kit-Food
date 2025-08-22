@@ -1,4 +1,4 @@
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 import '../../models/on_boarding_model/cuisine_model.dart';
 
 class CuisinesRepository {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app_ui_kit_food/data/models/home_model/recipes_model.dart';
 
-import '../../../core/dio_core.dart';
+import '../../../core/client.dart';
 import '../../../data/models/recipe_model/categories_model.dart';
 
 class CategoriesViewModel extends ChangeNotifier {
@@ -8,7 +9,7 @@ class CategoriesViewModel extends ChangeNotifier {
     fetchRecipeList(categoryId: categoryId);
   }
 
-  List<CategoriesModel> categories = [];
+  List<RecipesModel> categories = [];
   bool loading = true;
 
   Future<void> fetchRecipeList({required int categoryId}) async {
@@ -19,7 +20,7 @@ class CategoriesViewModel extends ChangeNotifier {
       throw Exception(reseponse.data);
     }
     categories = (reseponse.data as List)
-        .map((item) => CategoriesModel.fromJson(item))
+        .map((item) => RecipesModel.fromJson(item))
         .toList();
     loading = false;
     notifyListeners();
