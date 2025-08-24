@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_list_page.dart';
 
-import '../../../core/router/router_names.dart';
+import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 
 class BottomItem extends StatelessWidget {

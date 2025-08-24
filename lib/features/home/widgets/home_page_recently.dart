@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/recipe_image_over.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
 
 import '../../../core/utils/app_colors.dart';
@@ -35,108 +36,7 @@ class HomePageRecently extends StatelessWidget {
                   spacing: 18.47.w,
                   children: [
                     ...List.generate(vm.recently.length, (index) {
-                      return SizedBox(
-                        width: 168.52.w,
-                        height: 226.h,
-                        child: Stack(
-                          children: [
-                            Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                width: 158.52.w,
-                                height: 76.h,
-                                padding: EdgeInsets.fromLTRB(
-                                  15.w,
-                                  2.h,
-                                  15.w,
-                                  7.h,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.vertical(
-                                    bottom: Radius.circular(14.r),
-                                  ),
-                                  color: Colors.white,
-                                  border: BoxBorder.all(
-                                    color: AppColors.rosePink,
-                                    width: 1.5,
-                                  ),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          vm.recently[index].title,
-                                          style: AppStyles.w400s12rp.copyWith(
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          vm.recently[index].description,
-                                          style: AppStyles.w300s13w.copyWith(
-                                            color: Colors.black,
-                                          ),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          spacing: 6.w,
-                                          children: [
-                                            Text(
-                                              "${vm.recently[index].rating}",
-                                              style: AppStyles.w400s12rp,
-                                            ),
-                                            SvgPicture.asset(AppSvgies.star),
-                                          ],
-                                        ),
-                                        Row(
-                                          spacing: 6.w,
-                                          children: [
-                                            SvgPicture.asset(AppSvgies.clock),
-                                            Text(
-                                              "${vm.recently[index].timeRequired}min",
-                                              style: AppStyles.w400s12rp,
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(14.r),
-                                child: Image.network(
-                                  vm.recently[index].photo,
-                                  width: 169.w,
-                                  height: 153.h,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: 7.h,
-                              left: 133.w,
-                              child: Like(icon: AppSvgies.heart),
-                            ),
-                          ],
-                        ),
-                      );
+                      return RecipeImageOver(vm: vm.recently, index: index);
                     }),
                   ],
                 ),

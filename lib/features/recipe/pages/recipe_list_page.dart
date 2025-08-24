@@ -23,7 +23,7 @@ class RecipeListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CategoriesViewModel(categoryId: categoryId),
+      create: (context) => CategoriesViewModel(categoryId: categoryId, recipeRepo: context.read()),
       builder: (context, child) => Consumer<CategoriesViewModel>(
         builder: (context, vm, vhild) => vm.loading
             ? Scaffold(
@@ -49,10 +49,10 @@ class RecipeListPage extends StatelessWidget {
                     mainAxisSpacing: 30.h,
                     mainAxisExtent: 226.h,
                   ),
-                  itemCount: vm.categories.length,
+                  itemCount: vm.recipes.length,
                   itemBuilder: (context, index) {
                     return RecipeImageOver(
-                      vm: vm.categories,
+                      vm: vm.recipes,
                       index: index,
                     );
                   },

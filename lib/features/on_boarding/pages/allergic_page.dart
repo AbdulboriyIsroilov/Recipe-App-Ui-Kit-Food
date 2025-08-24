@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/features/on_boarding/widgets/grid_view_image.dart';
 
-import '../../../core/router/router_names.dart';
+import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_svg.dart';

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:recipe_app_ui_kit_food/core/router/router.dart';
-import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
+import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 
 class AuthInterceptor extends Interceptor {
   AuthInterceptor({
@@ -10,7 +10,7 @@ class AuthInterceptor extends Interceptor {
 
   final FlutterSecureStorage secureStorage;
   final dio = Dio(
-    BaseOptions(baseUrl: "http://192.168.10.71:8888/api/v1", validateStatus: (status) => true),
+    BaseOptions(baseUrl: "http://192.168.11.33:8888/api/v1", validateStatus: (status) => true),
   );
 
   @override
@@ -18,12 +18,21 @@ class AuthInterceptor extends Interceptor {
     var token = await secureStorage.read(key: "token");
     if (token != null) {
       options.headers["Authorization"] = "Bearer $token";
+      print("token : $token");
     }
+    print("request $options $handler");
     super.onRequest(options, handler);
   }
 
   @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    print("error $err");
+    super.onError(err, handler);
+  }
+
+  @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
+    print("response $response");
     if (response.statusCode == 401) {
       var login = await secureStorage.read(key: "login");
       var password = await secureStorage.read(key: "password");
@@ -37,7 +46,7 @@ class AuthInterceptor extends Interceptor {
 
       await secureStorage.write(key: "token", value: token);
       final headers = response.requestOptions.headers;
-      headers["Authorization"] = "Bearer $token"; 
+      headers["Authorization"] = "Bearer $token";
 
       var retry = await dio.fetch(
         RequestOptions(
@@ -45,8 +54,8 @@ class AuthInterceptor extends Interceptor {
           path: response.requestOptions.path,
           method: response.requestOptions.method,
           data: response.requestOptions.data,
-          headers: headers
-        )
+          headers: headers,
+        ),
       );
       if (retry.statusCode != 200) await logout();
       super.onResponse(retry, handler);

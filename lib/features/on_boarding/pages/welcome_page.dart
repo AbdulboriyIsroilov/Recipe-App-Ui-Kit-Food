@@ -7,7 +7,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_view_model.dart';
 
-import '../../../core/router/router_names.dart';
+import '../../../core/router/routers.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);

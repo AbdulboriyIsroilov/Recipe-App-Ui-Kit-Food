@@ -11,12 +11,10 @@ class MyRecipesRepositoriy {
   Future<Result<List<RecipesModel>>> getAll() async {
     var response = await _client.get<List>("/recipes/my-recipes");
     return response.fold(
-      (error) {
-        return Result.error(error);
-      },
-      (val) {
-        return Result.ok(val.map((item) => RecipesModel.fromJson(item)).toList(),);
-      },
+      (error) => Result.error(error),
+      (val) => Result.ok(
+          val.map((item) => RecipesModel.fromJson(item)).toList(),
+        ),
     );
   }
 }

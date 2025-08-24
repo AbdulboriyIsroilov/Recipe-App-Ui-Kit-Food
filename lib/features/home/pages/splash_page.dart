@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:async';
 
-import '../../../core/router/router_names.dart';
+import '../../../core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_svg.dart';
@@ -20,9 +21,20 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
-      context.go(Routers.onBoarding);
-    });
+    final FlutterSecureStorage secureStorage = FlutterSecureStorage();
+    secureStorage.read(key: "token").then(
+      (value) {
+        if (value != null) {
+          Future.delayed(Duration(seconds: 3), () {
+            context.go(Routers.community);
+          });
+        } else {
+          Future.delayed(Duration(seconds: 3), () {
+            context.go(Routers.onBoarding);
+          });
+        }
+      },
+    );
   }
 
   @override

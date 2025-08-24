@@ -19,17 +19,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => HomeViewModel(
-        categoriyRepo: context.read(),
-        recipeRepo: context.read(),
-        topChefRepo: context.read(),
-        topRecently: context.read(),
-      )
+      create: (context) => HomeViewModel(homeRepo: context.read())
         ..fetchCategoriy()
         ..fetchRecipe()
         ..fetchTopChef(limit: 4, page: 1)
         ..fetchRecently(),
-      builder:(context,child)=> Scaffold(
+      builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
         appBar: AppBarWidget(
@@ -37,7 +32,7 @@ class HomePage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding:  EdgeInsets.only(bottom: 126.h),
+            padding: EdgeInsets.only(bottom: 126.h),
             child: Column(
               spacing: 19.h,
               children: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
+import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_svg.dart';
@@ -29,7 +29,7 @@ class BottomNavigationBarMain extends StatelessWidget {
               icon: SvgPicture.asset(AppSvgies.home),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () => context.go(Routers.community),
               icon: SvgPicture.asset(AppSvgies.community),
             ),
             IconButton(

@@ -5,7 +5,6 @@ class Routers {
 
   static const myRecipe = "/my-recipe";
 
-
   static const topChefs = "/topChefs";
   static const topChefDetail = "/topChefDetail";
 
@@ -31,5 +30,7 @@ class Routers {
 
   static const reviewsPage = "/reviewsPage";
   static const reviewsAddPage = "/reviewsAddPage";
+
+  static const community = "/community-page";
 
 }

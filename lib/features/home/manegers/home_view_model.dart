@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../core/client.dart';
 
 import '../../../data/models/home_model/categories_model.dart';
-import '../../../data/models/home_model/recently_model.dart';
 import '../../../data/models/home_model/recipes_model.dart';
 import '../../../data/models/home_model/top_chef_model.dart';
 import '../../../data/models/home_model/trending_recipe_model.dart';
@@ -10,20 +9,14 @@ import '../../../data/repositores/home_repository/home_repository.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({
-    required HomeRepository categoriyRepo,
-    required HomeRepository recipeRepo,
-    required HomeRepository topChefRepo,
-    required HomeRepository topRecently,
-  }) : _categoriyRepo = categoriyRepo,
-       _recipeRepo = recipeRepo,
-       _topChefRepo = topChefRepo,
-       _topRecently = topRecently {
+    required HomeRepository homeRepo,
+  }) : _homeRepo = homeRepo {
     fetchTrendingRecipe();
   }
 
-  final HomeRepository _categoriyRepo, _recipeRepo, _topChefRepo, _topRecently;
+  final HomeRepository _homeRepo;
 
-  String? categoriyError,recipeError,topChefError,recentlyError;
+  String? categoriyError, recipeError, topChefError, recentlyError;
 
   bool categoriyLoading = true,
       trendingRecipeLoading = true,
@@ -38,7 +31,7 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      categoriy = await _categoriyRepo.getCategoriy();
+      categoriy = await _homeRepo.getCategoriy();
     } catch (exception) {
       categoriyError = exception.toString();
     }
@@ -71,7 +64,7 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
 
     try {
-      recipe = await _recipeRepo.getRecipe();
+      recipe = await _homeRepo.getRecipe();
     } catch (exception) {
       recipeError = exception.toString();
     }
@@ -82,12 +75,12 @@ class HomeViewModel extends ChangeNotifier {
 
   List<TopChefModel> topChef = [];
 
-  Future<void> fetchTopChef({required int limit,required int page}) async {
+  Future<void> fetchTopChef({required int limit, required int page}) async {
     topChefLoading = true;
     notifyListeners();
 
     try {
-      topChef = await _topChefRepo.getTopChef(limit: limit, page: page);
+      topChef = await _homeRepo.getTopChef(limit: limit, page: page);
     } catch (exception) {
       topChefError = exception.toString();
     }
@@ -96,14 +89,14 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<RecentlyModel> recently = [];
+  List<RecipesModel> recently = [];
 
   Future<void> fetchRecently() async {
     recentlyLoading = true;
     notifyListeners();
 
     try {
-      recently = await _topRecently.getRecently();
+      recently = await _homeRepo.getRecently();
     } catch (exception) {
       recentlyError = exception.toString();
     }

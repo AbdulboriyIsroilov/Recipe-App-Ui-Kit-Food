@@ -1,10 +1,8 @@
-
-
 import '../../../core/client.dart';
 import '../../models/home_model/categories_model.dart';
-import '../../models/home_model/recently_model.dart';
 import '../../models/home_model/recipes_model.dart';
 import '../../models/home_model/top_chef_model.dart';
+
 
 class HomeRepository {
   List<CategoriyModel> categoriy = [];
@@ -53,9 +51,9 @@ class HomeRepository {
     return topChef;
   }
 
-  List<RecentlyModel> recently = [];
+  List<RecipesModel> recently = [];
 
-  Future<List<RecentlyModel>> getRecently() async {
+  Future<List<RecipesModel>> getRecently() async {
     if(recently.isNotEmpty) return recently;
 
     var reseponse = await dio.get("/recipes/list?Page=11&Limit=2");
@@ -63,7 +61,7 @@ class HomeRepository {
       throw Exception(reseponse.data);
     }
     recently = (reseponse.data as List)
-        .map((item) => RecentlyModel.fromJson(item))
+        .map((item) => RecipesModel.fromJson(item))
         .toList();
     return recently;
   }

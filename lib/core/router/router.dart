@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
+import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
+import 'package:recipe_app_ui_kit_food/features/Community/pages/community_page.dart';
 import 'package:recipe_app_ui_kit_food/features/forgot_your_password/pages/enter_o_t_p.dart';
 import 'package:recipe_app_ui_kit_food/features/forgot_your_password/pages/forgot_email.dart';
 import 'package:recipe_app_ui_kit_food/features/logi_sign_up/pages/login_page.dart';
@@ -23,7 +24,7 @@ import '../../features/on_boarding/pages/allergic_page.dart';
 import '../../features/reviews/pages/reviews_add_page.dart';
 
   final router = GoRouter(
-    initialLocation: Routers.myRecipe,
+    initialLocation: Routers.community,
     // redirect: (context, state) async {
     //   final token = await context.read<FlutterSecureStorage>().read(key: 'token');
     //   if (state.matchedLocation == RouterNames.login && token == null) {
@@ -122,6 +123,10 @@ import '../../features/reviews/pages/reviews_add_page.dart';
         builder: (context, state) => ReviewsAddPage(
           categoriyId: (state.extra as Map)["categoriyId"],
         ),
+      ),
+      GoRoute(
+        path: Routers.community,
+        builder: (context, state) => CommunityPage(),
       ),
     ],
   );

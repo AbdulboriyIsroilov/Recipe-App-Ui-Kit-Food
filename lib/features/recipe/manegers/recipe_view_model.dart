@@ -17,7 +17,7 @@ class RecipeViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    var result = await _recipeRepo.getAll();
+    var result = await _recipeRepo.getCategories();
 
 
     result.fold(((e){

@@ -10,6 +10,7 @@ class LoginViewModel extends ChangeNotifier {
   final LoginRepository _loginRepo;
   bool isLoading = true;
   String token = "";
+  String? errorMessage;
 
   void fetchLogin({
     required LoginModel authModel,
@@ -27,6 +28,7 @@ class LoginViewModel extends ChangeNotifier {
 
       data.fold(
         (e) {
+          errorMessage = e.toString();
           onError();
         },
         (success) {

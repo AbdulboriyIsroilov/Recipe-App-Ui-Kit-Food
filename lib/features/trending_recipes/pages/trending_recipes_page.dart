@@ -9,7 +9,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 import 'package:recipe_app_ui_kit_food/features/trending_recipes/widgets/trending_recipes_viewed.dart';
 
-import '../../../core/router/router_names.dart';
+import '../../../core/router/routers.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../../recipe/manegers/recipe_list_view_model.dart';
@@ -21,7 +21,7 @@ class TrendingRecipesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CategoriesViewModel(categoryId: 2),
+      create: (context) => CategoriesViewModel(categoryId: 2, recipeRepo: context.read()),
       builder: (context, child) => Scaffold(
         extendBody: true,
         backgroundColor: AppColors.backgroundColor,
@@ -72,14 +72,14 @@ class TrendingRecipesPage extends StatelessWidget {
                               decorationColor: AppColors.watermelonRed,
                             ),
                           ),
-                          ...List.generate(vm.categories.length, (index) {
+                          ...List.generate(vm.recipes.length, (index) {
                             return GestureDetector(
                               onTap: () {
                                 context.push(
                                   Routers.recipeDetailPage,
                                   extra: {
-                                    "title": vm.categories[index].title,
-                                    "categoryId": vm.categories[index].id,
+                                    "title": vm.recipes[index].title,
+                                    "categoryId": vm.recipes[index].id,
                                   },
                                 );
                               },
@@ -111,11 +111,11 @@ class TrendingRecipesPage extends StatelessWidget {
                                                 spacing: 6.h,
                                                 children: [
                                                   Text(
-                                                    vm.categories[index].title,
+                                                    vm.recipes[index].title,
                                                     style: AppStyles.w400s12b,
                                                   ),
                                                   Text(
-                                                    vm.categories[index].description,
+                                                    vm.recipes[index].description,
                                                     style: AppStyles.w300s13b,
                                                     maxLines: 2,
                                                     overflow: TextOverflow.ellipsis,
@@ -137,7 +137,7 @@ class TrendingRecipesPage extends StatelessWidget {
                                                             AppSvgies.clock,
                                                           ),
                                                           Text(
-                                                            "${vm.categories[index].timeRequired}min",
+                                                            "${vm.recipes[index].timeRequired}min",
                                                             style: AppStyles.w400s12wr,
                                                           ),
                                                         ],
@@ -147,7 +147,7 @@ class TrendingRecipesPage extends StatelessWidget {
                                                         mainAxisSize: MainAxisSize.min,
                                                         children: [
                                                           Text(
-                                                            vm.categories[index].difficulty,
+                                                            vm.recipes[index].difficulty,
                                                           ),
                                                           SvgPicture.asset(
                                                             AppSvgies.reyting,
@@ -159,7 +159,7 @@ class TrendingRecipesPage extends StatelessWidget {
                                                         mainAxisSize: MainAxisSize.min,
                                                         children: [
                                                           Text(
-                                                            "${vm.categories[index].rating}",
+                                                            "${vm.recipes[index].rating}",
                                                           ),
                                                           SvgPicture.asset(
                                                             AppSvgies.star,
@@ -177,7 +177,7 @@ class TrendingRecipesPage extends StatelessWidget {
                                               14.r,
                                             ),
                                             child: Image.network(
-                                              vm.categories[index].photo,
+                                              vm.recipes[index].photo,
                                               width: 151.w,
                                               height: 150.h,
                                               fit: BoxFit.cover,

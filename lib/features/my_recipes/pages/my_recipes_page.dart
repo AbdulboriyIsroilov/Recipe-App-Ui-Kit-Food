@@ -55,7 +55,7 @@ class MyRecipesPage extends StatelessWidget {
                             spacing: 16.95.w,
                             children: [
                               ...List.generate(2, (index) {
-                                return ResipeImageDown(
+                                return RecipeImageDown(
                                   vm: vm.recipes,
                                   index: index,
                                 );

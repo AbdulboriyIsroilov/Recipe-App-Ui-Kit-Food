@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app_ui_kit_food/core/router/router_names.dart';
+import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../common/widgets/recipe_image_down.dart';
@@ -47,7 +47,7 @@ class HomePageYourRecipes extends StatelessWidget {
                       spacing: 16.95.w,
                       children: [
                         ...List.generate(vm.recipe.length, (index) {
-                          return ResipeImageDown(
+                          return RecipeImageDown(
                             vm: vm.recipe,
                             index: index,
                           );

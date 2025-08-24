@@ -156,7 +156,7 @@ class TopChefDetailPage extends StatelessWidget {
                   },
                 ),
                 body: ChangeNotifierProvider(
-                  create: (context) => CategoriesViewModel(categoryId: 5),
+                  create: (context) => CategoriesViewModel(categoryId: 5, recipeRepo: context.read()),
                   builder: (context, child) => Column(
                     children: [
                       Padding(
@@ -192,10 +192,10 @@ class TopChefDetailPage extends StatelessWidget {
                                   mainAxisSpacing: 30.h,
                                   mainAxisExtent: 226.h,
                                 ),
-                            itemCount: vmd.categories.length,
+                            itemCount: vmd.recipes.length,
                             itemBuilder: (context, index) {
                               return RecipeImageOver(
-                                vm: vmd.categories,
+                                vm: vmd.recipes,
                                 index: index,
                               );
                             },

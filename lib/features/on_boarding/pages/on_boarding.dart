@@ -6,7 +6,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/features/on_boarding/manegers/on_boarding_view_model.dart';
 
-import '../../../core/router/router_names.dart';
+import '../../../core/router/routers.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/text_button_popular.dart';
 

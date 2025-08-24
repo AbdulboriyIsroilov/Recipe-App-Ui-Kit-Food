@@ -7,6 +7,7 @@ import 'package:recipe_app_ui_kit_food/core/client.dart';
 import 'package:recipe_app_ui_kit_food/core/router/router.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/login_repostoriy.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/sign_up_repostory.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/recipe_repository/community_repository.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/recipe_repository/my_recipes_repositoriy.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/top_chefs_repository/top_chef_detail_reposty.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/top_chefs_repository/top_chefs_repostory.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           Provider(
             create: (context) => Dio(
               BaseOptions(
-                baseUrl: "http://192.168.10.71:8888/api/v1",
+                baseUrl: "http://192.168.11.33:8888/api/v1",
                 validateStatus: (status) => true,
               ),
             )..interceptors.add(context.read<AuthInterceptor>()),
@@ -56,6 +57,7 @@ class MyApp extends StatelessWidget {
           Provider(create: (context) => TopChefsRepostory()),
           Provider(create: (context) => TopChefDetailRepostory()),
           Provider(create: (context) => RecipeRepository(clint: context.read())),
+          Provider(create: (context) => CommunityRepository(clint: context.read())),
         ],
         builder: (context, child) => MaterialApp.router(
           debugShowCheckedModeBanner: false,
