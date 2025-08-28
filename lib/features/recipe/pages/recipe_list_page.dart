@@ -33,7 +33,6 @@ class RecipeListPage extends StatelessWidget {
               )
             : Scaffold(
                 extendBody: true,
-                backgroundColor: AppColors.backgroundColor,
                 appBar: AppBarCommon(
                   title: appBarTitle,
                   onPressed: () {

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/onboarding_repository.dart';
 
-import '../../../data/models/on_boarding_model/allergic_model.dart';
-import '../../../data/repositores/on_boarding_repositores/allergic_repository.dart';
-
+import '../../../data/models/onboarding_models/allergic_model.dart';
 
 class AllergicViewModel extends ChangeNotifier {
-  AllergicViewModel({required AllergicRepository allergicRepo})
-    : _allergicRepo = allergicRepo;
+  AllergicViewModel({required OnboardingRepository allergicRepo}) : _allergicRepo = allergicRepo;
 
   String? error;
-  final AllergicRepository _allergicRepo;
+  final OnboardingRepository _allergicRepo;
   List<AllergicModel> allergic = [];
   bool loading = true;
 
@@ -17,11 +15,11 @@ class AllergicViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    try {
-      allergic = await _allergicRepo.getAll();
-    } catch (exception) {
-      error = exception.toString();
-    }
+    var result = await _allergicRepo.getAllergic();
+    result.fold(
+      ((e) => error = e.toString()),
+      (value) => allergic = value,
+    );
 
     loading = false;
     notifyListeners();

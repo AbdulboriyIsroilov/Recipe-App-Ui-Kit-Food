@@ -11,6 +11,7 @@ import 'package:recipe_app_ui_kit_food/features/logi_sign_up/manegers/sign_up_vi
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_svg.dart';
+import '../../../core/utils/themes.dart';
 import '../../common/widgets/model.dart';
 import '../widgets/text_field_not_pasword.dart';
 import '../widgets/text_field_pasword.dart';
@@ -52,9 +53,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return ChangeNotifierProvider(
       create: (context) => SignUpViewModel(signRepo: context.read()),
       builder: (context, child) => Scaffold(
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
           centerTitle: true,
           title: Text(
             "Sign Up",
@@ -111,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 35.h,
                   child: Text(
                     "By continuing, you agree to Terms of Use and Privacy Policy.",
-                    style: AppStyles.w400s14w,
+                    style: Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                     maxLines: 2,
                   ),
@@ -186,16 +185,17 @@ class _SignUpPageState extends State<SignUpPage> {
                   children: [
                     Text(
                       "Already have an account?",
-                      style: AppStyles.w300s13b.copyWith(color: Colors.white),
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     TextButton(
                       style: TextButton.styleFrom(
                         foregroundColor: AppColors.watermelonRed,
                       ),
                       onPressed: () {
+                        // context.read<AppThemeViewModel>().toggleTheme();
                         context.go(Routers.login);
                       },
-                      child: Text("Log In"),
+                      child: Text("Log In",),
                     ),
                   ],
                 ),

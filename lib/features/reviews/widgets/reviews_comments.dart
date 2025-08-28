@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-import 'package:recipe_app_ui_kit_food/features/reviews/manegers/reviews_comments_view_model.dart';
+
+import '../manegers/reviews_view_model.dart';
 
 class ReviewsComments extends StatelessWidget {
   const ReviewsComments({
@@ -13,7 +15,7 @@ class ReviewsComments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ReviewsCommentViewModel>(
+    return Consumer<ReviewsViewModel>(
       builder: (context, vm, child) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 36.w),
         child: Column(
@@ -56,7 +58,7 @@ class ReviewsComments extends StatelessWidget {
                   ),
                   Text(
                     vm.comments[index].comment,
-                    style: AppStyles.w300s13w,
+                    style: AppStyles.w300s11w,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -70,6 +72,10 @@ class ReviewsComments extends StatelessWidget {
                         ) {
                           return SvgPicture.asset(
                             AppSvgies.starFilled,
+                            colorFilter: ColorFilter.mode(
+                              AppColors.watermelonRed,
+                              BlendMode.modulate,
+                            ),
                           );
                         },
                       ),
@@ -80,6 +86,10 @@ class ReviewsComments extends StatelessWidget {
                         ) {
                           return SvgPicture.asset(
                             AppSvgies.starEmpty,
+                            colorFilter: ColorFilter.mode(
+                              AppColors.watermelonRed,
+                              BlendMode.modulate,
+                            ),
                           );
                         },
                       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 
 class BottomNavigationBarGradient extends StatelessWidget {
   const BottomNavigationBarGradient({super.key});
@@ -12,7 +11,7 @@ class BottomNavigationBarGradient extends StatelessWidget {
       height: 126.h,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [AppColors.backgroundColor, Colors.transparent],
+          colors: [Theme.of(context).colorScheme.onInverseSurface, Colors.transparent],
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
         ),

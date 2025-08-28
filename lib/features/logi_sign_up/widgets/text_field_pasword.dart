@@ -33,10 +33,11 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
       children: [
         Text(
           widget.text,
-          style: AppStyles.w500s15w,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         TextField(
           obscureText: passw,
+          style: AppStyles.w500s16,
           controller: widget.controller,
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(

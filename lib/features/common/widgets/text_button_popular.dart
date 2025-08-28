@@ -24,16 +24,21 @@ class TextButtomPopular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(
-        fixedSize: Size(width.w, height.h),
-        backgroundColor: backgroundColor,
-        foregroundColor: foregroundColor,
-      ),
-      onPressed: onPressed,
-      child: Text(
-        title,
-        style: style,
+    return SizedBox(
+      width: width.w,
+      height: height.h,
+      child: TextButton(
+        style: TextButton.styleFrom(
+          padding: EdgeInsets.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
+        ),
+        onPressed: onPressed,
+        child: Text(
+          title,
+          style: style,
+        ),
       ),
     );
   }

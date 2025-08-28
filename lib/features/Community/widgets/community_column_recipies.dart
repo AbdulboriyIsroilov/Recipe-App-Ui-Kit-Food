@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-import 'package:recipe_app_ui_kit_food/data/models/community_model/community_model.dart';
-import 'package:recipe_app_ui_kit_food/features/Community/manegers/community_view_model.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 
-import '../../common/widgets/bottom_navigation_bar_gradient.dart';
-import '../../common/widgets/bottom_navigation_bar_main.dart';
+
+import '../../../data/models/community_models/community_model.dart';
+
 
 class CommunityColumnRecipies extends StatelessWidget {
   const CommunityColumnRecipies({
@@ -46,7 +43,7 @@ class CommunityColumnRecipies extends StatelessWidget {
                     children: [
                       Text(
                         "@${vm[index].user.username}",
-                        style: AppStyles.w400s15w,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                       Text(
                         viewModel(vm[index].created),
@@ -110,7 +107,7 @@ class CommunityColumnRecipies extends StatelessWidget {
                                 width: 258.31.w,
                                 child: Text(
                                   vm[index].description,
-                                  style: AppStyles.w300s14w,
+                                  style: AppStyles.w300s11w,
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
                                 ),

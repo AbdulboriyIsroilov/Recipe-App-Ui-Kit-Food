@@ -39,9 +39,7 @@ class _LoginPageState extends State<LoginPage> {
     return ChangeNotifierProvider(
       create: (context) => LoginViewModel(loginRepo: context.read()),
       builder: (context, child) => Scaffold(
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
           centerTitle: true,
           title: Text(
             "Login",
@@ -79,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         title: "Log In",
                         backgroundColor: AppColors.watermelonRed,
                         foregroundColor: Colors.white,
-                        onPressed: () async {
+                        onPressed: () {
                           vm.fetchLogin(
                             authModel: LoginModel(
                               login: emailController.text,
@@ -109,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                       TextButtomPopular(
                         title: 'Sign up',
                         onPressed: () {
+                          // context.read<AppThemeViewModel>().toggleTheme();
                           context.go(Routers.signUp);
                         },
                       ),
@@ -123,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text(
                     "Forgot Password?",
-                    style: AppStyles.w600s14w,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
                 SizedBox(height: 36.h),
@@ -132,21 +131,45 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Text(
                       "or sign up with",
-                      style: AppStyles.w300s14w,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     Row(
                       spacing: 14.w,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(AppSvgies.instagram),
-                        SvgPicture.asset(AppSvgies.google),
-                        SvgPicture.asset(AppSvgies.facebook),
-                        SvgPicture.asset(AppSvgies.vatsub),
+                        SvgPicture.asset(
+                          AppSvgies.instagram,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).colorScheme.inversePrimary,
+                            BlendMode.modulate,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          AppSvgies.google,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).colorScheme.inversePrimary,
+                            BlendMode.modulate,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          AppSvgies.facebook,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).colorScheme.inversePrimary,
+                            BlendMode.modulate,
+                          ),
+                        ),
+                        SvgPicture.asset(
+                          AppSvgies.vatsub,
+                          colorFilter: ColorFilter.mode(
+                            Theme.of(context).colorScheme.inversePrimary,
+                            BlendMode.modulate,
+                          ),
+                        ),
                       ],
                     ),
                     Text(
                       "Don’t have an account? Sign Up",
-                      style: AppStyles.w300s14w,
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ],
                 ),

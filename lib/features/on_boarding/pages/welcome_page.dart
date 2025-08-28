@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_view_model.dart';
+import 'package:recipe_app_ui_kit_food/features/recipe/manegers/category_view_model.dart';
 
 import '../../../core/router/routers.dart';
+import '../../../core/utils/themes.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  const WelcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => RecipeViewModel(recipeRepo: context.read()),
+      create: (context) => CategoryViewModel(recipeRepo: context.read()),
       builder: (context, child) => Scaffold(
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset(AppSvgies.backArrow),
+          ),
         ),
-        body: Consumer<RecipeViewModel>(
+        body: Consumer<CategoryViewModel>(
           builder: (context, vm, child) => Padding(
             padding: EdgeInsets.fromLTRB(36.w, 5.h, 38.w, 35.35.h),
             child: Column(
@@ -54,19 +59,30 @@ class WelcomePage extends StatelessWidget {
                 ),
                 Text(
                   "Welcome",
-                  style: AppStyles.w600s25w,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 SizedBox(
                   width: 336.w,
                   child: Text(
                     "Find the best recipes that the world can provide you also with every step that you can learn to increase your cooking skills.",
-                    style: AppStyles.w400s13.copyWith(color: Colors.white),
+                    style: Theme.of(context).textTheme.titleMedium,
                     maxLines: 3,
                     textAlign: TextAlign.center,
                   ),
                 ),
-                TextButtomPopular(title: "I’m New",onPressed: (){context.push(Routers.onBoardingCookingLevelPage);},),
-                TextButtomPopular(title: "I’ve been here",onPressed: (){context.go(Routers.login);}, )
+                TextButtomPopular(
+                  title: "I’m New",
+                  onPressed: () {
+                    context.push(Routers.onBoardingCookingLevelPage);
+                  },
+                ),
+                TextButtomPopular(
+                  title: "I’ve Been Here",
+                  onPressed: () {
+                    // context.read<AppThemeViewModel>().toggleTheme();
+                    context.go(Routers.login);
+                  },
+                ),
               ],
             ),
           ),

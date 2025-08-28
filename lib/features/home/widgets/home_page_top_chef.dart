@@ -52,9 +52,7 @@ class HomePageTopChef extends StatelessWidget {
                             ),
                             Text(
                               vm.topChef[index].firstName,
-                              style: AppStyles.w400s12rp.copyWith(
-                                color: Colors.white,
-                              ),
+                              style: Theme.of(context).textTheme.titleLarge
                             ),
                           ],
                         ),

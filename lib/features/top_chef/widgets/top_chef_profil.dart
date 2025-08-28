@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
-import 'package:recipe_app_ui_kit_food/data/models/top_chef_detail_model/top_chef_detail_model.dart';
+
+import '../../../data/models/user/profile_model.dart';
 
 
 class TopChefProfil extends StatelessWidget {
   const TopChefProfil({
     super.key, required this.vm,
   });
-  final TopChefDetailModel vm;
+  final ProfileModel vm;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -35,9 +36,7 @@ class TopChefProfil extends StatelessWidget {
               ),
               Text(
                 vm.presentation,
-                style: AppStyles.w300s11rp.copyWith(
-                  color: Colors.white,
-                ),
+                style: Theme.of(context).textTheme.titleSmall,
                 maxLines: 2,
               ),
               TextButton(

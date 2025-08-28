@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/user_repository.dart';
 
-import '../../../data/models/home_model/top_chef_model.dart';
-import '../../../data/repositores/top_chefs_repository/top_chefs_repostory.dart';
+import '../../../data/models/top_chef_models/top_chef_model.dart';
 
 class TopChefViewModel extends ChangeNotifier {
   TopChefViewModel({
-    required TopChefsRepostory topChetOneRepo,
-    required TopChefsRepostory topChetTwoRepo,
-    required TopChefsRepostory topChetThreeRepo,
+    required UsersRepository topChetOneRepo,
+    required UsersRepository topChetTwoRepo,
+    required UsersRepository topChetThreeRepo,
   }) : _topChefOneRepo = topChetOneRepo,
        _topChefTwoRepo = topChetTwoRepo,
        _topChefThreeRepo = topChetThreeRepo;
 
-  final TopChefsRepostory _topChefOneRepo, _topChefTwoRepo, _topChefThreeRepo;
+  final UsersRepository _topChefOneRepo, _topChefTwoRepo, _topChefThreeRepo;
   String? topChefOneError, topChefTwoError, topChefThreeError;
   bool topChefLoading = true;
   List<TopChefModel> topChefOne = [];
@@ -21,11 +21,12 @@ class TopChefViewModel extends ChangeNotifier {
     topChefLoading = true;
     notifyListeners();
 
-    try {
-      topChefOne = await _topChefOneRepo.getTopChef(limit: limit, page: page);
-    } catch (exception) {
-      topChefOneError = exception.toString();
-    }
+    var result =  await _topChefOneRepo.getTopChef(limit: limit, page: page);
+    result.fold(((e){
+      return topChefOneError = e.toString();
+    }), (value){
+      return topChefOne = value;
+    });
 
     topChefLoading = false;
     notifyListeners();
@@ -37,11 +38,12 @@ class TopChefViewModel extends ChangeNotifier {
     topChefLoading = true;
     notifyListeners();
 
-    try {
-      topChefTwo = await _topChefTwoRepo.getTopChef(limit: limit, page: page);
-    } catch (exception) {
-      topChefTwoError = exception.toString();
-    }
+    var result =  await _topChefTwoRepo.getTopChef(limit: limit, page: page);
+    result.fold(((e){
+      return topChefTwoError = e.toString();
+    }), (value){
+      return topChefTwo = value;
+    });
 
     topChefLoading = false;
     notifyListeners();
@@ -56,14 +58,12 @@ class TopChefViewModel extends ChangeNotifier {
     topChefLoading = true;
     notifyListeners();
 
-    try {
-      topChefThree = await _topChefThreeRepo.getTopChef(
-        limit: limit,
-        page: page,
-      );
-    } catch (exception) {
-      topChefThreeError = exception.toString();
-    }
+    var result =  await _topChefThreeRepo.getTopChef(limit: limit, page: page);
+    result.fold(((e){
+      return topChefThreeError = e.toString();
+    }), (value){
+      return topChefThree = value;
+    });
 
     topChefLoading = false;
     notifyListeners();

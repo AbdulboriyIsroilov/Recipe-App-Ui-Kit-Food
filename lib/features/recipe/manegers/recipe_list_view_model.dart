@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/data/models/home_model/recipes_model.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/recipe_repository/recipe_repository.dart';
+import '../../../data/models/recipe_models/recipes_model.dart';
+import '../../../data/repositores/recipes_repository.dart';
 
 class CategoriesViewModel extends ChangeNotifier {
   CategoriesViewModel({
     required int categoryId,
-    required RecipeRepository recipeRepo,
+    required RecipesRepository recipeRepo,
   }) : _recipeRepo = recipeRepo {
     fetchRecipeList(categoryId: categoryId);
   }
 
-  final RecipeRepository _recipeRepo;
+  final RecipesRepository _recipeRepo;
   List<RecipesModel> recipes = [];
   bool loading = true;
   String? errorMassege;
@@ -18,15 +18,13 @@ class CategoriesViewModel extends ChangeNotifier {
   Future<void> fetchRecipeList({required int categoryId}) async {
     loading = true;
     notifyListeners();
-    var result = await _recipeRepo.getRecipes(categoryId: categoryId);
+
+    var result = await _recipeRepo.getRecipes({"Category": categoryId});
     result.fold(
-      (error) {
-        return errorMassege = error.toString();
-      },
-      (value) {
-        return recipes = value;
-      },
+      (error) => errorMassege = error.toString(),
+      (value) => recipes = value,
     );
+
     loading = false;
     notifyListeners();
   }

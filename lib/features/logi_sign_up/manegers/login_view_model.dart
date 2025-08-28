@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/models/Login_model/login_model.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/login_repostoriy.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/auth_repostoriy.dart';
 
 class LoginViewModel extends ChangeNotifier {
   LoginViewModel({
-    required LoginRepository loginRepo,
+    required AuthRepository loginRepo,
   }) : _loginRepo = loginRepo;
 
-  final LoginRepository _loginRepo;
+  final AuthRepository _loginRepo;
   bool isLoading = true;
   String token = "";
   String? errorMessage;
@@ -20,25 +20,23 @@ class LoginViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    try {
-      final data = await _loginRepo.login({
-        "login": authModel.login,
-        "password": authModel.password,
-      });
+    final data = await _loginRepo.login({
+      "login": authModel.login,
+      "password": authModel.password,
+    });
 
-      data.fold(
-        (e) {
-          errorMessage = e.toString();
-          onError();
-        },
-        (success) {
-          token = success;
-          onSuccess();
-        },
-      );
-    } finally {
-      isLoading = false;
-      notifyListeners();
-    }
+    data.fold(
+      (e) {
+        errorMessage = e.toString();
+        onError();
+      },
+      (success) {
+        token = success;
+        onSuccess();
+      },
+    );
+
+    isLoading = false;
+    notifyListeners();
   }
 }

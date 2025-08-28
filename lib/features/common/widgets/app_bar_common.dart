@@ -28,7 +28,6 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.backgroundColor,
       leadingWidth: 100,
       leading: Center(
         child: IconButton(

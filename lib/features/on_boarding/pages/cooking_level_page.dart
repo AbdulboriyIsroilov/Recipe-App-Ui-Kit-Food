@@ -11,7 +11,7 @@ import 'package:recipe_app_ui_kit_food/features/on_boarding/widgets/scroll_conte
 import '../../../../../core/utils/app_colors.dart';
 
 import '../../../../../core/utils/app_svg.dart';
-import '../../../core/utils/app_style.dart';
+
 
 class CookingLevelPage extends StatelessWidget {
   const CookingLevelPage({super.key});
@@ -19,9 +19,7 @@ class CookingLevelPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColors.backgroundColor,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
@@ -43,11 +41,11 @@ class CookingLevelPage extends StatelessWidget {
           children: [
             Text(
               "¿What is your cooking level?",
-              style: AppStyles.w600s20w,
+              style: Theme.of(context).textTheme.displayMedium,
             ),
             Text(
               "Please select you cooking level for a better recommendations.",
-              style: AppStyles.w400s12w.copyWith(fontSize: 13),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             ...List.generate(
               AppList.cookingLevel.length,
@@ -62,6 +60,7 @@ class CookingLevelPage extends StatelessWidget {
                 backgroundColor: AppColors.watermelonRed,
                 foregroundColor: Colors.white,
                 onPressed: (){
+                  // context.read<AppThemeViewModel>().toggleTheme();
                   context.push(Routers.onBoardingPreferencesPage,extra: {});
                 },
               ),

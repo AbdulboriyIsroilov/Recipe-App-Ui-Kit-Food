@@ -10,6 +10,7 @@ import 'package:recipe_app_ui_kit_food/features/on_boarding/widgets/grid_view_im
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_svg.dart';
+import '../../../core/utils/themes.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/text_button_popular.dart';
 import '../widgets/scroll_conteyner.dart';
@@ -23,9 +24,7 @@ class CuisinesPage extends StatelessWidget {
       create: (context) => CuisinesViewModel(cuisineRepo: context.read())..fetchAllergic(),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -52,23 +51,22 @@ class CuisinesPage extends StatelessWidget {
                     children: [
                       Text(
                         "Select your cuisines preferences",
-                        style: AppStyles.w600s20w,
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       Text(
                         "Please select your cuisines preferences for a better recommendations or you can skip it.",
-                        style: AppStyles.w400s12w.copyWith(fontSize: 13),
+                        style: Theme.of(context).textTheme.titleMedium,
                         maxLines: 2,
                       ),
                       Expanded(
                         child: GridView.builder(
                           padding: EdgeInsets.only(bottom: 126.h),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                crossAxisSpacing: 9.72.w,
-                                mainAxisSpacing: 11.21.h,
-                                mainAxisExtent: 125.49.h,
-                              ),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 9.72.w,
+                            mainAxisSpacing: 11.21.h,
+                            mainAxisExtent: 125.49.h,
+                          ),
                           itemCount: vm.cuisine.length,
                           itemBuilder: (context, index) => GridViewImage(
                             vm: vm.cuisine,
@@ -85,7 +83,7 @@ class CuisinesPage extends StatelessWidget {
           children: [
             BottomNavigationBarGradient(),
             Padding(
-              padding: EdgeInsets.only(left:36,right:38,bottom: 34.h),
+              padding: EdgeInsets.only(left: 36, right: 38, bottom: 34.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -93,10 +91,8 @@ class CuisinesPage extends StatelessWidget {
                     title: "skip",
                     width: 162,
                     onPressed: () {
-                      context.go(
-                        Routers.login,
-                        extra: {},
-                      );
+                      // context.read<AppThemeViewModel>().toggleTheme();
+                      context.go(Routers.login, extra: {});
                     },
                   ),
                   TextButtomPopular(
@@ -105,10 +101,7 @@ class CuisinesPage extends StatelessWidget {
                     foregroundColor: Colors.white,
                     width: 162,
                     onPressed: () {
-                      context.push(
-                        Routers.onBoardingAllergicPage,
-                        extra: {},
-                      );
+                      context.push(Routers.onBoardingAllergicPage, extra: {});
                     },
                   ),
                 ],

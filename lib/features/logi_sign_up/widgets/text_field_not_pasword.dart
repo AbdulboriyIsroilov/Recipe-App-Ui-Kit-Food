@@ -23,10 +23,11 @@ class TextFieldNotPasword extends StatelessWidget {
       children: [
         Text(
           text,
-          style: AppStyles.w500s15w,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         TextField(
           controller: controller,
+          style: AppStyles.w500s16,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(horizontal: 36.w),
             constraints: BoxConstraints(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/models/Login_model/sign_up_model.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/sign_up_repostory.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/auth_repostoriy.dart';
 
 class SignUpViewModel extends ChangeNotifier {
   SignUpViewModel({
-    required SignUpRepostory signRepo,
+    required AuthRepository signRepo,
   }) : _signRepo = signRepo;
 
-  final SignUpRepostory _signRepo;
+  final AuthRepository _signRepo;
   bool isLoading = true;
   String token = "";
 
@@ -19,20 +19,26 @@ class SignUpViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    try {
-      final data = await _signRepo.signUp(data: authModel);
-      data.fold(
-        (e) {
-          onError();
-        },
-        (success) {
-          token = success;
-          onSuccess();
-        },
-      );
-    } finally {
-      isLoading = false;
-      notifyListeners();
-    }
+    final data = await _signRepo.register({
+      "username": authModel.username,
+      "firstName": authModel.firstName,
+      "lastName": authModel.lastName,
+      "email": authModel.email,
+      "phoneNumber": authModel.phoneNumber,
+      "birthDate": authModel.birthDate,
+      "password": authModel.password,
+    });
+    data.fold(
+      (e) {
+        onError();
+      },
+      (success) {
+        token = success;
+        onSuccess();
+      },
+    );
+
+    isLoading = false;
+    notifyListeners();
   }
 }

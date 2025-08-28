@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
+import 'package:recipe_app_ui_kit_food/features/reviews/manegers/reviews_add_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/reviews/widgets/dialogs.dart';
+
+import '../../../data/models/reviews_model/reviews_create_model.dart';
 
 class AddReviews extends StatefulWidget {
   const AddReviews({
     super.key,
+    required this.id,
   });
+
+  final int id;
 
   @override
   State<AddReviews> createState() => _AddReviewsState();
@@ -19,7 +26,7 @@ class AddReviews extends StatefulWidget {
 class _AddReviewsState extends State<AddReviews> {
   int selectedStars = 0;
   TextEditingController commentController = TextEditingController();
-  String? selected = "No";
+  String? selected = "false";
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +55,7 @@ class _AddReviewsState extends State<AddReviews> {
                       icon: SvgPicture.asset(
                         width: 28.57.w,
                         height: 28.57.h,
-                        index < selectedStars
-                            ? AppSvgies.starFilled
-                            : AppSvgies.starEmpty,
+                        index < selectedStars ? AppSvgies.starFilled : AppSvgies.starEmpty,
                         colorFilter: ColorFilter.mode(
                           AppColors.watermelonRed,
                           BlendMode.modulate,
@@ -62,15 +67,16 @@ class _AddReviewsState extends State<AddReviews> {
               ),
               Text(
                 "Your overall rating",
-                style: AppStyles.w400s12w,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ],
           ),
         ),
         TextField(
           controller: commentController,
+          style: AppStyles.w500s16,
+          maxLength: 120,
           maxLines: 4,
-          style: AppStyles.w500s15w,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
               horizontal: 11.w,
@@ -96,7 +102,7 @@ class _AddReviewsState extends State<AddReviews> {
             children: [
               Text(
                 "Do you recommend this recipe?",
-                style: AppStyles.w400s12w,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,10 +111,10 @@ class _AddReviewsState extends State<AddReviews> {
                     children: [
                       Text(
                         "No",
-                        style: AppStyles.w300s15w,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Radio<String>(
-                        value: "No",
+                        value: "false",
                         groupValue: selected,
                         fillColor: MaterialStateProperty.all(Colors.red),
                         onChanged: (val) {
@@ -123,10 +129,10 @@ class _AddReviewsState extends State<AddReviews> {
                     children: [
                       Text(
                         "Yes",
-                        style: AppStyles.w300s15w,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       Radio<String>(
-                        value: "Yes",
+                        value: "true",
                         groupValue: selected,
                         fillColor: MaterialStateProperty.all(Colors.red),
                         onChanged: (val) {
@@ -151,20 +157,44 @@ class _AddReviewsState extends State<AddReviews> {
               height: 29.h,
               style: AppStyles.w500s15wr,
             ),
-            TextButtomPopular(
-              title: "Submit",
-              width: 168,
-              height: 29,
-              backgroundColor: AppColors.watermelonRed,
-              style: AppStyles.w500s15w,
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return Dialogs();
-                  },
-                );
-              },
+            Consumer<ReviewsAddViewModel>(
+              builder: (context, vm, child) => TextButtomPopular(
+                title: "Submit",
+                width: 168,
+                height: 29,
+                backgroundColor: AppColors.watermelonRed,
+                style: AppStyles.w500s15w,
+                onPressed: () {
+                  bool recommend = false;
+                  if (selected == "false") {
+                    recommend = false;
+                  } else {
+                    recommend = true;
+                  }
+                  vm.fetchReviewsCreate(
+                    createModel: ReviewsCreateModel(
+                      recipeId: widget.id,
+                      rating: selectedStars,
+                      comment: commentController.text,
+                      recommend: recommend,
+                    ),
+                    onError: () {
+                      print(vm.errorm);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Error : ${vm.errorm}")),
+                      );
+                    },
+                    onSuccess: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Dialogs();
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           ],
         ),

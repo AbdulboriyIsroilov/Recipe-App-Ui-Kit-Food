@@ -5,14 +5,14 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 
-import '../../../../data/models/recipe_model/detail_model.dart';
+import '../../../../data/models/recipe_models/recipe_detail_model.dart';
 
 
 class RecipeDetailLngredients extends StatelessWidget {
   const RecipeDetailLngredients({
     super.key, required this.vm,
   });
-  final DetailModel vm;
+  final RecipeDetailModel vm;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,13 +33,13 @@ class RecipeDetailLngredients extends StatelessWidget {
                 SvgPicture.asset(AppSvgies.clock),
                 Text(
                   "${vm.timeRequired}min",
-                  style: AppStyles.w400s12w,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             ),
             Text(
               vm.description,
-              style: AppStyles.w400s12w,
+              style: Theme.of(context).textTheme.titleLarge,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
@@ -77,7 +77,7 @@ class RecipeDetailLngredients extends StatelessWidget {
                               width: 335.w,
                               child: Text(
                                 "${vm.ingredients[index].amount} ${vm.ingredients[index].name}",
-                                style: AppStyles.w400s12w,
+                                style: Theme.of(context).textTheme.titleLarge,
                               ),
                             ),
                           ],
@@ -124,13 +124,13 @@ class RecipeDetailLngredients extends StatelessWidget {
                     children: [
                       Text(
                         "${vm.instructions[index].order}.",
-                        style: AppStyles.w400s12b,
+                        style: AppStyles.w400s12,
                       ),
                       SizedBox(
                         width: 330.w,
                         child: Text(
                           "${vm.instructions[index].text}",
-                          style: AppStyles.w400s12b,
+                          style: AppStyles.w400s12,
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),

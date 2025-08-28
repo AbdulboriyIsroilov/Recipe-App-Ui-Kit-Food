@@ -19,14 +19,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => HomeViewModel(homeRepo: context.read())
-        ..fetchCategoriy()
-        ..fetchRecipe()
-        ..fetchTopChef(limit: 4, page: 1)
-        ..fetchRecently(),
+      create: (context) =>
+          HomeViewModel(
+              homeRepo: context.read(),
+              recipesRepo: context.read(),
+              usersRepo: context.read(),
+            )
+            ..fetchCategoriy()
+            ..fetchRecipe()
+            ..fetchTopChef(limit: 4, page: 1)
+            ..fetchRecently(),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBarWidget(
           bottom: RecipeListAppBarBottom(),
         ),

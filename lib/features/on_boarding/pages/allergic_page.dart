@@ -23,9 +23,7 @@ class AllergicPage extends StatelessWidget {
       create: (context) => AllergicViewModel(allergicRepo: context.read())..fetchAllergic(),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -35,7 +33,7 @@ class AllergicPage extends StatelessWidget {
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(15),
             child: ScroolConteyner(
-              vm: 1,
+              vm: 2,
             ),
           ),
         ),
@@ -51,12 +49,12 @@ class AllergicPage extends StatelessWidget {
                     spacing: 20,
                     children: [
                       Text(
-                        "Select your cuisines preferences",
-                        style: AppStyles.w600s20w,
+                        "¿You have any allergic?",
+                        style: Theme.of(context).textTheme.displayMedium,
                       ),
                       Text(
-                        "Please select your cuisines preferences for a better recommendations or you can skip it.",
-                        style: AppStyles.w400s12w.copyWith(fontSize: 13),
+                        "Lorem ipsum dolor sit amet consectetur. Leo ornare ullamcorper viverra ultrices in.",
+                        style: Theme.of(context).textTheme.titleMedium,
                         maxLines: 2,
                       ),
                       Expanded(

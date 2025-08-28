@@ -5,6 +5,8 @@ class Routers {
 
   static const myRecipe = "/my-recipe";
 
+  static const profile = "/profile";
+
   static const topChefs = "/topChefs";
   static const topChefDetail = "/topChefDetail";
 
@@ -24,7 +26,7 @@ class Routers {
   static const onBoardingPreferencesPage = "/onBoardingPreferences";
   static const onBoardingAllergicPage = "/onBoardingAllergicPage";
 
-  static const recipePage = "/resipe";
+  static const categoryPage = "/resipe";
   static const recipeListPage = "/resipeList";
   static const recipeDetailPage = "/resipeDetail";
 

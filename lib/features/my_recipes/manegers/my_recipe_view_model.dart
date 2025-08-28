@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/recipe_repository/my_recipes_repositoriy.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/recipes_repository.dart';
 
-import '../../../data/models/home_model/recipes_model.dart';
+import '../../../data/models/recipe_models/recipes_model.dart';
 
 class MyRecipeViewModel extends ChangeNotifier {
   MyRecipeViewModel({
-    required MyRecipesRepositoriy myRecipeRepo,
+    required RecipesRepository myRecipeRepo,
   }) : _myRecipeRepo = myRecipeRepo {
     fetchMyRecipes();
   }
 
-  final MyRecipesRepositoriy _myRecipeRepo;
+  final RecipesRepository _myRecipeRepo;
 
   List<RecipesModel> recipes = [];
   String? error;
@@ -21,9 +21,11 @@ class MyRecipeViewModel extends ChangeNotifier {
 
     notifyListeners();
 
-    var result = await _myRecipeRepo.getAll();
+    var result = await _myRecipeRepo.getMyRecipes();
     result.fold(
-      (e) => error = e.toString(),
+      (e) {
+        return error = e.toString();
+      },
       (value) => recipes = value,
     );
 

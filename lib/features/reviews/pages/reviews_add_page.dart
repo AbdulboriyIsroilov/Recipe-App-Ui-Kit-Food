@@ -19,11 +19,13 @@ class ReviewsAddPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ReviewsAddViewModel(categoryId: categoriyId),
+      create: (context) => ReviewsAddViewModel(
+        categoryId: categoriyId,
+        recipesRepo: context.read(),
+        reviewsRepo: context.read(),
+      ),
       builder: (context, child) => Scaffold(
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -45,42 +47,46 @@ class ReviewsAddPage extends StatelessWidget {
                 builder: (context, vm, child) => SizedBox(
                   width: 356.w,
                   height: 262.h,
-                  child: vm.loading ? Center(child: CircularProgressIndicator(),) : Stack(
-                    children: [
-                      Container(
-                        width: 356.w,
-                        height: 262.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.r),
-                          color: AppColors.watermelonRed,
+                  child: vm.loading
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : Stack(
+                          children: [
+                            Container(
+                              width: 356.w,
+                              height: 262.h,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.r),
+                                color: AppColors.watermelonRed,
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10.w,
+                                vertical: 16.h,
+                              ),
+                              alignment: Alignment.bottomCenter,
+                              child: Text(
+                                vm.commentsAdd.title,
+                                style: AppStyles.w500s20w,
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.r),
+                                child: Image.network(
+                                  vm.commentsAdd.photo,
+                                  width: 356.w,
+                                  height: 206.h,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10.w,
-                          vertical: 16.h,
-                        ),
-                        alignment: Alignment.bottomCenter,
-                        child: Text(
-                          vm.commentsAdd.title,
-                          style: AppStyles.w500s20w,
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.topCenter,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10.r),
-                          child: Image.network(
-                            vm.commentsAdd.photo,
-                            width: 356.w,
-                            height: 206.h,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
               ),
-              AddReviews(),
+              AddReviews(id: categoriyId,),
             ],
           ),
         ),

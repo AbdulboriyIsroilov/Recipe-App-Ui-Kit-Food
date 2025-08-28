@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/like.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
@@ -17,7 +17,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.backgroundColor,
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

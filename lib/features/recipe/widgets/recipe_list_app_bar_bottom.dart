@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_view_model.dart';
+import 'package:recipe_app_ui_kit_food/features/recipe/manegers/category_view_model.dart';
 
 import 'bottom_item.dart';
 
@@ -22,9 +22,9 @@ class RecipeListAppBarBottom extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context)=>RecipeViewModel(recipeRepo: context.read()),
+      create: (context)=>CategoryViewModel(recipeRepo: context.read()),
       builder: (context, child) {
-        return Consumer<RecipeViewModel>(
+        return Consumer<CategoryViewModel>(
           builder: (context, vm, child) {
             return SingleChildScrollView(
               controller: controller,

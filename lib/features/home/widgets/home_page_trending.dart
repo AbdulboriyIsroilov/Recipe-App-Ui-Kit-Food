@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/like.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
@@ -75,11 +75,11 @@ class HomePageTrending extends StatelessWidget {
                                       children: [
                                         Text(
                                           vm.trendingRecipe.title,
-                                          style: AppStyles.w400s13w,
+                                          style: Theme.of(context).textTheme.titleMedium,
                                         ),
                                         Text(
                                           vm.trendingRecipe.description,
-                                          style: AppStyles.w300s13w,
+                                          style: Theme.of(context).textTheme.titleSmall,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                         ),

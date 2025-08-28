@@ -56,7 +56,7 @@ class _GridViewImageState extends State<GridViewImage> {
           ),
           Text(
             widget.vm[widget.index].title,
-            style: AppStyles.w500s13w,
+            style: Theme.of(context).textTheme.displaySmall
           ),
         ],
       ),

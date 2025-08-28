@@ -5,8 +5,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 
-
-import '../../../../data/models/recipe_model/detail_model.dart';
+import '../../../../data/models/recipe_models/recipe_detail_model.dart';
 
 
 class RecipeDetailProfil extends StatefulWidget {
@@ -15,7 +14,7 @@ class RecipeDetailProfil extends StatefulWidget {
     required this.vm,
   });
 
-  final DetailModel vm;
+  final RecipeDetailModel vm;
 
   @override
   State<RecipeDetailProfil> createState() => _RecipeDetailProfilState();
@@ -50,7 +49,7 @@ class _RecipeDetailProfilState extends State<RecipeDetailProfil> {
               ),
               Text(
                 "${widget.vm.user.firstName} ${widget.vm.user.lastName}-chef",
-                style: AppStyles.w300s14w,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ],
           ),

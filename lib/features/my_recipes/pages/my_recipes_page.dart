@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
@@ -20,18 +22,11 @@ class MyRecipesPage extends StatelessWidget {
       create: (context) => MyRecipeViewModel(myRecipeRepo: context.read()),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBarCommon(title: "Your Recipes",onPressed: (){Navigator.pop(context);},),
         body: Consumer<MyRecipeViewModel>(
           builder: (context, vm, child) {
             if (vm.loading) return Center(child: CircularProgressIndicator());
-            if (vm.error != null)
-              return Center(
-                child: Text(
-                  vm.error!,
-                  style: TextStyle(color: AppColors.white),
-                ),
-              );
+            if (vm.error != null) Center(child:Text(vm.error.toString()));
             return Padding(
               padding: EdgeInsets.only(top: 31.h),
               child: Column(
@@ -49,19 +44,16 @@ class MyRecipesPage extends StatelessWidget {
                           "most viewed today",
                           style: AppStyles.w500s15w,
                         ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            spacing: 16.95.w,
-                            children: [
-                              ...List.generate(2, (index) {
-                                return RecipeImageDown(
-                                  vm: vm.recipes,
-                                  index: index,
-                                );
-                              }),
-                            ],
-                          ),
+                        Row(
+                          spacing: 16.95.w,
+                          children: [
+                            ...List.generate(2, (index) {
+                              return RecipeImageDown(
+                                vm: vm.recipes,
+                                index: index,
+                              );
+                            }),
+                          ],
                         ),
                       ],
                     ),

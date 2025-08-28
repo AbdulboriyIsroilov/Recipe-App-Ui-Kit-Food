@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/data/models/community_model/community_model.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/recipe_repository/community_repository.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/recipes_repository.dart';
+
+import '../../../data/models/community_models/community_model.dart';
 
 class CommunityViewModel extends ChangeNotifier {
-  CommunityViewModel({required CommunityRepository communityRepo}) : _communityRepo = communityRepo {
+  CommunityViewModel({required RecipesRepository communityRepo}) : _communityRepo = communityRepo {
     fetchCommunityTop();
     fetchCommunityNew();
     fetchCommunityOld();
   }
 
-  final CommunityRepository _communityRepo;
+  final RecipesRepository _communityRepo;
 
   List<CommunityModel> communityTop = [], communityNew = [], communityOld = [];
   bool loadingTop = true, loadingNew = true, loadingOld = true;
@@ -18,7 +19,7 @@ class CommunityViewModel extends ChangeNotifier {
   Future<void> fetchCommunityTop() async {
     loadingTop = true;
     notifyListeners();
-    var result = await _communityRepo.getAll({"Limit": 11});
+    var result = await _communityRepo.getCommunity({"Limit": 11});
 
     result.fold(
       (err) {
@@ -36,7 +37,7 @@ class CommunityViewModel extends ChangeNotifier {
   Future<void> fetchCommunityNew() async {
     loadingNew = true;
     notifyListeners();
-    var result = await _communityRepo.getAll({
+    var result = await _communityRepo.getCommunity({
       "Limit": 10,
       "Order": "Rating",
       "Descending": "true",
@@ -58,7 +59,7 @@ class CommunityViewModel extends ChangeNotifier {
   Future<void> fetchCommunityOld() async {
     loadingOld = true;
     notifyListeners();
-    var result = await _communityRepo.getAll({
+    var result = await _communityRepo.getCommunity({
       "Limit": 12,
       "Order": "Rating",
       "Descending": "false",

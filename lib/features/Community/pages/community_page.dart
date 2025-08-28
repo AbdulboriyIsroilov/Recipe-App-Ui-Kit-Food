@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/features/Community/manegers/community_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/Community/widgets/community_column_recipies.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
@@ -18,7 +19,6 @@ class CommunityPage extends StatelessWidget {
       length: 3,
       child: Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBarCommon(
           title: "Community",
           bottom: TabBar(
@@ -36,9 +36,24 @@ class CommunityPage extends StatelessWidget {
               vertical: 10.h,
             ),
             tabs: [
-              Tab(text: "Top Recipes"),
-              Tab(text: "Newest"),
-              Tab(text: "Oldest"),
+              Tab(
+                child: Text(
+                  "Top Recipes",
+                  style: AppStyles.w400s16,
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Newest",
+                  style: AppStyles.w400s16,
+                ),
+              ),
+              Tab(
+                child: Text(
+                  "Oldest",
+                  style: AppStyles.w400s16,
+                ),
+              ),
             ],
           ),
         ),
@@ -51,7 +66,9 @@ class CommunityPage extends StatelessWidget {
                 child: Consumer<CommunityViewModel>(
                   builder: (context, vm, child) => vm.loadingTop
                       ? Center(
-                          child: CircularProgressIndicator(),
+                          child: CircularProgressIndicator(
+                            color: Theme.of(context).colorScheme.inversePrimary,
+                          ),
                         )
                       : SingleChildScrollView(
                           child: Padding(

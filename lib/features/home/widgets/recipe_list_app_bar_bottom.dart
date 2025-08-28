@@ -27,7 +27,7 @@ class _RecipeListAppBarBottomState extends State<RecipeListAppBarBottom> {
   Widget build(BuildContext context) {
     return Consumer<HomeViewModel>(
       builder: (context, vm, child) {
-        return vm.categoriyLoading
+        return vm.categoryLoading
             ? Center(
                 child: CircularProgressIndicator(),
               )

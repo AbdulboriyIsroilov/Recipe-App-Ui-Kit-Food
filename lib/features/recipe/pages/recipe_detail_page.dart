@@ -26,10 +26,9 @@ class RecipeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => RecipeDetailViewModel(categoryId: categoryId),
+      create: (context) => RecipeDetailViewModel(categoryId: categoryId, detailRepo: context.read()),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBarCommon(
           title: title,
           onPressed: () {

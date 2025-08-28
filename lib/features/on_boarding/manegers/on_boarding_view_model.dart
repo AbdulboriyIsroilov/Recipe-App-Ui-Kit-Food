@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../../../data/models/on_boarding_model/onboarding_model.dart';
-import '../../../data/repositores/on_boarding_repositores/on_boarding_repository.dart';
+import '../../../data/models/onboarding_models/onboarding_model.dart';
+import '../../../data/repositores/onboarding_repository.dart';
 
 class OnBoardingViewModel extends ChangeNotifier {
   OnBoardingViewModel({
-    required OnBoardingRepository onBoardingRepo,
+    required OnboardingRepository onBoardingRepo,
   }) : _onBoardingRepo = onBoardingRepo;
 
-  final OnBoardingRepository _onBoardingRepo;
+  final OnboardingRepository _onBoardingRepo;
   String? error;
   List<OnboardingModel> onBoarding = [];
   bool loading = true;
@@ -17,11 +16,11 @@ class OnBoardingViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    try {
-      onBoarding = await _onBoardingRepo.getAll();
-    } catch (exception) {
-      error = exception.toString();
-    }
+    var result = await _onBoardingRepo.getOnboarding();
+    result.fold(
+      ((e) => error = e.toString()),
+      (value) => onBoarding = value,
+    );
 
     loading = false;
     notifyListeners();

@@ -6,15 +6,14 @@ import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-
-import '../../../../data/models/recipe_model/detail_model.dart';
+import '../../../../data/models/recipe_models/recipe_detail_model.dart';
 
 
 class RecipeDetailVideoName extends StatelessWidget {
   const RecipeDetailVideoName({
     super.key, required this.vm, required this.categoriyId,
   });
-  final DetailModel vm;
+  final RecipeDetailModel vm;
   final int categoriyId;
   @override
   Widget build(BuildContext context) {

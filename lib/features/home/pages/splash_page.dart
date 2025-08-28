@@ -26,7 +26,7 @@ class _SplashPageState extends State<SplashPage> {
       (value) {
         if (value != null) {
           Future.delayed(Duration(seconds: 3), () {
-            context.go(Routers.community);
+            context.go(Routers.home);
           });
         } else {
           Future.delayed(Duration(seconds: 3), () {
@@ -61,7 +61,7 @@ class _SplashPageState extends State<SplashPage> {
                 ],
               ),
             ),
-            Text("DishDash", style: AppStyles.w600s64w),
+            Text("DishDash", style: AppStyles.w600s64),
           ],
         ),
       ),

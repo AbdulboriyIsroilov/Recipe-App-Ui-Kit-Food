@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
+import 'package:recipe_app_ui_kit_food/features/trending_recipes/widgets/trending_recipes_detail.dart';
 import 'package:recipe_app_ui_kit_food/features/trending_recipes/widgets/trending_recipes_viewed.dart';
 
-import '../../../core/router/routers.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../../recipe/manegers/recipe_list_view_model.dart';
@@ -24,7 +21,6 @@ class TrendingRecipesPage extends StatelessWidget {
       create: (context) => CategoriesViewModel(categoryId: 2, recipeRepo: context.read()),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBarCommon(
           title: "Trending Recipes",
           onPressed: () {
@@ -32,7 +28,7 @@ class TrendingRecipesPage extends StatelessWidget {
           },
         ),
         body: ChangeNotifierProvider(
-          create: (context) => TrendingRecipesViewModel(),
+          create: (context) => TrendingRecipesViewModel(trendingRepo: context.read()),
           builder: (context, child) => SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.only(top: 31.h, bottom: 126.h),
@@ -73,119 +69,9 @@ class TrendingRecipesPage extends StatelessWidget {
                             ),
                           ),
                           ...List.generate(vm.recipes.length, (index) {
-                            return GestureDetector(
-                              onTap: () {
-                                context.push(
-                                  Routers.recipeDetailPage,
-                                  extra: {
-                                    "title": vm.recipes[index].title,
-                                    "categoryId": vm.recipes[index].id,
-                                  },
-                                );
-                              },
-                              child: SizedBox(
-                                width: 358.w,
-                                height: 150.h,
-                                child: vm.loading
-                                    ? Center(
-                                        child: CircularProgressIndicator(),
-                                      )
-                                    : Stack(
-                                        children: [
-                                          Align(
-                                            alignment: Alignment.centerRight,
-                                            child: Container(
-                                              width: 207.w,
-                                              height: 122.h,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius: BorderRadius.horizontal(
-                                                  right: Radius.circular(
-                                                    14.r,
-                                                  ),
-                                                ),
-                                              ),
-                                              padding: EdgeInsets.all(10.w),
-                                              child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                spacing: 6.h,
-                                                children: [
-                                                  Text(
-                                                    vm.recipes[index].title,
-                                                    style: AppStyles.w400s12b,
-                                                  ),
-                                                  Text(
-                                                    vm.recipes[index].description,
-                                                    style: AppStyles.w300s13b,
-                                                    maxLines: 2,
-                                                    overflow: TextOverflow.ellipsis,
-                                                  ),
-                                                  Text(
-                                                    "By Chef Josh Ryan",
-                                                    style: AppStyles.w300s13b.copyWith(
-                                                      color: AppColors.watermelonRed,
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                    children: [
-                                                      Row(
-                                                        spacing: 5,
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: [
-                                                          SvgPicture.asset(
-                                                            AppSvgies.clock,
-                                                          ),
-                                                          Text(
-                                                            "${vm.recipes[index].timeRequired}min",
-                                                            style: AppStyles.w400s12wr,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        spacing: 5,
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: [
-                                                          Text(
-                                                            vm.recipes[index].difficulty,
-                                                          ),
-                                                          SvgPicture.asset(
-                                                            AppSvgies.reyting,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Row(
-                                                        spacing: 5,
-                                                        mainAxisSize: MainAxisSize.min,
-                                                        children: [
-                                                          Text(
-                                                            "${vm.recipes[index].rating}",
-                                                          ),
-                                                          SvgPicture.asset(
-                                                            AppSvgies.star,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.circular(
-                                              14.r,
-                                            ),
-                                            child: Image.network(
-                                              vm.recipes[index].photo,
-                                              width: 151.w,
-                                              height: 150.h,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                              ),
+                            return TrendingRecipesDetail(
+                              vm: vm.recipes[index],
+                              loading: vm.loading,
                             );
                           }),
                         ],

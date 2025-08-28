@@ -17,11 +17,11 @@ class TrendingRecipeModel {
     return TrendingRecipeModel(
       id: json["id"],
       categoryId: json["categoryId"],
-      title: json["title"] ?? "",
-      description: json["description"] ?? "",
-      photo: json["photo"] ?? "",
-      rating: json["rating"] ?? "",
-      timeRequired: json["timeRequired"] ?? "",
+      title: json["title"] ,
+      description: json["description"],
+      photo: json["photo"],
+      rating: json["rating"],
+      timeRequired: json["timeRequired"],
     );
   }
 }

@@ -26,7 +26,7 @@ class ReviewsAddReview extends StatelessWidget {
         ),
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(37.w, 30.h, 37.w, 30.h),
-        child: vm.loading
+        child: vm.loadingDetail
             ? CircularProgressIndicator()
             : Row(
                 spacing: 15.w,
@@ -100,7 +100,7 @@ class ReviewsAddReview extends StatelessWidget {
                                 ),
                                 Text(
                                   "${vm.review.user.firstName} ${vm.review.user.lastName}-chef",
-                                  style: AppStyles.w300s13w,
+                                  style: AppStyles.w300s11w,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ],

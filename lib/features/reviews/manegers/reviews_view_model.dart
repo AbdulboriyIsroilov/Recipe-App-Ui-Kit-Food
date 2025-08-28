@@ -1,24 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/recipes_repository.dart';
 
-import '../../../core/client.dart';
+import '../../../data/models/reviews_model/reviews_comment_model.dart';
 import '../../../data/models/reviews_model/reviews_model.dart';
+import '../../../data/repositores/reviews_repository.dart';
 
-class ReviewsViewModel extends ChangeNotifier{
-  ReviewsViewModel({required int categoryId}){
+class ReviewsViewModel extends ChangeNotifier {
+  ReviewsViewModel({
+    required int categoryId,
+    required RecipesRepository recipesRepo,
+    required ReviewsRepository reviewsRepo,
+  }) : _recipesRepo = recipesRepo,
+       _reviewsRepo = reviewsRepo {
     fetchReviewDetail(categoryId: categoryId);
+    fetchReviewDetailComment(categoryId: categoryId);
   }
-  late ReviewsModel review;
-  bool loading = true;
 
-  Future<void> fetchReviewDetail({required int categoryId}) async{
-    loading = true;
+  final RecipesRepository _recipesRepo;
+  final ReviewsRepository _reviewsRepo;
+
+  late ReviewsModel review;
+  List<ReviewsCommentModel> comments = [];
+
+  String? errorMassege, errorReviews;
+  bool loadingDetail = true, loadingReviews = true;
+
+
+  Future<void> fetchReviewDetail({required int categoryId}) async {
+    loadingDetail = true;
     notifyListeners();
-    var reseponse = await dio.get("/recipes/reviews/detail/$categoryId");
-    if (reseponse.statusCode != 200) {
-      throw Exception(reseponse.data);
-    }
-    review = ReviewsModel.fromJson(reseponse.data as Map<String, dynamic>);
-    loading = false;
+
+    var result = await _recipesRepo.getReviewDetail(categoryId: categoryId);
+    result.fold(
+      (error) => errorMassege = error.toString(),
+      (value) => review = value,
+    );
+
+    loadingDetail = false;
+    notifyListeners();
+  }
+
+  Future<void> fetchReviewDetailComment({required int categoryId}) async {
+    loadingReviews = true;
+    notifyListeners();
+
+    var result = await _reviewsRepo.getReviews(categoryId: categoryId);
+    result.fold(
+          (error) => errorReviews = error.toString(),
+          (value) => comments = value,
+    );
+
+    loadingReviews = false;
     notifyListeners();
   }
 }

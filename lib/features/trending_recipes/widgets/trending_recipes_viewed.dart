@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/like.dart';
 
 import '../manegers/trending_recipes_view_model.dart';
 
@@ -57,7 +58,7 @@ class TrendingRecipesViewed extends StatelessWidget {
                                 ),
                                 Text(
                                   vm.details.description,
-                                  style: AppStyles.w300s13b,
+                                  style: AppStyles.w300s11,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
                                 ),
@@ -104,6 +105,11 @@ class TrendingRecipesViewed extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
+                  ),
+                  Positioned(
+                    top: 7.h,
+                    left: 322.w,
+                    child: Like(),
                   ),
                 ],
               ),

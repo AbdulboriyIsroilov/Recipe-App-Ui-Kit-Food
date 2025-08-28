@@ -48,11 +48,11 @@ class _CookingLevelTextState extends State<CookingLevelText> {
             children: [
               Text(
                 AppList.cookingLevel[widget.index]["level"],
-                style: AppStyles.w500s16.copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.bodyMedium
               ),
               Text(
                 AppList.cookingLevel[widget.index]["title"],
-                style: AppStyles.w400s13.copyWith(color: Colors.white),
+                style: Theme.of(context).textTheme.titleMedium,
                 maxLines: 3,
               ),
             ],

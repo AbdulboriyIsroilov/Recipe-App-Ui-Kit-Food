@@ -5,19 +5,16 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/client.dart';
 import 'package:recipe_app_ui_kit_food/core/router/router.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/login_repostoriy.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/login_sign_up_repositores/sign_up_repostory.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/recipe_repository/community_repository.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/recipe_repository/my_recipes_repositoriy.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/top_chefs_repository/top_chef_detail_reposty.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/top_chefs_repository/top_chefs_repostory.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/themes.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/auth_repostoriy.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/user_repository.dart';
 
 import 'core/auth_interceptor.dart';
-import 'data/repositores/home_repository/home_repository.dart';
-import 'data/repositores/on_boarding_repositores/allergic_repository.dart';
-import 'data/repositores/on_boarding_repositores/cuisines_repository.dart';
-import 'data/repositores/on_boarding_repositores/on_boarding_repository.dart';
-import 'data/repositores/recipe_repository/recipe_repository.dart';
+import 'data/repositores/categories_repository.dart';
+import 'data/repositores/onboarding_repository.dart';
+import 'data/repositores/recipes_repository.dart';
+import 'data/repositores/reviews_repository.dart';
+import 'features/common/manegers/app_theme_view_model.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,13 +22,14 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-
+  final themes = AppThemes();
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(430, 932),
       child: MultiProvider(
         providers: [
+          ChangeNotifierProvider(create: (context)=>AppThemeViewModel()),
           Provider(create: (context) => FlutterSecureStorage()),
           Provider(create: (context) => AuthInterceptor(secureStorage: context.read())),
           Provider(
@@ -42,24 +40,18 @@ class MyApp extends StatelessWidget {
               ),
             )..interceptors.add(context.read<AuthInterceptor>()),
           ),
-          Provider(
-            create: (context) => ApiClient(dio: context.read()),
-          ),
-          Provider(
-            create: (context) => LoginRepository(client: context.read(), secureStorage: context.read()),
-          ),
-          Provider(create: (context) => SignUpRepostory(client: context.read())),
-          Provider(create: (context) => AllergicRepository()),
-          Provider(create: (context) => CuisinesRepository()),
-          Provider(create: (context) => OnBoardingRepository()),
-          Provider(create: (context) => HomeRepository()),
-          Provider(create: (context) => MyRecipesRepositoriy(client: context.read())),
-          Provider(create: (context) => TopChefsRepostory()),
-          Provider(create: (context) => TopChefDetailRepostory()),
-          Provider(create: (context) => RecipeRepository(clint: context.read())),
-          Provider(create: (context) => CommunityRepository(clint: context.read())),
+          Provider(create: (context) => ApiClient(dio: context.read()),),
+          Provider(create: (context) => AuthRepository(client: context.read(), secureStorage: context.read()),),
+          Provider(create: (context) => UsersRepository(client: context.read())),
+          Provider(create: (context) => ReviewsRepository(client: context.read(), secureStorage: context.read())),
+          Provider(create: (context) => RecipesRepository(client: context.read())),
+          Provider(create: (context) => OnboardingRepository(client: context.read())),
+          Provider(create: (context) => CategoriesRepository(client: context.read())),
         ],
         builder: (context, child) => MaterialApp.router(
+          theme: themes.lightTheme,
+          darkTheme: themes.darkTheme,
+          themeMode: context.watch<AppThemeViewModel>().mode,
           debugShowCheckedModeBanner: false,
           routerConfig: router,
         ),

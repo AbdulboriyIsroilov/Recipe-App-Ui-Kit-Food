@@ -7,5 +7,6 @@ class AppColors {
   static const Color pastelPink = Color(0xFFFFC6C9);
   static const Color black = Color(0xFF3E2823);
   static const Color rosePink = Color(0xFFEC888D);
+  static const Color steelBlue = Color(0xFF4C85B6);
 
 }

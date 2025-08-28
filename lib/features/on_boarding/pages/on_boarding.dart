@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/features/on_boarding/manegers/on_boarding_view_model.dart';
 
 import '../../../core/router/routers.dart';
@@ -19,9 +18,7 @@ class OnBoarding extends StatelessWidget {
       create: (context) => OnBoardingViewModel(onBoardingRepo: context.read())..fetchOnBoarding(),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
         ),
         body: Consumer<OnBoardingViewModel>(
           builder: (context, vm, child) => vm.loading
@@ -44,14 +41,12 @@ class OnBoarding extends StatelessWidget {
                               children: [
                                 Text(
                                   vm.onBoarding[index].title,
-                                  style: AppStyles.w600s20w,
+                                  style: Theme.of(context).textTheme.displayMedium,
                                   maxLines: 1,
                                 ),
                                 Text(
                                   vm.onBoarding[index].subtitle,
-                                  style: AppStyles.w400s13.copyWith(
-                                    color: Colors.white,
-                                  ),
+                                  style: Theme.of(context).textTheme.titleMedium,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -78,7 +73,7 @@ class OnBoarding extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
                                         colors: [
-                                          AppColors.backgroundColor,
+                                          Theme.of(context).colorScheme.onInverseSurface,
                                           Colors.transparent,
                                         ],
                                         begin: Alignment.topCenter,
@@ -96,22 +91,26 @@ class OnBoarding extends StatelessWidget {
                   ],
                 ),
         ),
-        bottomNavigationBar: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            BottomNavigationBarGradient(),
-            Padding(
-              padding: EdgeInsets.only(bottom: 34.h),
-              child: TextButtomPopular(
-                title: "Continue",
-                backgroundColor: AppColors.watermelonRed,
-                foregroundColor: Colors.white,
-                onPressed: () {
-                  context.go(Routers.welcome, extra: {});
-                },
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.only(bottom: 20.h),
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              BottomNavigationBarGradient(),
+              Padding(
+                padding: EdgeInsets.only(bottom: 14.h),
+                child: TextButtomPopular(
+                  title: "Continue",
+                  backgroundColor: AppColors.watermelonRed,
+                  foregroundColor: Colors.white,
+                  onPressed: () {
+                    // context.read<AppThemeViewModel>().toggleTheme();
+                    context.push(Routers.welcome, extra: {});
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

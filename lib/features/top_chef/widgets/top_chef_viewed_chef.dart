@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-import 'package:recipe_app_ui_kit_food/data/models/home_model/top_chef_model.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
-import 'package:recipe_app_ui_kit_food/features/top_chef/manegers/top_chef_view_model.dart';
+
+import '../../../data/models/top_chef_models/top_chef_model.dart';
 
 class TopChefViewedChef extends StatefulWidget {
   const TopChefViewedChef({
@@ -23,13 +20,13 @@ class TopChefViewedChef extends StatefulWidget {
   final List<TopChefModel> vm;
   final int index, star;
 
-
   @override
   State<TopChefViewedChef> createState() => _TopChefViewedChefState();
 }
 
 class _TopChefViewedChefState extends State<TopChefViewedChef> {
   bool follow = false;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -51,6 +48,10 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                 height: 76.h,
                 decoration: BoxDecoration(
                   color: Colors.white,
+                  border: Border.all(
+                    color: AppColors.watermelonRed,
+                    width: 1.5,
+                  ),
                   borderRadius: BorderRadius.vertical(
                     bottom: Radius.circular(14.r),
                   ),
@@ -63,7 +64,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                   children: [
                     Text(
                       "${widget.vm[widget.index].firstName} ${widget.vm[widget.index].lastName}",
-                      style: AppStyles.w400s12b,
+                      style: AppStyles.w400s12,
                       maxLines: 1,
                     ),
                     Text(
@@ -90,12 +91,8 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                           children: [
                             TextButton(
                               style: TextButton.styleFrom(
-                                backgroundColor: follow
-                                    ? AppColors.pastelPink
-                                    : AppColors.watermelonRed,
-                                foregroundColor: follow
-                                    ? AppColors.rosePink
-                                    : Colors.white,
+                                backgroundColor: follow ? AppColors.pastelPink : AppColors.watermelonRed,
+                                foregroundColor: follow ? AppColors.rosePink : Colors.white,
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 2,
                                   vertical: 2,

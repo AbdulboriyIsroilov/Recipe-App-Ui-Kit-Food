@@ -28,7 +28,6 @@ class TopChefPage extends StatelessWidget {
             ..fetchTopChefThree(limit: 2, page: 3),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        backgroundColor: AppColors.backgroundColor,
         appBar: AppBarCommon(
           title: "Top Chef",
           onPressed: () {
@@ -57,6 +56,7 @@ class TopChefPage extends StatelessWidget {
                               style: AppStyles.w500s15wr,
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 ...List.generate(vm.topChefTwo.length, (index) {
                                   return TopChefViewedChef(

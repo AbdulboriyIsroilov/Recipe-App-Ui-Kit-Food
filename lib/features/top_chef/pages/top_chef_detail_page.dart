@@ -36,7 +36,6 @@ class TopChefDetailPage extends StatelessWidget {
               )
             : Scaffold(
                 extendBody: true,
-                backgroundColor: AppColors.backgroundColor,
                 appBar: AppBarCommon(
                   title: "@${vm.chefDetail.username}",
                   oneButtom: AppSvgies.share,
@@ -173,7 +172,7 @@ class TopChefDetailPage extends StatelessWidget {
                             ),
                             Text(
                               "Recipes",
-                              style: AppStyles.w400s12w,
+                              style: Theme.of(context).textTheme.titleLarge,
                             ),
                             Divider(
                               color: AppColors.watermelonRed,
@@ -184,7 +183,7 @@ class TopChefDetailPage extends StatelessWidget {
                       Consumer<CategoriesViewModel>(
                         builder: (context, vmd, child) => Expanded(
                           child: GridView.builder(
-                            padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 0),
+                            padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 126.h),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,

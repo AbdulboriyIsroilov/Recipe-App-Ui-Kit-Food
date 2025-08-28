@@ -1,6 +1,6 @@
 
 class AppSvgies {
-  static const String backArrow = "assets/Icons/back-arrow.svg";
+  static const backArrow = "assets/Icons/back-arrow.svg";
   static const String biigTick = "assets/Icons/big-tick.svg";
   static const String big = "assets/Icons/bin.svg";
   static const String categories = "assets/Icons/categories.svg";
@@ -31,5 +31,7 @@ class AppSvgies {
   static const String pichoq = "assets/Icons/pichoq.svg";
   static const String vilka = "assets/Icons/vilka.svg";
   static const String ptichkeKub = "assets/Icons/ptichkeKub.svg";
+  static const String menyu = "assets/Icons/menyu.svg";
+  static const String add = "assets/Icons/add.svg";
 
 }

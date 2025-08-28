@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/recipe_image_over.dart';
-import 'package:recipe_app_ui_kit_food/features/recipe/widgets/like.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/like.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/app_style.dart';
