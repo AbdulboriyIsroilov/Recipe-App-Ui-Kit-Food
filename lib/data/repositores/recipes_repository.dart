@@ -44,6 +44,7 @@ class RecipesRepository {
       (val) => Result.ok(ReviewsModel.fromJson(val as Map<String, dynamic>)),
     );
   }
+
   Future<Result<TrendingRecipeModel>> getTredingRecipe() async {
     var response = await _client.get("/recipes/trending-recipe");
     return response.fold(

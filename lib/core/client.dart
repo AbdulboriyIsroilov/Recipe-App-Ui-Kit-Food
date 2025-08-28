@@ -3,13 +3,6 @@ import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/router/router.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/result.dart';
 
-final dio = Dio(
-  BaseOptions(
-    baseUrl: "http://192.168.11.33:8888/api/v1",
-    validateStatus: (status) => true,
-  ),
-);
-
 class ApiClient {
   ApiClient({required Dio dio,
   }) : _dio = dio;

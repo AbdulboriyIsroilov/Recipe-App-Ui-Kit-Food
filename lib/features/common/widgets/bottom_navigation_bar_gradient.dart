@@ -11,7 +11,10 @@ class BottomNavigationBarGradient extends StatelessWidget {
       height: 126.h,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Theme.of(context).colorScheme.onInverseSurface, Colors.transparent],
+          colors: [
+            Theme.of(context).colorScheme.onInverseSurface,
+            Colors.transparent,
+          ],
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
         ),

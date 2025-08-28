@@ -25,7 +25,7 @@ import '../../features/on_boarding/pages/allergic_page.dart';
 import '../../features/reviews/pages/reviews_add_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.categoryPage,
+  initialLocation: Routers.profile,
 
   routes: <RouteBase>[
     GoRoute(

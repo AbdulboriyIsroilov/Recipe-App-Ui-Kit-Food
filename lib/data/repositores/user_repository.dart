@@ -17,10 +17,7 @@ class UsersRepository {
     );
   }
 
-  Future<Result<List<TopChefModel>>> getTopChef({
-    required int limit,
-    required int page,
-  }) async {
+  Future<Result<List<TopChefModel>>> getTopChef({required int limit, required int page}) async {
     var response = await _client.get<List>("/top-chefs/list?Page=$page&Limit=$limit");
     return response.fold(
       (error) => Result.error(error),
@@ -28,9 +25,7 @@ class UsersRepository {
     );
   }
 
-  Future<Result<ProfileModel>> getTopChefDetail({
-    required int id,
-  }) async {
+  Future<Result<ProfileModel>> getTopChefDetail({required int id}) async {
     var response = await _client.get("/auth/details/$id");
     return response.fold(
       (error) => Result.error(error),
