@@ -93,12 +93,12 @@ class RecipeImageDown extends StatelessWidget {
                               "${vm[index].rating}",
                               style: AppStyles.w400s12rp,
                             ),
-                            SvgPicture.asset(AppSvgies.star),
+                            SvgPicture.asset(AppSvgs.star),
                           ],
                         ),
                         Row(
                           children: [
-                            SvgPicture.asset(AppSvgies.clock),
+                            SvgPicture.asset(AppSvgs.clock),
                             Text(
                               "${vm[index].timeRequired} min",
                               style: AppStyles.w400s12rp,
@@ -114,7 +114,7 @@ class RecipeImageDown extends StatelessWidget {
             Positioned(
               top: 7.h,
               left: 132.w,
-              child: Like(icon: AppSvgies.heart),
+              child: Like(icon: AppSvgs.heart),
             ),
           ],
         ),

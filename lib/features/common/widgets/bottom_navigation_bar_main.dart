@@ -28,19 +28,19 @@ class BottomNavigationBarMain extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () => context.go(Routers.home),
-              icon: SvgPicture.asset(AppSvgies.home),
+              icon: SvgPicture.asset(AppSvgs.home),
             ),
             IconButton(
               onPressed: () => context.go(Routers.community),
-              icon: SvgPicture.asset(AppSvgies.community),
+              icon: SvgPicture.asset(AppSvgs.community),
             ),
             IconButton(
               onPressed: () => context.go(Routers.categoryPage),
-              icon: SvgPicture.asset(AppSvgies.categories),
+              icon: SvgPicture.asset(AppSvgs.categories),
             ),
             IconButton(
               onPressed: () => context.go(Routers.profile),
-              icon: SvgPicture.asset(AppSvgies.profile),
+              icon: SvgPicture.asset(AppSvgs.profile),
             ),
           ],
         ),

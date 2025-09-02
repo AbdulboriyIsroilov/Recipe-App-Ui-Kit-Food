@@ -79,13 +79,13 @@ class RecipeImageOver extends StatelessWidget {
                               "${vm[index].rating}",
                               style: AppStyles.w300s11rp,
                             ),
-                            SvgPicture.asset(AppSvgies.star),
+                            SvgPicture.asset(AppSvgs.star),
                           ],
                         ),
                         Row(
                           spacing: 6.w,
                           children: [
-                            SvgPicture.asset(AppSvgies.clock),
+                            SvgPicture.asset(AppSvgs.clock),
                             Text(
                               "${vm[index].timeRequired}min",
                               style: AppStyles.w300s11rp,

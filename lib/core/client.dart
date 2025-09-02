@@ -32,14 +32,12 @@ class ApiClient {
 
   Future<Result<T>> post<T>(
     String path, {
-    required Map<String, dynamic> data,
+    required Object data,
   }) async {
     try {
       final response = await _dio.post(
         path,
         data: data,
-        options: Options(
-        ),
       );
       if (response.statusCode == 401) {
         router.go(Routers.login);
@@ -47,9 +45,8 @@ class ApiClient {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Result.ok(response.data as T);
       }
-      // return Result.error(response.data);
-      return Result.error(Exception(response.data.toString()));
-
+      return Result.error(response.data);
+      // return Result.error(Exception(response.data.toString()));
     } on Exception catch (e) {
       return Result.error(e);
     }

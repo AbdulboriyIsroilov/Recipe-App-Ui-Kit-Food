@@ -93,7 +93,7 @@ class HomePageTrending extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.end,
                                         spacing: 6,
                                         children: [
-                                          SvgPicture.asset(AppSvgies.clock),
+                                          SvgPicture.asset(AppSvgs.clock),
                                           Text(
                                             "${vm.trendingRecipe.timeRequired}min",
                                             style: AppStyles.w400s12rp,
@@ -108,7 +108,7 @@ class HomePageTrending extends StatelessWidget {
                                             "${vm.trendingRecipe.rating}",
                                             style: AppStyles.w400s12rp,
                                           ),
-                                          SvgPicture.asset(AppSvgies.star),
+                                          SvgPicture.asset(AppSvgs.star),
                                         ],
                                       ),
                                     ],
@@ -132,7 +132,7 @@ class HomePageTrending extends StatelessWidget {
                           Positioned(
                             top: 7.h,
                             left: 322.w,
-                            child: Like(icon: AppSvgies.heart),
+                            child: Like(icon: AppSvgs.heart),
                           ),
                         ],
                       ),

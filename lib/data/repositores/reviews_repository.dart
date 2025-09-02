@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../core/client.dart';
@@ -23,7 +24,7 @@ class ReviewsRepository {
   }
 
   Future<Result<dynamic>> getAddReviews(Map<String, dynamic> data) async {
-    var response = await _client.post("/reviews/create", data: data);
+    var response = await _client.post("/reviews/create", data: FormData.fromMap(data));
     return response.fold(
       (error) => Result.error(error),
       (val) {

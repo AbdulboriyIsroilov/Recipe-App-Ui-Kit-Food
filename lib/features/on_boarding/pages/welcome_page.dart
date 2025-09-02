@@ -23,7 +23,7 @@ class WelcomePage extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: SvgPicture.asset(AppSvgies.backArrow),
+            icon: SvgPicture.asset(AppSvgs.backArrow),
           ),
         ),
         body: Consumer<CategoryViewModel>(

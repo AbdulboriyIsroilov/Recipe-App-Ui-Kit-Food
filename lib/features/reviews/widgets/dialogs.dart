@@ -9,7 +9,10 @@ import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popul
 class Dialogs extends StatelessWidget {
   const Dialogs({
     super.key,
+    required this.id,
   });
+
+  final int id;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class Dialogs extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            SvgPicture.asset(AppSvgies.ptichkeKub),
+            SvgPicture.asset(AppSvgs.ptichkeKub),
             SizedBox(
               width: 171.w,
               child: Text(

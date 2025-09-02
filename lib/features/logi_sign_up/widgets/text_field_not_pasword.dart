@@ -3,17 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 
-
 class TextFieldNotPasword extends StatelessWidget {
-  const   TextFieldNotPasword({
+  const TextFieldNotPasword({
     super.key,
     required this.controller,
     required this.text,
     required this.hint,
+    this.maxLine = 1,
   });
 
   final TextEditingController controller;
   final String text, hint;
+  final int maxLine;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +29,9 @@ class TextFieldNotPasword extends StatelessWidget {
         TextField(
           controller: controller,
           style: AppStyles.w500s16,
+          maxLines: maxLine,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 36.w),
+            contentPadding: EdgeInsets.symmetric(horizontal: 36.w,vertical: 12.h),
             constraints: BoxConstraints(
               minWidth: 357.w,
               maxWidth: 357.w,
@@ -37,7 +39,7 @@ class TextFieldNotPasword extends StatelessWidget {
             filled: true,
             fillColor: AppColors.pastelPink,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18),
+              borderRadius: BorderRadius.circular(18.r),
               borderSide: BorderSide.none,
             ),
             hintText: hint,

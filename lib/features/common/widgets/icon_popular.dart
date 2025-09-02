@@ -7,7 +7,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 class IconPopular extends StatelessWidget {
   const IconPopular({
     super.key,
-    this.icon = AppSvgies.notification,
+    this.icon = AppSvgs.notification,
     this.width = 28,
     this.height = 28,
     this.onPressed = _defaultOnPressed,

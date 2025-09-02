@@ -38,8 +38,8 @@ class TopChefDetailPage extends StatelessWidget {
                 extendBody: true,
                 appBar: AppBarCommon(
                   title: "@${vm.chefDetail.username}",
-                  oneButtom: AppSvgies.share,
-                  twoButtom: AppSvgies.threeDots,
+                  oneButtom: AppSvgs.share,
+                  twoButtom: AppSvgs.threeDots,
                   onPressed: () {
                     Navigator.of(context).pop();
                   },

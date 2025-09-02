@@ -83,7 +83,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                               "${widget.star}",
                               style: AppStyles.w400s12wr,
                             ),
-                            SvgPicture.asset(AppSvgies.star),
+                            SvgPicture.asset(AppSvgs.star),
                           ],
                         ),
                         Row(
@@ -117,7 +117,7 @@ class _TopChefViewedChefState extends State<TopChefViewedChef> {
                                 borderRadius: BorderRadius.circular(5.64.r),
                               ),
                               padding: EdgeInsets.all(1),
-                              child: SvgPicture.asset(AppSvgies.share),
+                              child: SvgPicture.asset(AppSvgs.share),
                             ),
                           ],
                         ),

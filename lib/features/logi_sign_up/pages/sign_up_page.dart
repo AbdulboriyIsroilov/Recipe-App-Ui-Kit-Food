@@ -5,13 +5,12 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
-import 'package:recipe_app_ui_kit_food/data/models/Login_model/sign_up_model.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/logi_sign_up/manegers/sign_up_view_model.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_svg.dart';
-import '../../../core/utils/themes.dart';
+import '../../../data/models/auth_models/sign_up_model.dart';
 import '../../common/widgets/model.dart';
 import '../widgets/text_field_not_pasword.dart';
 import '../widgets/text_field_pasword.dart';
@@ -63,7 +62,7 @@ class _SignUpPageState extends State<SignUpPage> {
             onPressed: () {
               context.go(Routers.login);
             },
-            icon: SvgPicture.asset(AppSvgies.backArrow),
+            icon: SvgPicture.asset(AppSvgs.backArrow),
           ),
         ),
         body: Align(

@@ -12,15 +12,17 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.bottom,
     this.onPressed = _defaultPressed,
-    this.oneButtom = AppSvgies.notification,
-    this.twoButtom = AppSvgies.search,
+    this.oneButtom = AppSvgs.notification,
+    this.twoButtom = AppSvgs.search,
     this.oneOnPressed = _defaultPressed,
     this.twoOnPressed = _defaultPressed,
+    this.action = true,
   });
 
   static void _defaultPressed() {}
 
   final String title;
+  final bool action;
   final PreferredSizeWidget? bottom;
   final VoidCallback onPressed, oneOnPressed, twoOnPressed;
   final String oneButtom, twoButtom;
@@ -32,7 +34,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
       leading: Center(
         child: IconButton(
           onPressed: onPressed,
-          icon: SvgPicture.asset(AppSvgies.backArrow),
+          icon: SvgPicture.asset(AppSvgs.backArrow),
         ),
       ),
       centerTitle: true,
@@ -40,34 +42,36 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: AppStyles.w600s20wr,
       ),
-      actions: [
-        SizedBox(
-          width: 28.w,
-          height: 28.h,
-          child: IconButton(
-            padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-            style: IconButton.styleFrom(
-              backgroundColor: AppColors.pastelPink,
-            ),
-            onPressed: oneOnPressed,
-            icon: SvgPicture.asset(oneButtom),
-          ),
-        ),
-        SizedBox(width: 5),
-        SizedBox(
-          width: 28.w,
-          height: 28.h,
-          child: IconButton(
-            padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-            style: IconButton.styleFrom(
-              backgroundColor: AppColors.pastelPink,
-            ),
-            onPressed: twoOnPressed,
-            icon: SvgPicture.asset(twoButtom),
-          ),
-        ),
-        SizedBox(width: 37.w),
-      ],
+      actions: action
+          ? [
+              SizedBox(
+                width: 28.w,
+                height: 28.h,
+                child: IconButton(
+                  padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                  style: IconButton.styleFrom(
+                    backgroundColor: AppColors.pastelPink,
+                  ),
+                  onPressed: oneOnPressed,
+                  icon: SvgPicture.asset(oneButtom),
+                ),
+              ),
+              SizedBox(width: 5),
+              SizedBox(
+                width: 28.w,
+                height: 28.h,
+                child: IconButton(
+                  padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                  style: IconButton.styleFrom(
+                    backgroundColor: AppColors.pastelPink,
+                  ),
+                  onPressed: twoOnPressed,
+                  icon: SvgPicture.asset(twoButtom),
+                ),
+              ),
+              SizedBox(width: 37.w),
+            ]
+          : [],
       bottom: bottom,
     );
   }

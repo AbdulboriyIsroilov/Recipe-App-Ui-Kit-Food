@@ -58,7 +58,7 @@ class ReviewsAddReview extends StatelessWidget {
                               index,
                             ) {
                               return SvgPicture.asset(
-                                AppSvgies.starFilled,
+                                AppSvgs.starFilled,
                               );
                             },
                           ),
@@ -68,7 +68,7 @@ class ReviewsAddReview extends StatelessWidget {
                               index,
                             ) {
                               return SvgPicture.asset(
-                                AppSvgies.starEmpty,
+                                AppSvgs.starEmpty,
                               );
                             },
                           ),

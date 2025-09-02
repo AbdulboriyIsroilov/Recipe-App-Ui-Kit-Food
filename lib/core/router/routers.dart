@@ -7,32 +7,34 @@ class Routers {
 
   static const profile = "/profile";
 
-  static const topChefs = "/topChefs";
-  static const topChefDetail = "/topChefDetail";
+  static const topChefs = "/top-chefs";
+  static const topChefDetail = "/top-chef-detail";
 
-  static const trendingRecipes = "/trendingRecipes";
+  static const trendingRecipes = "/trending-recipes";
 
-  static const forgotPassword = "/forgotPassword";
-  static const enterOTP = "/EnterOTP";
+  static const forgotPassword = "/forgot-password";
+  static const enterOTP = "/enter-o-t-p";
 
-  static const login = "/Login";
+  static const login = "/login";
   static const signUp = "/signUp";
 
 
-  static const onBoarding = "/onBoarding";
+  static const onboarding = "/onboarding";
   static const welcome = "/welcome";
 
-  static const onBoardingCookingLevelPage = "/onBoardingCookingLevel";
-  static const onBoardingPreferencesPage = "/onBoardingPreferences";
-  static const onBoardingAllergicPage = "/onBoardingAllergicPage";
+  static const onBoardingCookingLevelPage = "/onboarding-cooking-level";
+  static const onBoardingPreferencesPage = "/onboarding-preferences";
+  static const onBoardingAllergicPage = "/onboarding-allergic-page";
 
   static const categoryPage = "/resipe";
-  static const recipeListPage = "/resipeList";
-  static const recipeDetailPage = "/resipeDetail";
+  static const recipeListPage = "/resipe-list";
+  static const recipeDetailPage = "/resipe-detail";
 
-  static const reviewsPage = "/reviewsPage";
-  static const reviewsAddPage = "/reviewsAddPage";
+  static const reviewsPage = "/reviews-page";
+  static const reviewsAddPage = "/reviews-add-page";
 
   static const community = "/community-page";
+
+  static const addRecipe = "/add_recipe";
 
 }

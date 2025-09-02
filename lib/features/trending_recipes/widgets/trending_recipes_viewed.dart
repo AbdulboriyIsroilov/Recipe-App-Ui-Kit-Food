@@ -71,7 +71,7 @@ class TrendingRecipesViewed extends StatelessWidget {
                               Row(
                                 spacing: 6,
                                 children: [
-                                  SvgPicture.asset(AppSvgies.clock),
+                                  SvgPicture.asset(AppSvgs.clock),
                                   Text(
                                     "${vm.details.timeRequired}min",
                                     style: AppStyles.w400s12wr,
@@ -85,7 +85,7 @@ class TrendingRecipesViewed extends StatelessWidget {
                                     "${vm.details.rating}",
                                     style: AppStyles.w400s12wr,
                                   ),
-                                  SvgPicture.asset(AppSvgies.star),
+                                  SvgPicture.asset(AppSvgs.star),
                                 ],
                               ),
                             ],

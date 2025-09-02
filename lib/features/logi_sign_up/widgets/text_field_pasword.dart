@@ -61,7 +61,7 @@ class _TextFieldPaswordState extends State<TextFieldPasword> {
               },
               icon: passw
                   ? Icon(Icons.remove_red_eye_outlined)
-                  : SvgPicture.asset(AppSvgies.password),
+                  : SvgPicture.asset(AppSvgs.password),
             ),
           ),
         ),

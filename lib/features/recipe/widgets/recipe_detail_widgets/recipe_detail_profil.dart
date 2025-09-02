@@ -75,7 +75,7 @@ class _RecipeDetailProfilState extends State<RecipeDetailProfil> {
                 ),
               ),
             ),
-            SvgPicture.asset(AppSvgies.threeDots),
+            SvgPicture.asset(AppSvgs.threeDots),
           ],
         ),
       ],

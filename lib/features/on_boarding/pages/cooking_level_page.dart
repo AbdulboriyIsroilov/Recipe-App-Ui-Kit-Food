@@ -24,7 +24,7 @@ class CookingLevelPage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: SvgPicture.asset(AppSvgies.backArrow),
+          icon: SvgPicture.asset(AppSvgs.backArrow),
         ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(15),

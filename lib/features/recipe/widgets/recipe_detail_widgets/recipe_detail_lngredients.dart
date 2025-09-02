@@ -30,7 +30,7 @@ class RecipeDetailLngredients extends StatelessWidget {
                   style: AppStyles.w600s20wr,
                 ),
                 SizedBox(),
-                SvgPicture.asset(AppSvgies.clock),
+                SvgPicture.asset(AppSvgs.clock),
                 Text(
                   "${vm.timeRequired}min",
                   style: Theme.of(context).textTheme.titleLarge,

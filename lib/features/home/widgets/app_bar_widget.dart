@@ -32,9 +32,9 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
       ),
       actionsPadding: EdgeInsetsGeometry.only(bottom: 27.h, right: 38.w),
       actions: [
-        Like(icon: AppSvgies.notification),
+        Like(icon: AppSvgs.notification),
         SizedBox(width: 5.w),
-        Like(icon: AppSvgies.search),
+        Like(icon: AppSvgs.search),
       ],
       bottom: bottom,
     );

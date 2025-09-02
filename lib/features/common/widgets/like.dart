@@ -7,7 +7,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 class Like extends StatefulWidget {
   const Like({
     super.key,
-    this.icon = AppSvgies.like,
+    this.icon = AppSvgs.like,
     this.width = 28,
     this.height = 28,
   });

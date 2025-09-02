@@ -19,7 +19,6 @@ class ReviewsAddViewModel extends ChangeNotifier {
   final ReviewsRepository _reviewsRepo;
   late ReviewsAddModel commentsAdd;
   String? errorMassege,errorm;
-  String token = "";
   bool loading = true;
 
   Future<void> fetchReviewDetailComment({required int categoryId}) async {
@@ -59,7 +58,6 @@ class ReviewsAddViewModel extends ChangeNotifier {
         onError();
       },
       (success) {
-        token = success;
         onSuccess();
       },
     );

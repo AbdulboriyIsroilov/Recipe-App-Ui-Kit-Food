@@ -34,8 +34,8 @@ class RecipeDetailPage extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          oneButtom: AppSvgies.heart,
-          twoButtom: AppSvgies.share,
+          oneButtom: AppSvgs.heart,
+          twoButtom: AppSvgs.share,
         ),
         body: Consumer<RecipeDetailViewModel>(
           builder: (context, vm, child) => vm.loading

@@ -87,7 +87,7 @@ class TrendingRecipesDetail extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   SvgPicture.asset(
-                                    AppSvgies.clock,
+                                    AppSvgs.clock,
                                   ),
                                   Text(
                                     "${vm.timeRequired}min",
@@ -103,7 +103,7 @@ class TrendingRecipesDetail extends StatelessWidget {
                                     vm.difficulty,
                                   ),
                                   SvgPicture.asset(
-                                    AppSvgies.reyting,
+                                    AppSvgs.reyting,
                                   ),
                                 ],
                               ),
@@ -115,7 +115,7 @@ class TrendingRecipesDetail extends StatelessWidget {
                                     "${vm.rating}",
                                   ),
                                   SvgPicture.asset(
-                                    AppSvgies.star,
+                                    AppSvgs.star,
                                   ),
                                 ],
                               ),

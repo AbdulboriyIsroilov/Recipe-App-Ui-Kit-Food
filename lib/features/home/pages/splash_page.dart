@@ -30,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
           });
         } else {
           Future.delayed(Duration(seconds: 3), () {
-            context.go(Routers.onBoarding);
+            context.go(Routers.onboarding);
           });
         }
       },
@@ -56,8 +56,8 @@ class _SplashPageState extends State<SplashPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 12.78,
                 children: [
-                  SvgPicture.asset(AppSvgies.pichoq),
-                  SvgPicture.asset(AppSvgies.vilka),
+                  SvgPicture.asset(AppSvgs.pichoq),
+                  SvgPicture.asset(AppSvgs.vilka),
                 ],
               ),
             ),

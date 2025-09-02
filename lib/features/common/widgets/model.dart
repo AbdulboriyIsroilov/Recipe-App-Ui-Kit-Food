@@ -52,7 +52,7 @@ class Model extends StatelessWidget {
                 color: AppColors.pastelPink,
               ),
               child: SvgPicture.asset(
-                AppSvgies.profile,
+                AppSvgs.profile,
                 colorFilter: ColorFilter.mode(
                   AppColors.watermelonRed,
                   BlendMode.modulate,

@@ -7,9 +7,9 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/reviews/manegers/reviews_add_view_model.dart';
-import 'package:recipe_app_ui_kit_food/features/reviews/widgets/dialogs.dart';
 
 import '../../../data/models/reviews_model/reviews_create_model.dart';
+import 'dialogs.dart';
 
 class AddReviews extends StatefulWidget {
   const AddReviews({
@@ -55,7 +55,7 @@ class _AddReviewsState extends State<AddReviews> {
                       icon: SvgPicture.asset(
                         width: 28.57.w,
                         height: 28.57.h,
-                        index < selectedStars ? AppSvgies.starFilled : AppSvgies.starEmpty,
+                        index < selectedStars ? AppSvgs.starFilled : AppSvgs.starEmpty,
                         colorFilter: ColorFilter.mode(
                           AppColors.watermelonRed,
                           BlendMode.modulate,
@@ -188,7 +188,7 @@ class _AddReviewsState extends State<AddReviews> {
                       showDialog(
                         context: context,
                         builder: (context) {
-                          return Dialogs();
+                          return Dialogs(id: widget.id,);
                         },
                       );
                     },

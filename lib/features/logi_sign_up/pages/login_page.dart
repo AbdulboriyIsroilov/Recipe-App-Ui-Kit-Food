@@ -6,11 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-import 'package:recipe_app_ui_kit_food/data/models/Login_model/login_model.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/logi_sign_up/manegers/login_view_model.dart';
 
 import '../../../core/utils/app_colors.dart';
+import '../../../data/models/auth_models/login_model.dart';
 import '../../common/widgets/model.dart';
 import '../widgets/text_field_not_pasword.dart';
 import '../widgets/text_field_pasword.dart';
@@ -138,28 +138,28 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          AppSvgies.instagram,
+                          AppSvgs.instagram,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).colorScheme.inversePrimary,
                             BlendMode.modulate,
                           ),
                         ),
                         SvgPicture.asset(
-                          AppSvgies.google,
+                          AppSvgs.google,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).colorScheme.inversePrimary,
                             BlendMode.modulate,
                           ),
                         ),
                         SvgPicture.asset(
-                          AppSvgies.facebook,
+                          AppSvgs.facebook,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).colorScheme.inversePrimary,
                             BlendMode.modulate,
                           ),
                         ),
                         SvgPicture.asset(
-                          AppSvgies.vatsub,
+                          AppSvgs.vatsub,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).colorScheme.inversePrimary,
                             BlendMode.modulate,

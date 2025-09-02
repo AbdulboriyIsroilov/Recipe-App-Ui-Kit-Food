@@ -71,7 +71,7 @@ class ReviewsComments extends StatelessWidget {
                           index,
                         ) {
                           return SvgPicture.asset(
-                            AppSvgies.starFilled,
+                            AppSvgs.starFilled,
                             colorFilter: ColorFilter.mode(
                               AppColors.watermelonRed,
                               BlendMode.modulate,
@@ -85,7 +85,7 @@ class ReviewsComments extends StatelessWidget {
                           index,
                         ) {
                           return SvgPicture.asset(
-                            AppSvgies.starEmpty,
+                            AppSvgs.starEmpty,
                             colorFilter: ColorFilter.mode(
                               AppColors.watermelonRed,
                               BlendMode.modulate,

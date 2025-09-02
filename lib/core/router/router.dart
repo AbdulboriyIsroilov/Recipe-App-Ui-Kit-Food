@@ -19,13 +19,14 @@ import 'package:recipe_app_ui_kit_food/features/top_chef/pages/top_chef_detail_p
 import 'package:recipe_app_ui_kit_food/features/top_chef/pages/top_chef_page.dart';
 import 'package:recipe_app_ui_kit_food/features/trending_recipes/pages/trending_recipes_page.dart';
 
+import '../../features/add_recipe/pages/add_recipe_page.dart';
 import '../../features/home/pages/home_page.dart';
 import '../../features/home/pages/splash_page.dart';
 import '../../features/on_boarding/pages/allergic_page.dart';
 import '../../features/reviews/pages/reviews_add_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.profile,
+  initialLocation: Routers.addRecipe,
 
   routes: <RouteBase>[
     GoRoute(
@@ -43,6 +44,10 @@ final router = GoRouter(
     GoRoute(
       path: Routers.profile,
       builder: (context, state) => ProfilePage(),
+    ),
+    GoRoute(
+      path: Routers.addRecipe,
+      builder: (context, state) => AddRecipe(),
     ),
     GoRoute(
       path: Routers.topChefs,
@@ -73,7 +78,7 @@ final router = GoRouter(
       builder: (context, state) => SignUpPage(),
     ),
     GoRoute(
-      path: Routers.onBoarding,
+      path: Routers.onboarding,
       builder: (context, state) => OnBoarding(),
     ),
     GoRoute(

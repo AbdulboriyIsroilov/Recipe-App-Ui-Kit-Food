@@ -21,79 +21,77 @@ class ProfilePage extends StatelessWidget {
       builder: (context, child) => Scaffold(
         extendBody: true,
         body: Consumer<ProfileViewModel>(
-          builder: (context, vm, child) => SafeArea(
-            child: CustomScrollView(
-              slivers: [
-                SliverPadding(
-                  padding: EdgeInsets.fromLTRB(37.w, 13.71.h, 37.w, 17.71.h),
-                  sliver: SliverPersistentHeader(
-                    pinned: true,
-                    delegate: MyPersistentHeaderDelegate(),
-                  ),
+          builder: (context, vm, child) => CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: EdgeInsets.fromLTRB(37.w, 56.h, 37.w, 17.71.h),
+                sliver: SliverPersistentHeader(
+                  pinned: true,
+                  delegate: MyPersistentHeaderDelegate(),
                 ),
-                SliverToBoxAdapter(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Recipe",
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
+              ),
+              SliverToBoxAdapter(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Recipe",
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
-                          SizedBox(
-                            width: 162.5.w,
-                            child: Divider(
-                              color: AppColors.watermelonRed,
-                              height: 0,
-                            ),
+                        ),
+                        SizedBox(
+                          width: 162.5.w,
+                          child: Divider(
+                            color: AppColors.watermelonRed,
+                            height: 0,
                           ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Favorites",
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 162.5.w,
-                            child: Divider(
-                              color: AppColors.watermelonRed,
-                              height: 0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SliverPadding(
-                  padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 0),
-                  sliver: SliverGrid(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 18.w,
-                      mainAxisSpacing: 31.h,
-                      mainAxisExtent: 226.h,
+                        ),
+                      ],
                     ),
-                    delegate: SliverChildBuilderDelegate(
-                      childCount: vm.recipes.length,
-                      (context, index) => RecipeImageOver(
-                        vm: vm.recipes,
-                        index: index,
-                      ),
+                    Column(
+                      children: [
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Favorites",
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 162.5.w,
+                          child: Divider(
+                            color: AppColors.watermelonRed,
+                            height: 0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SliverPadding(
+                padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 0),
+                sliver: SliverGrid(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 18.w,
+                    mainAxisSpacing: 31.h,
+                    mainAxisExtent: 226.h,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    childCount: vm.recipes.length,
+                    (context, index) => RecipeImageOver(
+                      vm: vm.recipes,
+                      index: index,
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         bottomNavigationBar: Stack(

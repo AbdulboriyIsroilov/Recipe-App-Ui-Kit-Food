@@ -55,13 +55,13 @@ class RecipeDetailVideoName extends StatelessWidget {
                     child: Row(
                       spacing: 4,
                       children: [
-                        SvgPicture.asset(AppSvgies.starFilled),
+                        SvgPicture.asset(AppSvgs.starFilled),
                         Text(
                           "${vm.rating}",
                           style: AppStyles.w400s12w,
                         ),
                         SizedBox(),
-                        SvgPicture.asset(AppSvgies.reviews),
+                        SvgPicture.asset(AppSvgs.reviews),
                         Text(
                           "2.273",
                           style: AppStyles.w400s12w,
@@ -101,7 +101,7 @@ class RecipeDetailVideoName extends StatelessWidget {
                 color: AppColors.watermelonRed,
                 shape: BoxShape.circle,
               ),
-              child: SvgPicture.asset(AppSvgies.play),
+              child: SvgPicture.asset(AppSvgs.play),
             ),
           ),
         ],

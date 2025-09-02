@@ -92,7 +92,7 @@ class CommunityColumnRecipies extends StatelessWidget {
                               Row(
                                 spacing: 5.w,
                                 children: [
-                                  SvgPicture.asset(AppSvgies.starFilled),
+                                  SvgPicture.asset(AppSvgs.starFilled),
                                   Text(
                                     "${vm[index].rating}",
                                     style: AppStyles.w400s12w,
@@ -118,7 +118,7 @@ class CommunityColumnRecipies extends StatelessWidget {
                                   Row(
                                     spacing: 6.w,
                                     children: [
-                                      SvgPicture.asset(AppSvgies.clock),
+                                      SvgPicture.asset(AppSvgs.clock),
                                       Text(
                                         "${vm[index].timeRequired} min",
                                         style: AppStyles.w400s12w,
@@ -132,7 +132,7 @@ class CommunityColumnRecipies extends StatelessWidget {
                                         "${vm[index].reviewsCount}",
                                         style: AppStyles.w400s12w,
                                       ),
-                                      SvgPicture.asset(AppSvgies.reviews),
+                                      SvgPicture.asset(AppSvgs.reviews),
                                     ],
                                   ),
                                 ],
