@@ -10,7 +10,7 @@ class CategoriyDetail extends StatelessWidget {
   const CategoriyDetail({
     super.key, required this.categoriy,
   });
- final CategoriyModel categoriy;
+ final CategoryModel categoriy;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

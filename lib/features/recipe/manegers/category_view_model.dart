@@ -9,7 +9,7 @@ class CategoryViewModel extends ChangeNotifier {
   }
 
   final CategoriesRepository _recipeRepo;
-  List<CategoriyModel> recipe = [];
+  List<CategoryModel> recipe = [];
   bool loading = true;
   String? errorMassege;
 

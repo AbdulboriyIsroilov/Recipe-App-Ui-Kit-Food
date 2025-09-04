@@ -32,7 +32,7 @@ class HomeViewModel extends ChangeNotifier {
       topChefLoading = true,
       recentlyLoading = true;
 
-  List<CategoriyModel> categoriy = [];
+  List<CategoryModel> categoriy = [];
   Future<void> fetchCategoriy() async {
     categoryLoading = true;
     notifyListeners();

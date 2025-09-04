@@ -7,12 +7,12 @@ class CategoriesRepository {
 
   final ApiClient _client;
 
-  Future<Result<List<CategoriyModel>>> getCategory() async {
+  Future<Result<List<CategoryModel>>> getCategory() async {
     var response = await _client.get<List>("/categories/list");
     return response.fold(
       ((error) => Result.error(error)),
       (onSuccess) => Result.ok(
-        onSuccess.map((item) => CategoriyModel.fromJson(item)).toList(),
+        onSuccess.map((item) => CategoryModel.fromJson(item)).toList(),
       ),
     );
   }
