@@ -18,5 +18,8 @@ class AppList {
       "title":"Lorem ipsum dolor sit amet consectetur. Auctor pretium cras id dui pellentesque ornare. Quisque malesuada."
     },
   ];
+  static const List<String> settingsArrow = [
+    "Notification","Help Center","Privacy Policy","Language",
+  ];
 
 }

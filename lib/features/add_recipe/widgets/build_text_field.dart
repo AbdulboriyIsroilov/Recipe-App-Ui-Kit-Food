@@ -29,9 +29,9 @@ class buildTextField extends StatelessWidget {
           fillColor: AppColors.pastelPink,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(19.r),
+            borderSide: BorderSide.none
           ),
           constraints: BoxConstraints(
-            minWidth: 224.w,
             maxWidth: maxWidth.w,
           ),
         ),

@@ -11,9 +11,6 @@ import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popul
 import 'package:recipe_app_ui_kit_food/features/profile/managers/profile_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/top_chef/widgets/top_chef_follow.dart';
 
-import '../../../core/utils/themes.dart';
-import '../../common/manegers/app_theme_view_model.dart';
-
 class Profile192 extends StatelessWidget {
   const Profile192({
     super.key,
@@ -77,7 +74,7 @@ class Profile192 extends StatelessWidget {
                           IconPopular(
                             icon: AppSvgs.menyu,
                             onPressed: () {
-                              context.read<AppThemeViewModel>().toggleTheme();
+                              context.push(Routers.settings);
                             },
                           ),
                         ],

@@ -6,6 +6,8 @@ class Routers {
   static const myRecipe = "/my-recipe";
 
   static const profile = "/profile";
+  static const settings = "/settings";
+  static const notification = "/Notification";
 
   static const topChefs = "/top-chefs";
   static const topChefDetail = "/top-chef-detail";

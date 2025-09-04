@@ -8,12 +8,16 @@ class Like extends StatefulWidget {
   const Like({
     super.key,
     this.icon = AppSvgs.like,
-    this.width = 28,
-    this.height = 28,
+    this.size = 28,
+    this.backgroundFalse = AppColors.pastelPink,
+    this.backgroundTrue = AppColors.watermelonRed,
+    this.colorFilterFalse = AppColors.rosePink,
+    this.colorFilterTrue = Colors.white,
   });
 
   final String icon;
-  final double width, height;
+  final double size;
+  final Color backgroundFalse, backgroundTrue, colorFilterFalse, colorFilterTrue;
 
   @override
   State<Like> createState() => _LikeState();
@@ -25,12 +29,12 @@ class _LikeState extends State<Like> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width.w,
-      height: widget.height.h,
+      width: widget.size.w,
+      height: widget.size.h,
       child: IconButton(
         padding: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
         style: IconButton.styleFrom(
-          backgroundColor: like ? AppColors.watermelonRed : AppColors.pastelPink,
+          backgroundColor: like ? widget.backgroundTrue : widget.backgroundFalse,
         ),
         onPressed: () {
           like = !like;
@@ -38,9 +42,11 @@ class _LikeState extends State<Like> {
         },
         icon: SvgPicture.asset(
           widget.icon,
+          width: 12.5.w,
+          height: 18.75.h,
           colorFilter: ColorFilter.mode(
-            like ? Colors.white : AppColors.rosePink,
-            BlendMode.modulate,
+            like ? widget.colorFilterTrue : widget.colorFilterFalse,
+            BlendMode.srcIn,
           ),
         ),
       ),

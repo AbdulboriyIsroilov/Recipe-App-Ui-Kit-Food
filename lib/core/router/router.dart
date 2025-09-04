@@ -10,7 +10,9 @@ import 'package:recipe_app_ui_kit_food/features/on_boarding/pages/cooking_level_
 import 'package:recipe_app_ui_kit_food/features/on_boarding/pages/cuisines_page.dart';
 import 'package:recipe_app_ui_kit_food/features/on_boarding/pages/on_boarding.dart';
 import 'package:recipe_app_ui_kit_food/features/on_boarding/pages/welcome_page.dart';
+import 'package:recipe_app_ui_kit_food/features/profile/pages/notification_page.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/pages/profile_page.dart';
+import 'package:recipe_app_ui_kit_food/features/profile/pages/settings_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_detail_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/recipe_list_page.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/pages/categoty_page.dart';
@@ -26,7 +28,7 @@ import '../../features/on_boarding/pages/allergic_page.dart';
 import '../../features/reviews/pages/reviews_add_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.addRecipe,
+  initialLocation: Routers.settings,
 
   routes: <RouteBase>[
     GoRoute(
@@ -44,6 +46,14 @@ final router = GoRouter(
     GoRoute(
       path: Routers.profile,
       builder: (context, state) => ProfilePage(),
+    ),
+    GoRoute(
+      path: Routers.settings,
+      builder: (context, state) => SettingsPage(),
+    ),
+    GoRoute(
+      path: Routers.notification,
+      builder: (context, state) => NotificationPage(),
     ),
     GoRoute(
       path: Routers.addRecipe,

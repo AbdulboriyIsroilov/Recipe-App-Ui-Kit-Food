@@ -5,7 +5,6 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/recipe_image_over.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/managers/profile_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/widgets/profile192.dart';
-import 'package:recipe_app_ui_kit_food/features/profile/widgets/profile63.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/widgets/profile97.dart';
 
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
@@ -24,7 +23,7 @@ class ProfilePage extends StatelessWidget {
           builder: (context, vm, child) => CustomScrollView(
             slivers: [
               SliverPadding(
-                padding: EdgeInsets.fromLTRB(37.w, 56.h, 37.w, 17.71.h),
+                padding: EdgeInsets.fromLTRB(37.w, 56.h, 37.w, 0),
                 sliver: SliverPersistentHeader(
                   pinned: true,
                   delegate: MyPersistentHeaderDelegate(),
@@ -111,9 +110,8 @@ class MyPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
     return LayoutBuilder(
       builder: (context, constraints) {
         double h = constraints.maxHeight;
-        if (h > 145.h) return Profile192();
-        if (h > 63.h) return Profile97();
-        return Profile63();
+        if (h > 191.6.h) return ColoredBox(color: Theme.of(context).colorScheme.onInverseSurface,child: Profile192());
+        return ColoredBox(color: Theme.of(context).colorScheme.onInverseSurface,child: Profile97());
       },
     );
   }
@@ -128,7 +126,7 @@ class MyPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
 
   // 192
   @override
-  double get minExtent => 63.h;
+  double get minExtent => 97.h;
 
   // 63
   @override

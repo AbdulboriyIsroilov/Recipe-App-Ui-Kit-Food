@@ -15,6 +15,7 @@ class AppSvgs {
   static const notificationStar = "assets/Icons/notification-star.svg";
   static const password = "assets/Icons/password.svg";
   static const play = "assets/Icons/play.svg";
+  static const playEmpty = "assets/Icons/play_empty.svg";
   static const profile = "assets/Icons/profile.svg";
   static const reviews = "assets/Icons/reviews.svg";
   static const search = "assets/Icons/search.svg";
@@ -33,5 +34,9 @@ class AppSvgs {
   static const ptichkeKub = "assets/Icons/ptichkeKub.svg";
   static const menyu = "assets/Icons/menyu.svg";
   static const add = "assets/Icons/add.svg";
+  static const admin = "assets/Icons/admin.svg";
+  static const logOut = "assets/Icons/log_out.svg";
+  static const privacyPolicy = "assets/Icons/privacy_policy.svg";
+  static const theme = "assets/Icons/theme.svg";
 
 }

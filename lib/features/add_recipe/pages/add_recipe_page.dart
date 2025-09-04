@@ -25,18 +25,28 @@ class _AddRecipeState extends State<AddRecipe> {
 
   List<TextEditingController> ingredientControllers = [];
   List<TextEditingController> instructionControllers = [];
+  List<TextEditingController> amountControllers = [];
 
   @override
   void initState() {
     super.initState();
     ingredientControllers = List.generate(5, (i) => TextEditingController());
     instructionControllers = List.generate(5, (i) => TextEditingController());
+    amountControllers = List.generate(5, (i) => TextEditingController());
   }
 
-  Widget _buildIngredientField(TextEditingController controller) {
+  Widget _buildIngredientField(TextEditingController controller, TextEditingController amtController) {
     return Row(
       spacing: 7.w,
       children: [
+        SvgPicture.asset(AppSvgs.threeDots),
+        SizedBox(
+          width: 70.w,
+          child: buildTextField(
+            hint: "Amt",
+            controller: amtController,
+          ),
+        ),
         Expanded(
           child: buildTextField(hint: "Ingredient", controller: controller),
         ),
@@ -44,7 +54,7 @@ class _AddRecipeState extends State<AddRecipe> {
           style: IconButton.styleFrom(
             backgroundColor: AppColors.pastelPink,
             shape: CircleBorder(),
-            padding: EdgeInsets.all(15.w)
+            padding: EdgeInsets.all(15.w),
           ),
           icon: SvgPicture.asset(AppSvgs.bin),
           onPressed: () {
@@ -61,19 +71,21 @@ class _AddRecipeState extends State<AddRecipe> {
     return Row(
       spacing: 7.w,
       children: [
+        SvgPicture.asset(AppSvgs.threeDots),
         Expanded(
           child: buildTextField(hint: "Instruction", controller: controller),
         ),
         IconButton(
           style: IconButton.styleFrom(
-              backgroundColor: AppColors.pastelPink,
-              shape: CircleBorder(),
-              padding: EdgeInsets.all(15.w)
+            backgroundColor: AppColors.pastelPink,
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(15.w),
           ),
           icon: SvgPicture.asset(AppSvgs.bin),
           onPressed: () {
             setState(() {
-              instructionControllers.remove(controller);            });
+              instructionControllers.remove(controller);
+            });
           },
         ),
       ],
@@ -87,6 +99,9 @@ class _AddRecipeState extends State<AddRecipe> {
       appBar: AppBarCommon(
         title: "Create Recipe",
         action: false,
+        onPressed: (){
+          Navigator.pop(context);
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.fromLTRB(35.w, 26.h, 35.w, 126.h),
@@ -133,12 +148,24 @@ class _AddRecipeState extends State<AddRecipe> {
             SizedBox(height: 12),
             Text("Ingredients", style: Theme.of(context).textTheme.bodyMedium),
             SizedBox(height: 8),
-            Column(children: ingredientControllers.map(_buildIngredientField).toList()),
+            Column(
+              children: List.generate(
+                ingredientControllers.length,
+                (index) {
+                  return _buildIngredientField(
+                    ingredientControllers[index],
+                    amountControllers[index],
+                  );
+                },
+              ),
+            ),
             Align(
               alignment: Alignment.center,
               child: TextButton.icon(
                 onPressed: () {
-                  setState(() {});
+                  setState(() {
+                    ingredientControllers.add(TextEditingController());
+                  });
                 },
                 icon: Icon(Icons.add, color: AppColors.backgroundColor),
                 label: Text(
@@ -165,7 +192,9 @@ class _AddRecipeState extends State<AddRecipe> {
               alignment: Alignment.center,
               child: TextButton.icon(
                 onPressed: () {
-                  setState(() {});
+                  setState(() {
+                    instructionControllers.add(TextEditingController());
+                  });
                 },
                 icon: Icon(Icons.add, color: AppColors.backgroundColor),
                 label: Text(

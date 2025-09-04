@@ -77,7 +77,7 @@ class Profile97 extends StatelessWidget {
                     IconPopular(
                       icon: AppSvgs.menyu,
                       onPressed: () {
-                        context.read<AppThemeViewModel>().toggleTheme();
+                        context.push(Routers.settings);
                       },
                     ),
                   ],
