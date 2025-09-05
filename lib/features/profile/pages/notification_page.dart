@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:recipe_app_ui_kit_food/features/profile/pages/notification_switch.dart';
+import 'package:recipe_app_ui_kit_food/features/profile/widgets/notification_switch.dart';
 
 import '../../common/widgets/app_bar_common.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';

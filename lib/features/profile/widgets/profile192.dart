@@ -9,7 +9,7 @@ import 'package:recipe_app_ui_kit_food/features/common/widgets/center_loading.da
 import 'package:recipe_app_ui_kit_food/features/common/widgets/icon_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/managers/profile_view_model.dart';
-import 'package:recipe_app_ui_kit_food/features/top_chef/widgets/top_chef_follow.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/top_chef_follow.dart';
 
 class Profile192 extends StatelessWidget {
   const Profile192({

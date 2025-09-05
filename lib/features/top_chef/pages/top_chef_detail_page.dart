@@ -6,7 +6,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 import 'package:recipe_app_ui_kit_food/features/top_chef/manegers/top_chef_detail_view_model.dart';
-import 'package:recipe_app_ui_kit_food/features/top_chef/widgets/top_chef_follow.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/top_chef_follow.dart';
 import 'package:recipe_app_ui_kit_food/features/top_chef/widgets/top_chef_profil.dart';
 
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
