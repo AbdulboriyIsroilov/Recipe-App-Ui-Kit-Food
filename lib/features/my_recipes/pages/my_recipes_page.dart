@@ -72,6 +72,7 @@ class MyRecipesPage extends StatelessWidget {
                               return RecipeImageDown(
                                 vm: vm.recipes,
                                 index: index,
+                                actions: true,
                               );
                             }),
                           ],
@@ -93,6 +94,7 @@ class MyRecipesPage extends StatelessWidget {
                         return RecipeImageOver(
                           vm: vm.recipes,
                           index: index,
+                          actions: true,
                         );
                       },
                     ),

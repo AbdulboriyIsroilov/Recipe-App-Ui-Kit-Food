@@ -16,10 +16,11 @@ class TrendingRecipesDetail extends StatelessWidget {
     super.key,
     required this.vm,
     required this.loading,
+    this.edit = false,
   });
 
   final RecipesModel vm;
-  final bool loading;
+  final bool loading, edit;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +28,7 @@ class TrendingRecipesDetail extends StatelessWidget {
       onTap: () {
         context.push(
           Routers.recipeDetailPage,
-          extra: {
-            "title": vm.title,
-            "categoryId": vm.id,
-          },
+          extra: {"title": vm.title, "categoryId": vm.id, "editAppbar": edit},
         );
       },
       child: SizedBox(

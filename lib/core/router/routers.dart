@@ -45,6 +45,7 @@ class Routers {
   static const community = "/community-page";
 
   static const addRecipe = "/add_recipe";
+  static const editRecipe = "/edit_recipe";
 
   static const notifications = "/Notifications";
 

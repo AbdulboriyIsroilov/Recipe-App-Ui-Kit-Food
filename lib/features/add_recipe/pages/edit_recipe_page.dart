@@ -12,16 +12,19 @@ import 'package:recipe_app_ui_kit_food/features/logi_sign_up/widgets/text_field_
 import 'package:recipe_app_ui_kit_food/features/settings/pages/settings_modal_diolog.dart';
 
 import '../../../core/utils/app_style.dart';
+import '../../../data/models/recipe_models/recipe_detail_model.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 
-class CreateRecipePage extends StatefulWidget {
-  const CreateRecipePage({super.key,});
+class EditRecipePage extends StatefulWidget {
+  const EditRecipePage({super.key, required this.retcep,});
+  final RecipeDetailModel retcep;
   @override
-  State<CreateRecipePage> createState() => _CreateRecipePageState();
+  State<EditRecipePage> createState() => _EditRecipePageState();
 }
 
-class _CreateRecipePageState extends State<CreateRecipePage> {
+class _EditRecipePageState extends State<EditRecipePage> {
+  late RecipeDetailModel vmR;
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController timeController = TextEditingController();
@@ -33,10 +36,19 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
   @override
   void initState() {
     super.initState();
-
-    ingredientControllers = List.generate(5, (i) => TextEditingController());
-    instructionControllers = List.generate(5, (i) => TextEditingController());
-    amountControllers = List.generate(5, (i) => TextEditingController());
+    vmR = widget.retcep;
+    titleController.text = vmR.title;
+    descriptionController.text = vmR.description;
+    timeController.text = "${vmR.timeRequired} min";
+    ingredientControllers = List.generate(vmR.ingredients.length, (i) {
+      return TextEditingController(text: vmR.ingredients[i].name);
+    });
+    instructionControllers = List.generate(vmR.instructions.length, (i) {
+      return TextEditingController(text: vmR.instructions[i].text);
+    });
+    amountControllers = List.generate(vmR.ingredients.length, (i) {
+      return TextEditingController(text: vmR.ingredients[i].amount);
+    });
   }
 
   Widget _buildIngredientField(TextEditingController controller, TextEditingController amtController) {
@@ -179,7 +191,7 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
                   alignment: Alignment.center,
                   children: [
                     Image.network(
-                      "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+                      vmR.photo,
                       height: 281.h,
                       width: 362.w,
                       fit: BoxFit.cover,
@@ -216,7 +228,7 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
               Column(
                 children: List.generate(
                   ingredientControllers.length,
-                  (index) {
+                      (index) {
                     return _buildIngredientField(
                       ingredientControllers[index],
                       amountControllers[index],

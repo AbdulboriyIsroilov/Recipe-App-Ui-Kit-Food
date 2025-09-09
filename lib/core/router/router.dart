@@ -26,6 +26,7 @@ import 'package:recipe_app_ui_kit_food/features/top_chef/pages/top_chef_page.dar
 import 'package:recipe_app_ui_kit_food/features/trending_recipes/pages/trending_recipes_page.dart';
 
 import '../../features/add_recipe/pages/create_recipe_page.dart';
+import '../../features/add_recipe/pages/edit_recipe_page.dart';
 import '../../features/home/pages/home_page.dart';
 import '../../features/home/pages/splash_page.dart';
 import '../../features/logi_sign_up/pages/complete_your_profile_page.dart';
@@ -37,7 +38,7 @@ import '../../features/settings/pages/privacy_policy_page.dart';
 import '../../features/settings/pages/setting_help_center_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routers.home,
+  initialLocation: Routers.splash,
 
   routes: <RouteBase>[
     GoRoute(
@@ -58,19 +59,31 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routers.addRecipe,
-      builder: (context, state) => CreateRecipe(),
+      builder: (context, state) => CreateRecipePage(),
+    ),
+    GoRoute(
+      path: Routers.editRecipe,
+      builder: (context, state) => EditRecipePage(
+        retcep: (state.extra as Map)["edit-retcep"],
+      ),
     ),
     GoRoute(
       path: Routers.editProfile,
-      builder: (context, state) => EditProfilePage(user: (state.extra as Map)["profile"],),
+      builder: (context, state) => EditProfilePage(
+        user: (state.extra as Map)["profile"],
+      ),
     ),
     GoRoute(
       path: Routers.profileFollowingFollowers,
-      builder: (context, state) => ProfileFollowingFollowersPage(user: (state.extra as Map)["vm"],),
+      builder: (context, state) => ProfileFollowingFollowersPage(
+        user: (state.extra as Map)["vm"],
+      ),
     ),
     GoRoute(
       path: Routers.shareProfile,
-      builder: (context, state) => ShareProfilePage(user: (state.extra as Map)["profile"],),
+      builder: (context, state) => ShareProfilePage(
+        user: (state.extra as Map)["profile"],
+      ),
     ),
     GoRoute(
       path: Routers.settings,
@@ -165,6 +178,7 @@ final router = GoRouter(
       builder: (context, state) => RecipeDetailPage(
         title: (state.extra as Map)["title"],
         categoryId: (state.extra as Map)["categoryId"],
+        editAppbar: (state.extra as Map)["editAppbar"],
       ),
     ),
     GoRoute(

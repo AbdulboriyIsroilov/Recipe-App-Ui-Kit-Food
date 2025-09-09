@@ -16,11 +16,12 @@ class RecipeImageOver extends StatelessWidget {
     super.key,
     required this.vm,
     required this.index,
+    this.actions = false,
   });
 
   final List<RecipesModel> vm;
   final int index;
-
+  final bool actions;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,8 @@ class RecipeImageOver extends StatelessWidget {
           Routers.recipeDetailPage,
           extra: {
             "title": vm[index].title,
-            "categoryId":vm[index].id,
+            "categoryId": vm[index].id,
+            "editAppbar": actions,
           },
         );
       },

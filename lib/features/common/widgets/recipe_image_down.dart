@@ -15,10 +15,11 @@ class RecipeImageDown extends StatelessWidget {
     super.key,
     required this.vm,
     required this.index,
+    this.actions = false,
   });
 
   final List<RecipesModel> vm;
-
+  final bool actions;
   final int index;
 
   @override
@@ -30,6 +31,7 @@ class RecipeImageDown extends StatelessWidget {
           extra: {
             "title": vm[index].title,
             "categoryId": vm[index].id,
+            "editAppbar": actions,
           },
         );
       },

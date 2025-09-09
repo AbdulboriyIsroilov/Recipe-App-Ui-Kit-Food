@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
-import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/managers/profile_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/widgets/profile192.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/widgets/profile97.dart';
@@ -74,6 +72,7 @@ class ProfilePage extends StatelessWidget {
                         return RecipeImageOver(
                           vm: vm.recipes,
                           index: index,
+                          actions: true,
                         );
                       },
                     ),
@@ -90,6 +89,7 @@ class ProfilePage extends StatelessWidget {
                         return RecipeImageOver(
                           vm: vm.recipes,
                           index: index,
+                          actions: true,
                         );
                       },
                     ),

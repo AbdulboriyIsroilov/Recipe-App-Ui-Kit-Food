@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/center_loading.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/icon_popular.dart';
 
 import '../../../core/utils/app_style.dart';
@@ -29,10 +30,12 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
           ChangeNotifierProvider(
             create: (context) => ProfileViewModel(profileRepo: context.read(), myRecipeRepo: context.read()),
             builder: (context, child) => Consumer<ProfileViewModel>(
-              builder: (context, vm, child) => Text(
-                "Hi! ${vm.profile.firstName}",
-                style: AppStyles.w400s25wr,
-              ),
+              builder: (context, vm, child) => vm.loading
+                  ? CenterLoading()
+                  : Text(
+                      "Hi! ${vm.profile.firstName}",
+                      style: AppStyles.w400s25wr,
+                    ),
             ),
           ),
           Text(
