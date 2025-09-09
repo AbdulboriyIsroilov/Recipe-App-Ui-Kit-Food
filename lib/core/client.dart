@@ -32,7 +32,7 @@ class ApiClient {
 
   Future<Result<T>> post<T>(
     String path, {
-    required Object data,
+    required Object? data,
   }) async {
     try {
       final response = await _dio.post(

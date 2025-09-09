@@ -6,8 +6,14 @@ class Routers {
   static const myRecipe = "/my-recipe";
 
   static const profile = "/profile";
+  static const editProfile = "/edit-profile";
+  static const shareProfile = "/share-profile";
+  static const profileFollowingFollowers = "/profile-following-followers";
   static const settings = "/settings";
-  static const notification = "/Notification";
+  static const settingNotification = "/notification";
+  static const settingHelpCenter = "/help-center";
+  static const settingPrivacyPolicy = "/privacy-policy";
+  static const settingLanguage = "/language";
 
   static const topChefs = "/top-chefs";
   static const topChefDetail = "/top-chef-detail";
@@ -15,11 +21,12 @@ class Routers {
   static const trendingRecipes = "/trending-recipes";
 
   static const forgotPassword = "/forgot-password";
-  static const enterOTP = "/enter-o-t-p";
+  static const otpScreen = "/o-tp-screen";
+  static const canPassword = "/can-password";
 
   static const login = "/login";
   static const signUp = "/signUp";
-
+  static const createProfile = "/create-profile";
 
   static const onboarding = "/onboarding";
   static const welcome = "/welcome";
@@ -38,5 +45,7 @@ class Routers {
   static const community = "/community-page";
 
   static const addRecipe = "/add_recipe";
+
+  static const notifications = "/Notifications";
 
 }

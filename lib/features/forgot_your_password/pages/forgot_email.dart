@@ -54,7 +54,7 @@ class _ForgotEmailState extends State<ForgotEmail> {
             TextButtomPopular(
               title: "continue",
               onPressed: () {
-                context.go(Routers.enterOTP);
+                context.go(Routers.otpScreen);
               },
             ),
           ],

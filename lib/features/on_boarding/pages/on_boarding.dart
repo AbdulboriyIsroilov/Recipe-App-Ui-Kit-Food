@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -18,8 +19,7 @@ class OnBoarding extends StatelessWidget {
       create: (context) => OnBoardingViewModel(onBoardingRepo: context.read())..fetchOnBoarding(),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        appBar: AppBar(
-        ),
+        appBar: AppBar(),
         body: Consumer<OnBoardingViewModel>(
           builder: (context, vm, child) => vm.loading
               ? Center(
@@ -59,8 +59,8 @@ class OnBoarding extends StatelessWidget {
                             height: 741.3.h,
                             child: Stack(
                               children: [
-                                Image.network(
-                                  vm.onBoarding[index].image,
+                                CachedNetworkImage(
+                                  imageUrl: vm.onBoarding[index].image,
                                   width: 430.w,
                                   height: 720.04.h,
                                   fit: BoxFit.cover,

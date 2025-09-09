@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 
 import '../../../core/utils/app_colors.dart';
 
@@ -6,9 +7,11 @@ class NotificationSwitch extends StatefulWidget {
   const NotificationSwitch({
     super.key,
     required this.title,
+    this.theme = true,
   });
 
   final String title;
+  final bool theme;
 
   @override
   State<NotificationSwitch> createState() => _NotificationSwitchState();
@@ -24,7 +27,7 @@ class _NotificationSwitchState extends State<NotificationSwitch> {
       children: [
         Text(
           widget.title,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: widget.theme ? Theme.of(context).textTheme.bodyMedium : AppStyles.w500s15,
         ),
         Transform.scale(
           scale: 0.75,

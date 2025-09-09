@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
-import 'package:recipe_app_ui_kit_food/features/common/widgets/recipe_image_over.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
+import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/managers/profile_view_model.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/widgets/profile192.dart';
 import 'package:recipe_app_ui_kit_food/features/profile/widgets/profile97.dart';
 
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
+import '../../common/widgets/recipe_image_over.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -16,89 +18,93 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => ProfileViewModel(profileRepo: context.read(), myRecipeRepo: context.read()),
-      builder: (context, child) => Scaffold(
-        extendBody: true,
-        body: Consumer<ProfileViewModel>(
-          builder: (context, vm, child) => CustomScrollView(
-            slivers: [
-              SliverPadding(
-                padding: EdgeInsets.fromLTRB(37.w, 56.h, 37.w, 0),
-                sliver: SliverPersistentHeader(
-                  pinned: true,
-                  delegate: MyPersistentHeaderDelegate(),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        TextButton(
-                          onPressed: () {},
+      create: (context) => ProfileViewModel(
+        profileRepo: context.read(),
+        myRecipeRepo: context.read(),
+      ),
+      builder: (context, child) => DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          extendBody: true,
+          body: Consumer<ProfileViewModel>(
+            builder: (context, vm, child) {
+              return NestedScrollView(
+                headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                  SliverPersistentHeader(
+                    pinned: true,
+                    delegate: MyPersistentHeaderDelegate(),
+                  ),
+                  SliverToBoxAdapter(
+                    child: TabBar(
+                      indicator: UnderlineTabIndicator(
+                        borderSide: BorderSide(width: 3, color: Colors.red),
+                        insets: EdgeInsets.symmetric(horizontal: -80),
+                      ),
+                      dividerColor: Colors.transparent,
+                      indicatorColor: AppColors.watermelonRed,
+                      tabs: [
+                        Tab(
                           child: Text(
                             "Recipe",
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
-                        SizedBox(
-                          width: 162.5.w,
-                          child: Divider(
-                            color: AppColors.watermelonRed,
-                            height: 0,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        TextButton(
-                          onPressed: () {},
+                        Tab(
                           child: Text(
                             "Favorites",
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                         ),
-                        SizedBox(
-                          width: 162.5.w,
-                          child: Divider(
-                            color: AppColors.watermelonRed,
-                            height: 0,
-                          ),
-                        ),
                       ],
+                    ),
+                  ),
+                ],
+                body: TabBarView(
+                  children: [
+                    GridView.builder(
+                      padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 126.h),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 19.w,
+                        mainAxisSpacing: 30.h,
+                        mainAxisExtent: 226.h,
+                      ),
+                      itemCount: vm.recipes.length,
+                      itemBuilder: (context, index) {
+                        return RecipeImageOver(
+                          vm: vm.recipes,
+                          index: index,
+                        );
+                      },
+                    ),
+                    GridView.builder(
+                      padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 126.h),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 19.w,
+                        mainAxisSpacing: 30.h,
+                        mainAxisExtent: 226.h,
+                      ),
+                      itemCount: vm.recipes.length,
+                      itemBuilder: (context, index) {
+                        return RecipeImageOver(
+                          vm: vm.recipes,
+                          index: index,
+                        );
+                      },
                     ),
                   ],
                 ),
-              ),
-              SliverPadding(
-                padding: EdgeInsets.fromLTRB(37.w, 19.h, 37.w, 0),
-                sliver: SliverGrid(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 18.w,
-                    mainAxisSpacing: 31.h,
-                    mainAxisExtent: 226.h,
-                  ),
-                  delegate: SliverChildBuilderDelegate(
-                    childCount: vm.recipes.length,
-                    (context, index) => RecipeImageOver(
-                      vm: vm.recipes,
-                      index: index,
-                    ),
-                  ),
-                ),
-              ),
+              );
+            },
+          ),
+          bottomNavigationBar: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              BottomNavigationBarGradient(),
+              BottomNavigationBarMain(),
             ],
           ),
-        ),
-        bottomNavigationBar: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            BottomNavigationBarGradient(),
-            BottomNavigationBarMain(),
-          ],
         ),
       ),
     );
@@ -110,8 +116,16 @@ class MyPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
     return LayoutBuilder(
       builder: (context, constraints) {
         double h = constraints.maxHeight;
-        if (h > 191.6.h) return ColoredBox(color: Theme.of(context).colorScheme.onInverseSurface,child: Profile192());
-        return ColoredBox(color: Theme.of(context).colorScheme.onInverseSurface,child: Profile97());
+        if (h > 247.6.h) {
+          return ColoredBox(
+            color: Theme.of(context).colorScheme.onInverseSurface,
+            child: Profile192(),
+          );
+        }
+        return ColoredBox(
+          color: Theme.of(context).colorScheme.onInverseSurface,
+          child: Profile97(),
+        );
       },
     );
   }
@@ -122,13 +136,11 @@ class MyPersistentHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 192.h;
+  double get maxExtent => 248.h;
 
-  // 192
   @override
-  double get minExtent => 97.h;
+  double get minExtent => 154.h;
 
-  // 63
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return true;

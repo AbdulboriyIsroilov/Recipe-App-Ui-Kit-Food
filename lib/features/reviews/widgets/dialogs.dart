@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
@@ -38,7 +40,7 @@ class Dialogs extends StatelessWidget {
               width: 171.w,
               child: Text(
                 "Thank You For Your Review!",
-                style: AppStyles.w600s20,
+                style: AppStyles.w600s20.copyWith(color: Colors.black),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
@@ -62,7 +64,12 @@ class Dialogs extends StatelessWidget {
               backgroundColor: AppColors.watermelonRed,
               style: AppStyles.w600s20w,
               onPressed: () {
-                Navigator.of(context).pop();
+                context.go(
+                  Routers.reviewsPage,
+                  extra: {
+                    "categoriyId": id,
+                  },
+                );
               },
             ),
           ],

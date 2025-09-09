@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/user_repository.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/user_repositores/user_repository.dart';
 import '../../../core/client.dart';
 
 import '../../../data/models/category_models/category_model.dart';
 import '../../../data/models/recipe_models/recipes_model.dart';
 import '../../../data/models/top_chef_models/top_chef_model.dart';
 import '../../../data/models/trending_recipes_model/trending_recipes_model.dart';
-import '../../../data/repositores/categories_repository.dart';
+import '../../../data/repositores/category_repositores/category_repository.dart';
 import '../../../data/repositores/recipes_repository.dart';
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel({
-    required CategoriesRepository homeRepo,
+    required CategoryRepository homeRepo,
     required RecipesRepository recipesRepo,
     required UsersRepository usersRepo,
   }) : _homeRepo = homeRepo,
@@ -20,7 +20,7 @@ class HomeViewModel extends ChangeNotifier {
     fetchTrendingRecipe();
   }
 
-  final CategoriesRepository _homeRepo;
+  final CategoryRepository _homeRepo;
   final RecipesRepository _recipesRepo;
   final UsersRepository _usersRepo;
 

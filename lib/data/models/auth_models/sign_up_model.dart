@@ -1,13 +1,5 @@
-import 'package:flutter/material.dart';
-
 class SignUpModel {
-  final String username,
-      firstName,
-      lastName,
-      email,
-      phoneNumber,
-      birthDate,
-      password;
+  final String username, firstName, lastName, email, phoneNumber, birthDate, password;
 
   SignUpModel({
     required this.username,
@@ -19,15 +11,15 @@ class SignUpModel {
     required this.password,
   });
 
-  Map<String,dynamic> toJson(){
+  Map<String, dynamic> toJson() {
     return {
-      "username":username,
-      "firstName":firstName,
-      "lastName":lastName,
-      'email':email,
-      "phoneNumber":phoneNumber,
-      "birthDate":birthDate,
-      "password":password
+      "username": username,
+      "firstName": firstName,
+      "lastName": lastName,
+      'email': email,
+      "phoneNumber": phoneNumber,
+      "birthDate": birthDate,
+      "password": password,
     };
   }
 }

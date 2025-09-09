@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -121,8 +122,8 @@ class HomePageTrending extends StatelessWidget {
                             alignment: Alignment.topCenter,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(14.r),
-                              child: Image.network(
-                                vm.trendingRecipe.photo,
+                              child: CachedNetworkImage(
+                                imageUrl: vm.trendingRecipe.photo,
                                 width: 358.w,
                                 height: 143.h,
                                 fit: BoxFit.cover,

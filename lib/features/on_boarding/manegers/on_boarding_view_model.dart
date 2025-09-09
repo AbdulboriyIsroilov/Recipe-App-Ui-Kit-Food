@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../data/models/onboarding_models/onboarding_model.dart';
-import '../../../data/repositores/onboarding_repository.dart';
+import '../../../data/repositores/onboarding_repositores/onboarding_repository.dart';
 
 class OnBoardingViewModel extends ChangeNotifier {
   OnBoardingViewModel({

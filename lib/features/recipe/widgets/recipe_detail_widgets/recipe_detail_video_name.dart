@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,8 +78,8 @@ class RecipeDetailVideoName extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                vm.videoRecipe,
+              child: CachedNetworkImage(
+                imageUrl: vm.videoRecipe,
                 width: 357.w,
                 height: 281.h,
                 fit: BoxFit.cover,

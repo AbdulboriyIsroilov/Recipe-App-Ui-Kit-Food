@@ -6,7 +6,9 @@ import 'package:recipe_app_ui_kit_food/core/router/routers.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-import 'package:recipe_app_ui_kit_food/features/profile/widgets/setting_svg.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/auth_repostoriy.dart';
+import 'package:recipe_app_ui_kit_food/features/settings/pages/settings_modal_diolog.dart';
+import 'package:recipe_app_ui_kit_food/features/settings/widgets/setting_svg.dart';
 
 import '../../common/manegers/app_theme_view_model.dart';
 import '../../common/widgets/app_bar_common.dart';
@@ -35,27 +37,36 @@ class SettingsPage extends StatelessWidget {
             SettingSvg(
               svg: AppSvgs.notification,
               title: "Notification",
-              onPressed: (){
-                context.push(Routers.notification);
+              onPressed: () {
+                context.push(Routers.settingNotification);
               },
             ),
             SettingSvg(
               svg: AppSvgs.admin,
               title: "Help Center",
+              onPressed: () {
+                context.push(Routers.settingHelpCenter);
+              },
             ),
             SettingSvg(
               svg: AppSvgs.privacyPolicy,
               title: "Privacy Policy",
+              onPressed: () {
+                context.push(Routers.settingPrivacyPolicy);
+              },
             ),
             SettingSvg(
               svg: AppSvgs.reviews,
               title: "Language",
+              onPressed: () {
+                context.push(Routers.settingLanguage);
+              },
             ),
             SettingSvg(
               svg: AppSvgs.theme,
               title: "Turn dark Theme",
               playIcon: false,
-              onPressed: (){
+              onPressed: () {
                 context.read<AppThemeViewModel>().toggleTheme();
               },
             ),
@@ -63,11 +74,36 @@ class SettingsPage extends StatelessWidget {
               svg: AppSvgs.logOut,
               title: "Log Out",
               playIcon: false,
-              onPressed: (){
-                context.go(Routers.login);
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => SettingsModalDiolog(
+                    mainTitle: "End Sesion",
+                    title: "Are you sure you want to log out?",
+                    buttonTitle: 'Yes, End Sesion',
+                    onPressed: () {
+                      context.read<AuthRepository>().logout();
+                    },
+                  ),
+                );
               },
             ),
-            Text("Delete Account",style: AppStyles.w500s15w.copyWith(color: AppColors.rosePink),)
+            TextButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => SettingsModalDiolog(
+                    mainTitle: "Delete account",
+                    title: """Are you sure you want to delete account?""",
+                    buttonTitle: 'Yes, Delet Account',
+                  ),
+                );
+              },
+              child: Text(
+                "Delete Account",
+                style: AppStyles.w500s15w.copyWith(color: AppColors.rosePink),
+              ),
+            ),
           ],
         ),
       ),

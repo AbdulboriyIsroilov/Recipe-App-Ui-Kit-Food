@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -102,8 +103,8 @@ class RecipeImageOver extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(14.r),
-                child: Image.network(
-                  vm[index].photo,
+                child: CachedNetworkImage(
+                  imageUrl: vm[index].photo,
                   width: 169.w,
                   height: 153.h,
                   fit: BoxFit.cover,

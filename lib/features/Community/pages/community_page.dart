@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
@@ -7,8 +8,10 @@ import 'package:recipe_app_ui_kit_food/features/Community/manegers/community_vie
 import 'package:recipe_app_ui_kit_food/features/Community/widgets/community_column_recipies.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 
+import '../../../core/router/routers.dart';
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
+import '../../common/widgets/search_dialog.dart';
 
 class CommunityPage extends StatelessWidget {
   const CommunityPage({super.key});
@@ -21,6 +24,18 @@ class CommunityPage extends StatelessWidget {
         extendBody: true,
         appBar: AppBarCommon(
           title: "Community",
+          oneOnPressed: (){
+            context.push(Routers.notifications);
+          },
+          twoOnPressed: (){
+            showDialog(
+              context: context,
+              useRootNavigator: false,
+              builder: (context) {
+                return SearchDialog();
+              },
+            );
+          },
           bottom: TabBar(
             indicator: BoxDecoration(
               color: AppColors.watermelonRed,

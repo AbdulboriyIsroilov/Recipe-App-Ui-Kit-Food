@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/recipes_repository.dart';
 
-import '../../../data/models/reviews_model/reviews_comment_model.dart';
-import '../../../data/models/reviews_model/reviews_model.dart';
+import '../../../data/models/reviews_models/reviews_comment_model.dart';
+import '../../../data/models/reviews_models/reviews_model.dart';
 import '../../../data/repositores/reviews_repository.dart';
 
 class ReviewsViewModel extends ChangeNotifier {

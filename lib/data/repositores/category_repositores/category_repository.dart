@@ -1,0 +1,32 @@
+import '../../../core/utils/result.dart';
+import '../../models/category_models/category_model.dart';
+import 'category_repository_local.dart';
+import 'category_repository_remote.dart';
+
+class CategoryRepository {
+  CategoryRepository({
+    required CategoryRepositoryLocal localRepo,
+    required CategoryRepositoryRemote remoteRepo,
+  }) : _localRepo = localRepo,
+       _remoteRepo = remoteRepo;
+  final CategoryRepositoryLocal _localRepo;
+  final CategoryRepositoryRemote _remoteRepo;
+  final bool ignoreCache = false;
+
+  Future<Result<List<CategoryModel>>> getCategory() async {
+    if (!ignoreCache) {
+      final cachedCategories = await _localRepo.getCategoryLocal();
+      if (cachedCategories.isNotEmpty) return Result.ok(cachedCategories);
+    }
+
+    final result = await _remoteRepo.getCategoryRemote();
+
+    return result.fold(
+      (error) => Result.error(error),
+      (value) async {
+        await _localRepo.save(value);
+        return Result.ok(value);
+      },
+    );
+  }
+}

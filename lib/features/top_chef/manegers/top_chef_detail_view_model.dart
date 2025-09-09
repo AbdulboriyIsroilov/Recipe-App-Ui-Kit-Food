@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/user_repository.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/user_repositores/user_repository.dart';
 
 import '../../../data/models/user/profile_model.dart';
 

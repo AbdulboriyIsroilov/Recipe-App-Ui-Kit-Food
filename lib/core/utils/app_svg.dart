@@ -1,6 +1,7 @@
 
 class AppSvgs {
   static const backArrow = "assets/Icons/back-arrow.svg";
+  static const backArrowWhite = "assets/Icons/back-arrow-white.svg";
   static const biigTick = "assets/Icons/big-tick.svg";
   static const bin = "assets/Icons/bin.svg";
   static const categories = "assets/Icons/categories.svg";
@@ -26,8 +27,9 @@ class AppSvgs {
   static const threeDots = "assets/Icons/three_dots.svg";
   static const facebook = "assets/Icons/facebook.svg";
   static const google = "assets/Icons/google.svg";
-  static const instagram = "assets/Icons/instagram.svg";
-  static const vatsub = "assets/Icons/Vatsub.svg";
+  static const instagram = "assets/Icons/Instagram.svg";
+  static const whatssapp = "assets/Icons/Whatssapp.svg";
+  static const website = "assets/Icons/Website.svg";
   static const reyting = "assets/Icons/reyting.svg";
   static const pichoq = "assets/Icons/pichoq.svg";
   static const vilka = "assets/Icons/vilka.svg";

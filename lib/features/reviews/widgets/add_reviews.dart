@@ -8,7 +8,7 @@ import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popular.dart';
 import 'package:recipe_app_ui_kit_food/features/reviews/manegers/reviews_add_view_model.dart';
 
-import '../../../data/models/reviews_model/reviews_create_model.dart';
+import '../../../data/models/reviews_models/reviews_create_model.dart';
 import 'dialogs.dart';
 
 class AddReviews extends StatefulWidget {
@@ -188,7 +188,9 @@ class _AddReviewsState extends State<AddReviews> {
                       showDialog(
                         context: context,
                         builder: (context) {
-                          return Dialogs(id: widget.id,);
+                          return Dialogs(
+                            id: widget.id,
+                          );
                         },
                       );
                     },

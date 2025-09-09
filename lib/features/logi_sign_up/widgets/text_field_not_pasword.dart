@@ -30,8 +30,9 @@ class TextFieldNotPasword extends StatelessWidget {
           controller: controller,
           style: AppStyles.w500s16,
           maxLines: maxLine,
+          cursorColor: AppColors.backgroundColor,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 36.w,vertical: 12.h),
+            contentPadding: EdgeInsets.symmetric(horizontal: 36.w, vertical: 12.h),
             constraints: BoxConstraints(
               minWidth: 357.w,
               maxWidth: 357.w,
@@ -39,11 +40,11 @@ class TextFieldNotPasword extends StatelessWidget {
             filled: true,
             fillColor: AppColors.pastelPink,
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(18.r),
+              borderRadius: BorderRadius.circular(20.r),
               borderSide: BorderSide.none,
             ),
             hintText: hint,
-            hintStyle: AppStyles.w500s16,
+            hintStyle: AppStyles.w500s16.copyWith(color: AppColors.backgroundColor.withValues(alpha: 0.5)),
           ),
         ),
       ],

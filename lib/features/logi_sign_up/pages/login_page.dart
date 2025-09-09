@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         SvgPicture.asset(
-                          AppSvgs.vatsub,
+                          AppSvgs.whatssapp,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context).colorScheme.inversePrimary,
                             BlendMode.modulate,

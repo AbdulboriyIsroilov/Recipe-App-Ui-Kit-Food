@@ -1,10 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
-
 
 import '../../../data/models/community_models/community_model.dart';
 
@@ -31,8 +31,8 @@ class CommunityColumnRecipies extends StatelessWidget {
                 spacing: 14.w,
                 children: [
                   ClipOval(
-                    child: Image.network(
-                      vm[index].user.profilePhoto,
+                    child: CachedNetworkImage(
+                      imageUrl: vm[index].user.profilePhoto,
                       width: 35.w,
                       height: 35.h,
                       fit: BoxFit.cover,
@@ -63,8 +63,8 @@ class CommunityColumnRecipies extends StatelessWidget {
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(14.r),
                       ),
-                      child: Image.network(
-                        vm[index].photo,
+                      child: CachedNetworkImage(
+                        imageUrl: vm[index].photo,
                         width: 356.w,
                         height: 173.h,
                         fit: BoxFit.cover,

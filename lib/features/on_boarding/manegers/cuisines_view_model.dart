@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/models/onboarding_models/allergic_model.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/onboarding_repository.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/onboarding_repositores/onboarding_repository.dart';
 
 class CuisinesViewModel extends ChangeNotifier {
   CuisinesViewModel({required OnboardingRepository cuisineRepo}) : _cuisineRepo = cuisineRepo;

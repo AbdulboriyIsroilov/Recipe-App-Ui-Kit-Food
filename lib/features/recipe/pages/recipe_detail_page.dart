@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
+import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_svg.dart';
 import 'package:recipe_app_ui_kit_food/features/common/widgets/app_bar_common.dart';
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/recipe_detail_view_model.dart';
@@ -11,7 +13,6 @@ import 'package:recipe_app_ui_kit_food/features/recipe/widgets/recipe_detail_wid
 
 import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
-
 
 class RecipeDetailPage extends StatelessWidget {
   const RecipeDetailPage({
@@ -31,6 +32,61 @@ class RecipeDetailPage extends StatelessWidget {
         extendBody: true,
         appBar: AppBarCommon(
           title: title,
+          oneOnPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) => Container(
+                width: double.infinity,
+                height: 283.h,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(50.r)),
+                ),
+                padding: EdgeInsets.fromLTRB(37.w, 45.h, 37.w, 65.h),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "save to collection",
+                      style: AppStyles.w600s20wr,
+                    ),
+                    ...List.generate(2, (index) {
+                      return Row(
+                        spacing: 20.w,
+                        children: [
+                          Container(
+                            width: 45.w,
+                            height: 45.h,
+                            decoration: BoxDecoration(
+                              color: AppColors.pastelPink,
+                              shape: BoxShape.circle,
+                            ),
+                            padding: EdgeInsets.all(5),
+                            child: SvgPicture.asset(AppSvgs.facebook),
+                          ),
+                          Text(
+                            "sweet",
+                            style: AppStyles.w500s15,
+                          ),
+                        ],
+                      );
+                    }),
+                    Container(
+                      width: 189.w,
+                      height: 30.h,
+                      decoration: BoxDecoration(color: AppColors.pastelPink, borderRadius: BorderRadius.circular(30.r)),
+                      padding: EdgeInsets.symmetric(horizontal: 21.w),
+                      child: Row(
+                        children: [
+                          Text("+ Create Collection", style: AppStyles.w500s15wr),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -43,19 +99,22 @@ class RecipeDetailPage extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 )
               : SingleChildScrollView(
-                child: Padding(
+                  child: Padding(
                     padding: EdgeInsets.fromLTRB(36.w, 26.h, 37.w, 126.h),
                     child: Column(
                       spacing: 22.h,
                       children: [
-                        RecipeDetailVideoName(vm: vm.details, categoriyId: vm.details.id,),
+                        RecipeDetailVideoName(
+                          vm: vm.details,
+                          categoriyId: vm.details.id,
+                        ),
                         RecipeDetailProfil(vm: vm.details),
                         Divider(color: AppColors.watermelonRed),
                         RecipeDetailLngredients(vm: vm.details),
                       ],
                     ),
                   ),
-              ),
+                ),
         ),
         bottomNavigationBar: Stack(
           alignment: Alignment.bottomCenter,

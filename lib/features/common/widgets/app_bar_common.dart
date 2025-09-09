@@ -17,12 +17,13 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
     this.oneOnPressed = _defaultPressed,
     this.twoOnPressed = _defaultPressed,
     this.action = true,
+    this.titleCenter = true,
   });
 
   static void _defaultPressed() {}
 
   final String title;
-  final bool action;
+  final bool action,titleCenter;
   final PreferredSizeWidget? bottom;
   final VoidCallback onPressed, oneOnPressed, twoOnPressed;
   final String oneButtom, twoButtom;
@@ -37,7 +38,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
           icon: SvgPicture.asset(AppSvgs.backArrow),
         ),
       ),
-      centerTitle: true,
+      centerTitle: titleCenter,
       title: Text(
         title,
         style: AppStyles.w600s20wr,

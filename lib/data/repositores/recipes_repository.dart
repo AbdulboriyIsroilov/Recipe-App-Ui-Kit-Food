@@ -1,17 +1,21 @@
+
 import '../../core/client.dart';
 import '../../core/utils/result.dart';
 import '../models/community_models/community_model.dart';
-
 import '../models/recipe_models/recipe_detail_model.dart';
 import '../models/recipe_models/recipes_model.dart';
-import '../models/reviews_model/reviews_add_model.dart';
-import '../models/reviews_model/reviews_model.dart';
+import '../models/reviews_models/reviews_add_model.dart';
+import '../models/reviews_models/reviews_model.dart';
 import '../models/trending_recipes_model/trending_recipes_model.dart';
 
 class RecipesRepository {
-  RecipesRepository({required ApiClient client}) : _client = client;
+  RecipesRepository({
+    required ApiClient client,
+  }) : _client = client;
 
   final ApiClient _client;
+
+  final bool ignoreCacheRecipes = false;
 
   Future<Result<List<RecipesModel>>> getRecipes(Map<String, dynamic> queryParams) async {
     var response = await _client.get<List>("/recipes/list", queryParams: queryParams);
@@ -70,6 +74,14 @@ class RecipesRepository {
       (val) => Result.ok(
         val.map((item) => CommunityModel.fromJson(item)).toList(),
       ),
+    );
+  }
+
+  Future<Result<void>> createRecipe(Map<String, dynamic> data) async {
+    var reseponse = await _client.post<Map>("/recipes/create", data: data);
+    return reseponse.fold(
+      (error) => Result.error(error),
+      (success) => Result.ok(null),
     );
   }
 }

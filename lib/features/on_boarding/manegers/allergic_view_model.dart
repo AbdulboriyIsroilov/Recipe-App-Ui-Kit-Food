@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/onboarding_repository.dart';
+import 'package:recipe_app_ui_kit_food/data/repositores/onboarding_repositores/onboarding_repository.dart';
 
 import '../../../data/models/onboarding_models/allergic_model.dart';
 

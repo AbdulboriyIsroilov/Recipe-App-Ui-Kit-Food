@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -43,8 +44,8 @@ class HomePageTopChef extends StatelessWidget {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(6.77.r),
-                              child: Image.network(
-                                vm.topChef[index].profilePhoto,
+                              child: CachedNetworkImage(
+                                imageUrl: vm.topChef[index].profilePhoto,
                                 width: 82.69.w,
                                 height: 74.h,
                                 fit: BoxFit.cover,

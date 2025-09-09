@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,7 +9,6 @@ import 'package:recipe_app_ui_kit_food/features/common/widgets/text_button_popul
 import 'package:recipe_app_ui_kit_food/features/recipe/manegers/category_view_model.dart';
 
 import '../../../core/router/routers.dart';
-import '../../../core/utils/themes.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -47,8 +47,8 @@ class WelcomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ClipRRect(
                         borderRadius: BorderRadius.circular(14.67.r),
-                        child: Image.network(
-                          vm.recipe[index].image,
+                        child: Image(
+                          image: CachedNetworkImageProvider(vm.recipe[index].image),
                           width: 166.w,
                           height: 167.h,
                           fit: BoxFit.cover,

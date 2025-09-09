@@ -3,7 +3,7 @@ import 'package:recipe_app_ui_kit_food/data/models/user/profile_model.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/recipes_repository.dart';
 
 import '../../../data/models/recipe_models/recipes_model.dart';
-import '../../../data/repositores/user_repository.dart';
+import '../../../data/repositores/user_repositores/user_repository.dart';
 
 class ProfileViewModel extends ChangeNotifier {
   ProfileViewModel({
@@ -26,7 +26,6 @@ class ProfileViewModel extends ChangeNotifier {
 
   Future<void> fetchProfile() async {
     loading = true;
-
     notifyListeners();
 
     var result = await _profileRepo.getAll();

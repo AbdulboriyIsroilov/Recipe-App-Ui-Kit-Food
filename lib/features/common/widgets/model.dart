@@ -23,7 +23,7 @@ class Model extends StatelessWidget {
       child: Container(
         width: 249.w,
         height: 265.2.h,
-        padding: EdgeInsets.fromLTRB(36, 23, 36, 15),
+        padding: EdgeInsets.fromLTRB(36.w, 23.h, 36.w, 15.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(40.r),
@@ -36,7 +36,7 @@ class Model extends StatelessWidget {
               height: 52.h,
               child: Text(
                 title1,
-                style: AppStyles.w600s20,
+                style: AppStyles.w600s20.copyWith(color: AppColors.backgroundColor),
                 textAlign: TextAlign.center,
               ),
             ),

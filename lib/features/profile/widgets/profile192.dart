@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -23,88 +24,101 @@ class Profile192 extends StatelessWidget {
       builder: (context, child) => Consumer<ProfileViewModel>(
         builder: (context, vm, child) => vm.loading
             ? CenterLoading()
-            : Column(
-                spacing: 12.h,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            : SizedBox(
+                width: double.infinity,
+                height: 248.h,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 37.w, right: 37.w, top: 56.h),
+                  child: Column(
+                    spacing: 12.h,
                     children: [
-                      ClipOval(
-                        child: Image.network(
-                          vm.profile.profilePhoto,
-                          width: 102.w,
-                          height: 97.h,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "${vm.profile.firstName} ${vm.profile.lastName}",
-                            style: AppStyles.w500s15wr,
-                          ),
-                          Text(
-                            "@${vm.profile.username}",
-                            style: AppStyles.w400s12wr,
-                          ),
-                          SizedBox(
-                            width: 150.w,
-                            child: Text(
-                              vm.profile.presentation,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.titleSmall,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                          ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl: vm.profile.profilePhoto,
+                              width: 102.w,
+                              height: 97.h,
+                              fit: BoxFit.cover,
                             ),
                           ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                "${vm.profile.firstName} ${vm.profile.lastName}",
+                                style: AppStyles.w500s15wr,
+                              ),
+                              Text(
+                                "@${vm.profile.username}",
+                                style: AppStyles.w400s12wr,
+                              ),
+                              SizedBox(
+                                width: 150.w,
+                                child: Text(
+                                  vm.profile.presentation,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.titleSmall,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            spacing: 5.w,
+                            children: [
+                              IconPopular(
+                                icon: AppSvgs.add,
+                                onPressed: () {
+                                  context.push(Routers.addRecipe);
+                                },
+                              ),
+                              IconPopular(
+                                icon: AppSvgs.menyu,
+                                onPressed: () {
+                                  context.push(Routers.settings);
+                                },
+                              ),
+                            ],
+                          ),
                         ],
                       ),
-                      Row(
-                        spacing: 5.w,
+                      Column(
+                        spacing: 6.h,
                         children: [
-                          IconPopular(
-                            icon: AppSvgs.add,
-                            onPressed: (){
-                              context.push(Routers.addRecipe);
-                            },
+                          Row(
+                            spacing: 6.w,
+                            children: [
+                              TextButtomPopular(
+                                title: "Edit Profile",
+                                width: 175,
+                                height: 27,
+                                onPressed: () {
+                                  context.push(Routers.editProfile, extra: {"profile": vm.profile});
+                                },
+                                style: AppStyles.w500s15t,
+                              ),
+                              TextButtomPopular(
+                                title: "Share Profile",
+                                width: 175,
+                                height: 27,
+                                onPressed: () {
+                                  context.push(Routers.shareProfile, extra: {"profile": vm.profile});
+                                },
+                                style: AppStyles.w500s15t,
+                              ),
+                            ],
                           ),
-                          IconPopular(
-                            icon: AppSvgs.menyu,
-                            onPressed: () {
-                              context.push(Routers.settings);
-                            },
-                          ),
+                          TopChefFollow(vm: vm.profile,active: false,),
                         ],
                       ),
                     ],
                   ),
-                  Column(
-                    spacing: 6.h,
-                    children: [
-                      Row(
-                        spacing: 6.w,
-                        children: [
-                          TextButtomPopular(
-                            title: "Edit Profile",
-                            width: 175,
-                            height: 27,
-                            style: AppStyles.w500s15t,
-                          ),
-                          TextButtomPopular(
-                            title: "Share Profile",
-                            width: 175,
-                            height: 27,
-                            style: AppStyles.w500s15t,
-                          ),
-                        ],
-                      ),
-                      TopChefFollow(vm: vm.profile),
-                    ],
-                  ),
-                ],
+                ),
               ),
       ),
     );

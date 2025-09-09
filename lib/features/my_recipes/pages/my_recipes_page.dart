@@ -12,6 +12,7 @@ import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 import '../../common/widgets/recipe_image_down.dart';
 import '../../common/widgets/recipe_image_over.dart';
+import '../../common/widgets/search_dialog.dart';
 
 class MyRecipesPage extends StatelessWidget {
   const MyRecipesPage({super.key});
@@ -22,11 +23,28 @@ class MyRecipesPage extends StatelessWidget {
       create: (context) => MyRecipeViewModel(myRecipeRepo: context.read()),
       builder: (context, child) => Scaffold(
         extendBody: true,
-        appBar: AppBarCommon(title: "Your Recipes",onPressed: (){Navigator.pop(context);},),
+        appBar: AppBarCommon(
+          title: "Your Recipes",
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          oneOnPressed: (){
+            context.push(Routers.notifications);
+          },
+          twoOnPressed: (){
+            showDialog(
+              context: context,
+              useRootNavigator: false,
+              builder: (context) {
+                return SearchDialog();
+              },
+            );
+          },
+        ),
         body: Consumer<MyRecipeViewModel>(
           builder: (context, vm, child) {
             if (vm.loading) return Center(child: CircularProgressIndicator());
-            if (vm.error != null) Center(child:Text(vm.error.toString()));
+            if (vm.error != null) Center(child: Text(vm.error.toString()));
             return Padding(
               padding: EdgeInsets.only(top: 31.h),
               child: Column(
@@ -34,7 +52,10 @@ class MyRecipesPage extends StatelessWidget {
                   Container(
                     width: 430.w,
                     height: 255.h,
-                    decoration: BoxDecoration(color: AppColors.watermelonRed, borderRadius: BorderRadius.circular(20.r)),
+                    decoration: BoxDecoration(
+                      color: AppColors.watermelonRed,
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
                     padding: EdgeInsets.symmetric(horizontal: 38.w, vertical: 14.h),
                     child: Column(
                       spacing: 9.h,

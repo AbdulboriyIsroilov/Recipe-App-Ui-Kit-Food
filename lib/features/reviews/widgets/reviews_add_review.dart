@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,8 +34,8 @@ class ReviewsAddReview extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(14.34.r),
-                    child: Image.network(
-                      vm.review.photo,
+                    child: CachedNetworkImage(
+                      imageUrl: vm.review.photo,
                       width: 162.26.w,
                       height: 163.24.h,
                       fit: BoxFit.cover,
@@ -82,8 +83,8 @@ class ReviewsAddReview extends StatelessWidget {
                         spacing: 5.w,
                         children: [
                           ClipOval(
-                            child: Image.network(
-                              vm.review.user.profilePhoto,
+                            child: CachedNetworkImage(
+                              imageUrl: vm.review.user.profilePhoto,
                               width: 32.18.w,
                               height: 33.24.h,
                               fit: BoxFit.cover,

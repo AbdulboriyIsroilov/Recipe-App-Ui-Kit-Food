@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,8 +39,8 @@ class ReviewsComments extends StatelessWidget {
                         spacing: 13.w,
                         children: [
                           ClipOval(
-                            child: Image.network(
-                              vm.comments[index].user.profilePhoto,
+                            child: CachedNetworkImage(
+                              imageUrl: vm.comments[index].user.profilePhoto,
                               width: 46.w,
                               height: 42.h,
                               fit: BoxFit.cover,

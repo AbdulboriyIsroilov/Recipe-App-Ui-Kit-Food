@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,8 +31,8 @@ class _RecipeDetailProfilState extends State<RecipeDetailProfil> {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(31.5),
-          child: Image.network(
-            widget.vm.user.profilePhoto,
+          child: CachedNetworkImage(
+            imageUrl: widget.vm.user.profilePhoto,
             width: 61.w,
             height: 63.h,
             fit: BoxFit.cover,
