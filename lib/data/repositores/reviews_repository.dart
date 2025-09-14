@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../core/client.dart';
 import '../../core/utils/result.dart';

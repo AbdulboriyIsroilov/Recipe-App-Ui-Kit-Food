@@ -16,7 +16,10 @@ import '../../common/widgets/bottom_navigation_bar_gradient.dart';
 import '../../common/widgets/bottom_navigation_bar_main.dart';
 
 class CreateRecipePage extends StatefulWidget {
-  const CreateRecipePage({super.key,});
+  const CreateRecipePage({
+    super.key,
+  });
+
   @override
   State<CreateRecipePage> createState() => _CreateRecipePageState();
 }
@@ -119,7 +122,7 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
                 spacing: 6.w,
                 children: [
                   Consumer<CreateRecipeViewModel>(
-                    builder: (context, vm, child) => TextButtomPopular(
+                    builder: (context, vm, child) => TextButtonPopular(
                       title: "Publish",
                       width: 177,
                       height: 27,
@@ -139,7 +142,7 @@ class _CreateRecipePageState extends State<CreateRecipePage> {
                       },
                     ),
                   ),
-                  TextButtomPopular(
+                  TextButtonPopular(
                     title: "Delete",
                     width: 177,
                     height: 27,

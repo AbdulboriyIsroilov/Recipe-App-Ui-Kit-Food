@@ -85,7 +85,7 @@ class AllergicPage extends StatelessWidget {
             BottomNavigationBarGradient(),
             Padding(
               padding: EdgeInsets.only(bottom: 34.h),
-              child: TextButtomPopular(
+              child: TextButtonPopular(
                 title: "Continue",
                 backgroundColor: AppColors.watermelonRed,
                 foregroundColor: Colors.white,

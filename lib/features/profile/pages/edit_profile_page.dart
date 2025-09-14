@@ -92,7 +92,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ],
               ),
               SizedBox(height: 50,),
-              TextButtomPopular(
+              TextButtonPopular(
                 title: "Save",
                 width: 152,
                 height: 45,

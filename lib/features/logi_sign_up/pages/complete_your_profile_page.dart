@@ -56,7 +56,7 @@ class CompleteYourProfilePage extends StatelessWidget {
             TextFieldNotPasword(controller: genderController, text: "Gender", hint: "Male/Female"),
             TextFieldNotPasword(controller: bioController, text: "Bio", hint: "About yourself", maxLine: 4),
             Spacer(),
-            TextButtomPopular(
+            TextButtonPopular(
               title: "Continue",
               backgroundColor: AppColors.watermelonRed,
               foregroundColor: Colors.white,

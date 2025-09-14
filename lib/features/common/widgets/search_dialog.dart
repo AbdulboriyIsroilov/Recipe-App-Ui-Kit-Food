@@ -84,7 +84,7 @@ class SearchDialog extends StatelessWidget {
               Spacer(),
               Align(
                 alignment: Alignment.center,
-                child: TextButtomPopular(
+                child: TextButtonPopular(
                   title: "Search",
                   onPressed: () {
                     Navigator.pop(context);

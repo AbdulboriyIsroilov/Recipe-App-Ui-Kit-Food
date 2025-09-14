@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                   builder: (context, vm, child) => Column(
                     spacing: 27.h,
                     children: [
-                      TextButtomPopular(
+                      TextButtonPopular(
                         title: "Log In",
                         backgroundColor: AppColors.watermelonRed,
                         foregroundColor: Colors.white,
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                           // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email yoki Password Xato!")));
                         },
                       ),
-                      TextButtomPopular(
+                      TextButtonPopular(
                         title: 'Sign up',
                         onPressed: () {
                           // context.read<AppThemeViewModel>().toggleTheme();

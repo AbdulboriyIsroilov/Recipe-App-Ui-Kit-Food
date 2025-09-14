@@ -115,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 Consumer<SignUpViewModel>(
-                  builder: (context, vm, child) => TextButtomPopular(
+                  builder: (context, vm, child) => TextButtonPopular(
                     title: "Sign In",
                     onPressed: () async {
                       if (passwordCantroller.text ==

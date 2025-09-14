@@ -131,7 +131,7 @@ class _EditRecipePageState extends State<EditRecipePage> {
                 spacing: 6.w,
                 children: [
                   Consumer<CreateRecipeViewModel>(
-                    builder: (context, vm, child) => TextButtomPopular(
+                    builder: (context, vm, child) => TextButtonPopular(
                       title: "Publish",
                       width: 177,
                       height: 27,
@@ -151,7 +151,7 @@ class _EditRecipePageState extends State<EditRecipePage> {
                       },
                     ),
                   ),
-                  TextButtomPopular(
+                  TextButtonPopular(
                     title: "Delete",
                     width: 177,
                     height: 27,

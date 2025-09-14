@@ -55,7 +55,7 @@ class CookingLevelPage extends StatelessWidget {
             ),
             Spacer(),
             Center(
-              child: TextButtomPopular(
+              child: TextButtonPopular(
                 title: "Continue",
                 backgroundColor: AppColors.watermelonRed,
                 foregroundColor: Colors.white,

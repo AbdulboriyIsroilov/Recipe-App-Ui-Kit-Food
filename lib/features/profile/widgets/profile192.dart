@@ -93,7 +93,7 @@ class Profile192 extends StatelessWidget {
                           Row(
                             spacing: 6.w,
                             children: [
-                              TextButtomPopular(
+                              TextButtonPopular(
                                 title: "Edit Profile",
                                 width: 175,
                                 height: 27,
@@ -102,7 +102,7 @@ class Profile192 extends StatelessWidget {
                                 },
                                 style: AppStyles.w500s15t,
                               ),
-                              TextButtomPopular(
+                              TextButtonPopular(
                                 title: "Share Profile",
                                 width: 175,
                                 height: 27,

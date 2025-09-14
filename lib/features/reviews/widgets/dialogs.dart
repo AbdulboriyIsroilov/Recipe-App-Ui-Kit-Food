@@ -57,7 +57,7 @@ class Dialogs extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
-            TextButtomPopular(
+            TextButtonPopular(
               title: "Go To Home",
               width: 207,
               height: 45,

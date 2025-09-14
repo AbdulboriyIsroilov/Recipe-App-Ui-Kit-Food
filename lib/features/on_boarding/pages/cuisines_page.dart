@@ -87,7 +87,7 @@ class CuisinesPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButtomPopular(
+                  TextButtonPopular(
                     title: "skip",
                     width: 162,
                     onPressed: () {
@@ -95,7 +95,7 @@ class CuisinesPage extends StatelessWidget {
                       context.go(Routers.login, extra: {});
                     },
                   ),
-                  TextButtomPopular(
+                  TextButtonPopular(
                     title: "Continue",
                     backgroundColor: AppColors.watermelonRed,
                     foregroundColor: Colors.white,

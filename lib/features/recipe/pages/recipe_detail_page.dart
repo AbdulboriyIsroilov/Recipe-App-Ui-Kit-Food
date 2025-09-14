@@ -50,7 +50,7 @@ class RecipeDetailPage extends StatelessWidget {
                   centerTitle: true,
                   title: Text(title, style: AppStyles.w600s20wr),
                   actions: [
-                    TextButtomPopular(
+                    TextButtonPopular(
                       title: "Edit",
                       width: 62,
                       height: 27,

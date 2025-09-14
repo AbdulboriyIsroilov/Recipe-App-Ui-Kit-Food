@@ -65,21 +65,21 @@ class ShareProfilePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButtomPopular(
+                TextButtonPopular(
                   title: "Share Profile",
                   style: AppStyles.w500s15wr,
                   backgroundColor: Colors.white,
                   width: 116.67,
                   height: 35,
                 ),
-                TextButtomPopular(
+                TextButtonPopular(
                   title: "Copy link",
                   style: AppStyles.w500s15wr,
                   backgroundColor: AppColors.pastelPink,
                   width: 116.67,
                   height: 35,
                 ),
-                TextButtomPopular(
+                TextButtonPopular(
                   title: "Download",
                   style: AppStyles.w500s15wr,
                   backgroundColor: AppColors.pastelPink,

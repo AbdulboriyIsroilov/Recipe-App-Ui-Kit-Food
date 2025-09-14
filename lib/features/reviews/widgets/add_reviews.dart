@@ -151,14 +151,14 @@ class _AddReviewsState extends State<AddReviews> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TextButtomPopular(
+            TextButtonPopular(
               title: "cancel",
               width: 168.w,
               height: 29.h,
               style: AppStyles.w500s15wr,
             ),
             Consumer<ReviewsAddViewModel>(
-              builder: (context, vm, child) => TextButtomPopular(
+              builder: (context, vm, child) => TextButtonPopular(
                 title: "Submit",
                 width: 168,
                 height: 29,

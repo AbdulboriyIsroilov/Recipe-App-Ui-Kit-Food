@@ -55,7 +55,7 @@ class _CANPasswordState extends State<CANPassword> {
             TextFieldPasword(controller: newPasswordCantroller, text: "New Password", hint: "New Password"),
             TextFieldPasword(controller: confirmPasswordCantroller, text: "Confirm Password", hint: "Confirm Password"),
             Spacer(),
-            TextButtomPopular(
+            TextButtonPopular(
               title: "continue",
               onPressed: () {
                 showDialog(

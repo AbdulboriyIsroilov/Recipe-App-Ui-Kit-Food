@@ -47,8 +47,8 @@ class WelcomePage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ClipRRect(
                         borderRadius: BorderRadius.circular(14.67.r),
-                        child: Image(
-                          image: CachedNetworkImageProvider(vm.recipe[index].image),
+                        child: CachedNetworkImage(
+                          imageUrl: vm.recipe[index].image,
                           width: 166.w,
                           height: 167.h,
                           fit: BoxFit.cover,
@@ -70,13 +70,13 @@ class WelcomePage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                TextButtomPopular(
+                TextButtonPopular(
                   title: "I’m New",
                   onPressed: () {
                     context.push(Routers.onBoardingCookingLevelPage);
                   },
                 ),
-                TextButtomPopular(
+                TextButtonPopular(
                   title: "I’ve Been Here",
                   onPressed: () {
                     // context.read<AppThemeViewModel>().toggleTheme();

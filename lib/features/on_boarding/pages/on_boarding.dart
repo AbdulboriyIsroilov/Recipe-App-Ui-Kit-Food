@@ -99,7 +99,7 @@ class OnBoarding extends StatelessWidget {
               BottomNavigationBarGradient(),
               Padding(
                 padding: EdgeInsets.only(bottom: 14.h),
-                child: TextButtomPopular(
+                child: TextButtonPopular(
                   title: "Continue",
                   backgroundColor: AppColors.watermelonRed,
                   foregroundColor: Colors.white,

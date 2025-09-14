@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_colors.dart';
 import 'package:recipe_app_ui_kit_food/core/utils/app_style.dart';
 
-class TextButtomPopular extends StatelessWidget {
-  const TextButtomPopular({
+class TextButtonPopular extends StatelessWidget {
+  const TextButtonPopular({
     super.key,
     required this.title,
     this.onPressed = _defaultOnPressed,
