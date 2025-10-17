@@ -22,7 +22,7 @@ class RecipeListAppBarBottom extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context)=>CategoryViewModel(recipeRepo: context.read()),
+      create: (context)=>CategoryViewModel(catRepo: context.read()),
       builder: (context, child) {
         return Consumer<CategoryViewModel>(
           builder: (context, vm, child) {

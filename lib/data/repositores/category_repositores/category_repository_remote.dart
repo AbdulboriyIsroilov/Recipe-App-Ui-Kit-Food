@@ -9,7 +9,7 @@ class CategoryRepositoryRemote {
   }) : _client = client;
   final ApiClient _client;
 
-  Future<Result<List<CategoryModel>>> getCategoryRemote() async {
+  Future<Result<List<CategoryModel>>> getCategoryRepo() async {
     var response = await _client.get<List>('/categories/list');
 
     return response.fold(

@@ -19,7 +19,7 @@ class CategoriesViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    var result = await _recipeRepo.getRecipes({"Category": categoryId});
+    var result = await _recipeRepo.getRecipes({"CategoryId": categoryId});
     result.fold(
       (error) => errorMassege = error.toString(),
       (value) => recipes = value,

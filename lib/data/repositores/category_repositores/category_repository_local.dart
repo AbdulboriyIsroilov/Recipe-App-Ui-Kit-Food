@@ -4,7 +4,7 @@ import 'package:recipe_app_ui_kit_food/data/models/category_models/category_mode
 class CategoryRepositoryLocal {
   final _box = Hive.box<CategoryModel>('category');
 
-  Future<List<CategoryModel>> getCategoryLocal() async {
+  Future<List<CategoryModel>> getCategoryRepo() async {
     return _box.values.toList();
   }
 

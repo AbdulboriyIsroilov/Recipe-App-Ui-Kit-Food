@@ -4,7 +4,9 @@ import 'package:recipe_app_ui_kit_food/data/models/recipe_models/create_recipe_m
 import '../../../data/repositores/recipes_repository.dart';
 
 class CreateRecipeViewModel extends ChangeNotifier {
-  CreateRecipeViewModel({required RecipesRepository createRecipeRepo}) : _createResipeRepo = createRecipeRepo;
+  CreateRecipeViewModel({
+    required RecipesRepository createRecipeRepo,
+  }) : _createResipeRepo = createRecipeRepo;
   final RecipesRepository _createResipeRepo;
   bool isLoading = true;
 
@@ -16,8 +18,7 @@ class CreateRecipeViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    final data = await _createResipeRepo.createRecipe({
-    });
+    final data = await _createResipeRepo.createRecipe({});
     data.fold(
       (e) => onError(),
       (success) => onSuccess(),

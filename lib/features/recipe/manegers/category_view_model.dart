@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_app_ui_kit_food/data/repositores/category_repositores/category_repository.dart';
 
+import '../../../data/interfaces/category_repocitories_interfaces.dart';
 import '../../../data/models/category_models/category_model.dart';
 
 class CategoryViewModel extends ChangeNotifier {
-  CategoryViewModel({required CategoryRepository recipeRepo}) : _recipeRepo = recipeRepo {
+  CategoryViewModel({required ICategoryRepositories catRepo}) : _catRepo = catRepo {
     fetchRecipe();
   }
 
-  final CategoryRepository _recipeRepo;
+  final ICategoryRepositories _catRepo;
   List<CategoryModel> recipe = [];
   bool loading = true;
   String? errorMassege;
@@ -17,10 +17,10 @@ class CategoryViewModel extends ChangeNotifier {
     loading = true;
     notifyListeners();
 
-    var result = await _recipeRepo.getCategory();
+    var result = await _catRepo.getCategory();
     result.fold(
-          (error) => errorMassege = error.toString(),
-          (value) => recipe = value,
+      (error) => errorMassege = error.toString(),
+      (value) => recipe = value,
     );
 
     loading = false;

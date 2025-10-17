@@ -16,7 +16,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => CategoryViewModel(recipeRepo: context.read()),
+      create: (context) => CategoryViewModel(catRepo: context.read()),
       builder: (context, child) => Scaffold(
         appBar: AppBar(
           leading: IconButton(

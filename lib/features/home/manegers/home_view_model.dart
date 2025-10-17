@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app_ui_kit_food/data/repositores/user_repositores/user_repository.dart';
-import '../../../core/client.dart';
 
 import '../../../data/models/category_models/category_model.dart';
 import '../../../data/models/recipe_models/recipes_model.dart';
